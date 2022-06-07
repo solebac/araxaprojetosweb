@@ -32,7 +32,7 @@ const Navbar = () => {
             </li>
             <li className="dropdown">
               <a
-                href={`#`}
+                href="javascript:void(0)"
                 className="dropdown-toggle"
                 data-toggle="dropdown"
                 role="button"
@@ -62,10 +62,10 @@ const Navbar = () => {
             </li>
             <li className="divisor" role="separator"></li>
             <li>
-              <a href={`#`}>Increver-se</a>
+              <a href="javascript:void(0)">Increver-se</a>
             </li>
             <li>
-              <a href={`#`}>Entrar</a>
+              <a href="javascript:void(0)">Entrar</a>
             </li>
           </ul>
         </div>
