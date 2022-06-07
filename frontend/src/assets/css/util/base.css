@@ -1,0 +1,97 @@
+@import url('tipografia.css');
+:root {
+  /*Alter*/
+  --fonte-master: "Montserrat", Helvetica, Arial, sans-serif;
+  --branco: #ffffff;
+  --prata: #c0c0c0;
+  --orange: orange;
+  --orange-six: rgb(255, 165, 0, 0.6);
+  --orange-dark-btn: rgb(244, 90, 8);
+  --contato-enviar: #9f5418;
+  --contato-enviar-hover: rgba(244, 57, 0, 0.9);
+  --texto-servico: #554a4a;
+  --btn-left: rgba(93, 63, 7, 0.6);
+  --btn-font-rigth: rgb(226, 134, 85);
+  --ouro-escuro: rgb(45, 43, 43);
+  --ouro-escuro-six: rgba(31, 23, 10, 0.6);
+  --black-six: rgba(0, 0, 0, 0.6);
+  --black-eight: rgba(0, 0, 0, 0.8);
+}
+html,
+body, #root{
+  width: 100%;
+  font-family: var(--fonte-master);
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+  outline: none;
+  /*color: #fff;*/
+}
+
+#attack,
+#blog,
+#portifolio,
+#ethical,
+#marketing,
+#news,
+#pentest {
+  /*query*/
+  background: var(--branco);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  /*margin: 3rem 0;*/
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  padding: 10px;
+  outline: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  width: 100%;
+  margin-bottom: 60px;
+  color: var(--branco);
+  font-size: 14px;
+}
+select {
+  width: 50%;
+}
+input::placeholder {
+  color: var(--branco);
+}
+
+@media screen and (max-width: 767px) {
+  .titulo {
+    font-weight: 700;
+  }
+  .subtitulo {
+    font-weight: 500;
+  }
+  .titulo-portifolio {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+  }
+  .subtitulo-portifolio {
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+  .text-portifolio {
+    font-size: 1.4rem;
+  }
+}
