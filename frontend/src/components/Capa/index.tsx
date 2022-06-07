@@ -9,10 +9,10 @@ const Capa = () => {
           tecnologia Java
         </p>
         <p className="subtitulo">Conceito de site inteligente.</p>
-        <a href="javascript:void(0)" className="btn btn-custom btn-left btn-lg">
+        <a href="/#" onClick={(e) => e.preventDefault()} className="btn btn-custom btn-left btn-lg">
           Demonstre sua marca na internet
         </a>
-        <a href="javascript:void(0)" className="btn btn-custom btn-rigth btn-lg">
+        <a href="/#" onClick={(e) => e.preventDefault()} className="btn btn-custom btn-rigth btn-lg">
           Atualize você mesmo seu site.
         </a>
       </div>
