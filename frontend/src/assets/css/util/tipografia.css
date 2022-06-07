@@ -1,0 +1,68 @@
+.titulo-portifolio {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin-bottom: 15px;
+}
+.subtitulo-portifolio {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+.subtitulo-portifolio--ethical {
+  font-size: 2rem;
+  text-align: justify;
+  margin-bottom: 3rem;
+}
+.subtitulo-portifolio--modifield {
+  color: var(--orange-six);
+}
+.text-portifolio {
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  text-align: justify;
+}
+.texto-servico {
+  color: var(--ouro-escuro);
+}
+.texto-servico--modifield {
+  color: var(--texto-servico);
+}
+/*=======================Tipografia*/
+.titulo {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+.subtitulo {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+}
+.texto-modifica {
+  font-style: italic;
+}
+
+@media screen and (max-width: 767px) {
+  .titulo {
+    font-weight: 700;
+  }
+  .subtitulo {
+    font-weight: 500;
+  }
+  .titulo-portifolio {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+  }
+  .subtitulo-portifolio {
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+  .text-portifolio {
+    font-size: 1.4rem;
+  }
+}
