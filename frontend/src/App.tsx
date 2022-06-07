@@ -6,6 +6,7 @@ import "./assets/css/buttons.css";
 import BannerHome from "./components/BannerHome";
 import Navbar from "./components/Navbar";
 import Capa from "./components/Capa";
+import MainHome from "./components/MainHome";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <BannerHome />
       <Navbar />
       <Capa />
-      
+      <MainHome />      
     </>
   );
 }
