@@ -57,10 +57,10 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="/Blog">Blog</Link>
+              <Link to="/blog">Blog</Link>
             </li>
             <li>
-              <Link to="/Contato">Contato</Link>
+              <Link to="/contato">Contato</Link>
             </li>
             <li className="divisor" role="separator"></li>
             <li>

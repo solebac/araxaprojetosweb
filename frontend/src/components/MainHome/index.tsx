@@ -1,10 +1,10 @@
 import * as React from "react";
-import Portifolio from "../conteudo/Portifolio";
-import Easy from "../conteudo/Easy";
-import Technology from "../conteudo/Technology";
 import "../../assets/css/recursos.css";
-import Noticias from "../conteudo/Noticias";
-import Videos from "../conteudo/Videos";
+import Easy from "../conteudo/home/Easy";
+import Noticias from "../conteudo/home/Noticias";
+import Portifolio from "../conteudo/home/Portifolio";
+import Technology from "../conteudo/home/Technology";
+import Videos from "../conteudo/home/Videos";
 
 const MainHome = () => {
   return (
