@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -17,22 +18,23 @@ const Navbar = () => {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="index.html">
+          <Link className="navbar-brand" to="/">
             <span className="img-logo">Araxá Projetos Web</span>
-          </a>
+          </Link>
         </div>
 
         <div className="collapse navbar-collapse" id="barra-navigation">
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <a href="/index.html">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/portifolio">Portifólio</a>
+              <Link to="/portifolio">Portifólio</Link>
             </li>
             <li className="dropdown">
-              <a
-                href="/#" onClick={(e) => e.preventDefault()}
+              <Link
+                to="/#"
+                onClick={(e) => e.preventDefault()}
                 className="dropdown-toggle"
                 data-toggle="dropdown"
                 role="button"
@@ -40,32 +42,36 @@ const Navbar = () => {
                 aria-expanded="false"
               >
                 Hacker <span className="caret"></span>
-              </a>
+              </Link>
               <ul className="dropdown-menu">
                 <li>
-                  <a href="/ethical.html">Ethical</a>
+                  <Link to="/hacker/ethical">Ethical</Link>
                 </li>
                 <li>
-                  <a href="/attack.html">Attack</a>
+                  <Link to="/hacker/attack">Attack</Link>
                 </li>
                 <li>
-                  <a href="/cofre.html">Cofre Virus</a>
+                  <Link to="/hacker/quarentena">Cofre Virus</Link>
                 </li>
               </ul>
             </li>
 
             <li>
-              <a href="/blog.html">Blog</a>
+              <Link to="/Blog">Blog</Link>
             </li>
             <li>
-              <a href="/contato.html">Contato</a>
+              <Link to="/Contato">Contato</Link>
             </li>
             <li className="divisor" role="separator"></li>
             <li>
-              <a href="/#" onClick={(e) => e.preventDefault()}>Increver-se</a>
+              <Link to="/#" onClick={(e) => e.preventDefault()}>
+                Increver-se
+              </Link>
             </li>
             <li>
-              <a href="/#" onClick={(e) => e.preventDefault()}>Entrar</a>
+              <Link to="/#" onClick={(e) => e.preventDefault()}>
+                Entrar
+              </Link>
             </li>
           </ul>
         </div>
