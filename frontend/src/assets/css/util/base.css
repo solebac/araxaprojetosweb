@@ -1,4 +1,4 @@
-@import url('tipografia.css');
+@import url("tipografia.css");
 :root {
   /*Alter*/
   --fonte-master: "Montserrat", Helvetica, Arial, sans-serif;
@@ -18,7 +18,8 @@
   --black-eight: rgba(0, 0, 0, 0.8);
 }
 html,
-body, #root{
+body,
+#root {
   width: 100%;
   font-family: var(--fonte-master);
   -webkit-font-smoothing: antialiased;
@@ -73,6 +74,17 @@ input::placeholder {
   color: var(--branco);
 }
 
+.tecnology-carousel {
+  border-top: 1px solid #ebebeb;
+  padding: 50px 0;
+  margin-top: 3rem;
+}
+.owl-stage {
+  display: flex;
+  align-items: center;
+}
+
+
 @media screen and (max-width: 767px) {
   .titulo {
     font-weight: 700;
@@ -93,5 +105,9 @@ input::placeholder {
   }
   .text-portifolio {
     font-size: 1.4rem;
+  }
+  .tecnology-carousel {
+    padding: 20px 0;
+    margin-top: 1.5rem;
   }
 }
