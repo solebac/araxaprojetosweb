@@ -7,7 +7,7 @@ const Footers = () => {
     <>
       <footer>
         <div className="cabecalho__footer">
-          <a href="index.html">
+          <a href="/">
             <span className="img-logo">Araxá Projetos Web</span>
           </a>
           <div className="rodape__redes">

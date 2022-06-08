@@ -5,6 +5,7 @@ import "./assets/css/home.css";
 import "./assets/css/buttons.css";
 import "./assets/css/news.css";
 import "./assets/css/rodape.css";
+import "./assets/css/util/media-home.css";
 import BannerHome from "./components/BannerHome";
 import Navbar from "./components/Navbar";
 import Capa from "./components/Capa";
