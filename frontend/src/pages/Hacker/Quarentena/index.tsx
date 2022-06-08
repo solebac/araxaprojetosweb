@@ -1,5 +1,8 @@
 import * as React from "react";
+import BannerHacker from "../../../components/BannerHacker";
 const Quarentena = () => {
-  return <h1>Em desenvolvimento...!"</h1>;
+  return (
+    <BannerHacker />
+  );
 };
 export default Quarentena;
