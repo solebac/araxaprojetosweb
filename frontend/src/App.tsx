@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import Capa from "./components/Capa";
 import MainHome from "./components/MainHome";
 import Footers from "./components/Footers";
+import VLibras from "@djpfs/react-vlibras";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Navbar />
       <Capa />
       <MainHome />
+      <VLibras/>
       <Footers />
     </>
   );
