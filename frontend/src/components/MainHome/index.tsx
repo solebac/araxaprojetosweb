@@ -4,6 +4,7 @@ import Easy from "../conteudo/Easy";
 import Technology from "../conteudo/Technology";
 import "../../assets/css/recursos.css";
 import Noticias from "../conteudo/Noticias";
+import Videos from "../conteudo/Videos";
 
 const MainHome = () => {
   return (
@@ -11,6 +12,7 @@ const MainHome = () => {
       <Portifolio />
       <Easy />
       <Technology />
+      <Videos />
       <Noticias />
     </>
   );
