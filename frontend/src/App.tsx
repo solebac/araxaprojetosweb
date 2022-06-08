@@ -6,6 +6,7 @@ import Attack from "./pages/Hacker/Attack";
 import Ethical from "./pages/Hacker/Ethical";
 import Quarentena from "./pages/Hacker/Quarentena";
 import Home from "./pages/Home";
+import Pagina404 from "./pages/Pagina404";
 import Portifolio from "./pages/Portifolio";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/hacker/attack" element={<Attack />} />
           <Route path="/hacker/ethical" element={<Ethical />} />
           <Route path="/hacker/quarentena" element={<Quarentena />} />
+          <Route path="*" element={<Pagina404 />} />
         </Routes>
       </BrowserRouter>
     </>
