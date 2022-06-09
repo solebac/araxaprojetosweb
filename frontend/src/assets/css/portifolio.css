@@ -13,6 +13,12 @@ ul {
 .mtx {
   margin-top: 5px;
 }
+.portifolio__border-unset {
+  border: unset;
+}
+.portifolio__border-bottom-unset {
+  border-bottom: unset;
+}
 .portifolio-reset {
   padding: 0px;
 }

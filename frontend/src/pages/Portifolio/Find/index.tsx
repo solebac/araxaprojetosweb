@@ -1,10 +1,10 @@
 import React from "react";
-import SobreEu from "../../../components/conteudo/portifolio/SobreEu";
+import NewHome from "../../../components/conteudo/portifolio/NewHome";
 
 const Find = () => {
   return (
     <>
-      <SobreEu />
+      <NewHome />
     </>
   );
 };
