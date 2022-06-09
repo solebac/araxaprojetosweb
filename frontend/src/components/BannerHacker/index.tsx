@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../../assets/css/hacker.css";
 import { ReactComponent as ImgCapa } from "../../assets/img/navs/banner-01.svg";
 import { ReactComponent as ImgIcoHome } from "../../assets/img/navs/home_mini.svg";
