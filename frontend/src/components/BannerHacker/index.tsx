@@ -1,11 +1,14 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import "../../assets/css/hacker.css";
 import { ReactComponent as ImgCapa } from "../../assets/img/navs/banner-01.svg";
 import { ReactComponent as ImgIcoHome } from "../../assets/img/navs/home_mini.svg";
 import { ReactComponent as ImgIcoNext } from "../../assets/img/fonts-icon/next_mini.svg";
 import Navbar from "../../components/Navbar";
 
-const BannerHacker = () => {
+const BannerHacker = (props: any) => {
+  /*console.log(pagina.labels.pagina);*/
+
+  console.log(props.uri);
   return (
     <header>
       <Navbar />
@@ -17,14 +20,15 @@ const BannerHacker = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcrumb-text">
-                <h4>Blog</h4>
-                <div className="bt-option">
-                  <a href="./index.html">
-                    <ImgIcoHome aria-label="Home" /> Home
+                <h4>{props.uri}</h4>
+                <div className="bt-option breadcrumb-text--line">
+                  <a href="./index.html" className="breadcrumb-text--line">
+                    <ImgIcoHome aria-label="Home" />
+                    <span className="ml-4"> Home</span>
                   </a>
-                  <span>
+                  <span className="breadcrumb-text--line">
                     <ImgIcoNext aria-label="Proximo" />
-                    Blog
+                    <span>{props.uri}</span>
                   </span>
                 </div>
               </div>
