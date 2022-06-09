@@ -2,7 +2,6 @@ import React from "react";
 import BotaoEnviar from "../BotaoEnviar";
 
 const FormContato = () => {
-  {/*const [visible, setVisible] = useState(true);*/}
   return (
     <>
       <section className="container celling">
@@ -98,8 +97,6 @@ const FormContato = () => {
                 Gostaria de receber nossas novidades por email?
               </label>
               <BotaoEnviar />
-              {/* visible ? <BotaoEnviar /> : "" */}
-              
             </fieldset>
           </form>
         </div>
