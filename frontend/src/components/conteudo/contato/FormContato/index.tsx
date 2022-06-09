@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BotaoEnviar from "../BotaoEnviar";
 
 const FormContato = () => {
-  const [visible, setVisible] = useState(true);
+  {/*const [visible, setVisible] = useState(true);*/}
   return (
     <>
       <section className="container celling">
@@ -97,8 +97,8 @@ const FormContato = () => {
                 <input type="checkbox" id="receber" />
                 Gostaria de receber nossas novidades por email?
               </label>
-
-              {visible ? <BotaoEnviar /> : ""}
+              <BotaoEnviar />
+              {/* visible ? <BotaoEnviar /> : "" */}
               
             </fieldset>
           </form>
