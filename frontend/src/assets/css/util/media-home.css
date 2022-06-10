@@ -10,6 +10,10 @@
        Media Queries
        -------------------------------------- */
 
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+  
+}
+
 @media screen and (max-width: 767px) {
   nav.navbar-transparente {
     background: var(--black-eight);
@@ -66,7 +70,16 @@
     height: 300px;
     margin: 1px auto;
   }
-  #news {
+  #video {
+    margin-bottom: 20rem;
+  }
+  .landscape {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .landscape--news {
     margin-top: 16rem;
   }
 }

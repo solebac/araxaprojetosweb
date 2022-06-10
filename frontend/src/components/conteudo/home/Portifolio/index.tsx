@@ -7,7 +7,7 @@ import imgDash from "../../../../assets/img/home/img-dash.jpg";
 const Portifolio = () => {
   return (
     <>
-      <section id="portifolio">
+      <section className="landscape">
         <div className="container">
           <div className="row">
             <div className="col-md-6">

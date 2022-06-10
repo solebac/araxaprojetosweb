@@ -10,6 +10,7 @@ import Capa from "../../components/Capa";
 import MainHome from "../../components/MainHome";
 import Footers from "../../components/Footers";
 import VLibras from "@djpfs/react-vlibras";
+import ScrollToTop from "../../utils/ScrollToTop";
 
 function Home() {
   return (
@@ -19,6 +20,7 @@ function Home() {
       <Capa />
       <MainHome />
       <VLibras />
+      <ScrollToTop />
       <Footers />
     </>
   );
