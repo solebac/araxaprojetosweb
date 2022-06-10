@@ -21,8 +21,8 @@ a:focus {
   height: auto;
 }
 .blog-section {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 .blog-item {
   overflow: hidden;
@@ -539,6 +539,11 @@ a:focus {
 /*---------------------
   Pagination
 -----------------------*/
+svg:not(:root) {
+  vertical-align: middle;
+  border: 0;
+  margin-bottom: 2px;
+}
 ul,
 ol {
   padding: 0;
@@ -586,8 +591,8 @@ ol {
 .property-pagination a span {
   font-size: 27px;
 }
-.ml-4{
-    margin-left: 4px;
+.ml-4 {
+  margin-left: 4px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -641,5 +646,14 @@ ol {
   .img-subdestaque {
     width: 100%;
     max-height: 240px;
+  }
+
+  .blog-section {
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+
+  div.principal-page__logo > svg {
+    height: 320px;
   }
 }
