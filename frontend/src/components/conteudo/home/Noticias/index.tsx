@@ -2,7 +2,7 @@ import * as React from "react";
 const Noticias = () => {
   return (
     <>
-      <article id="news">
+      <article className="landscape landscape--news">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

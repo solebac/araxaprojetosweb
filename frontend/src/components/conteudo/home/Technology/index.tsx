@@ -38,7 +38,7 @@ const Technology = () => {
   };
   return (
     <>
-      <section id="marketing">
+      <section className="landscape">
         <div className="logo-carousel">
           <div className="container">
             <h2>Tecnologias Aplicadas</h2>

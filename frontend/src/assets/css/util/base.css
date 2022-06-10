@@ -43,16 +43,12 @@ a:focus {
 
 #attack,
 #blog,
-#portifolio,
 #ethical,
-#marketing,
-#news,
-#pentest {
-  /*query*/
+#pentest,
+.landscape {
   background: var(--branco);
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  /*margin: 3rem 0;*/
+  padding-top: 6rem;
+  padding-bottom: 6rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
@@ -89,9 +85,9 @@ a:focus {
   background: var(--blog-breadcrumb);
   /*rgba(224, 192, 14, 0.25);*/
 }
-.breadcrumb-text--line{
-    display: flex;
-    align-items: center;
+.breadcrumb-text--line {
+  display: flex;
+  align-items: center;
 }
 
 /*---------------------
@@ -112,7 +108,7 @@ a:focus {
 .mb-1 {
   margin-bottom: 4rem !important;
 }
-.ml-4{
+.ml-4 {
   margin-left: 4px;
 }
 
@@ -160,6 +156,7 @@ input::placeholder {
     Medias - Query
     1-Tipografia
   -----------------------*/
+  
 @media screen and (max-width: 767px) {
   .titulo {
     font-weight: 700;
@@ -185,4 +182,5 @@ input::placeholder {
     padding: 20px 0;
     margin-top: 1.5rem;
   }
+  
 }
