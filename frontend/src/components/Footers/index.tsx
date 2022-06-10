@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import ImgRedLink from "../../assets/img/footer/rede_git.png";
 import ImgGitHub from "../../assets/img/footer/rede_linkedin.png";
 
@@ -7,9 +8,9 @@ const Footers = () => {
     <>
       <footer>
         <div className="cabecalho__footer">
-          <a href="/">
+          <Link to="/">
             <span className="img-logo">Araxá Projetos Web</span>
-          </a>
+          </Link>
           <div className="rodape__redes">
             <ul className="rodape__footer">
               <li>

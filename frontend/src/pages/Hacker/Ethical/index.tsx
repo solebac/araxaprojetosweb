@@ -7,6 +7,9 @@ import Information from "../../../components/conteudo/hacker/ethical/Information
 import Introdution from "../../../components/conteudo/hacker/ethical/Introdution";
 import Penetration from "../../../components/conteudo/hacker/ethical/Penetration";
 import Footers from "../../../components/Footers";
+import ScrollToTop from "../../../utils/ScrollToTop";
+import VLibras from "@djpfs/react-vlibras";
+
 const Ethical = () => {
   return (
     <>
@@ -18,6 +21,8 @@ const Ethical = () => {
         <Penetration />
         <Distribuition />
       </Container>
+      <VLibras />
+      <ScrollToTop />
       <Footers />
     </>
   );
