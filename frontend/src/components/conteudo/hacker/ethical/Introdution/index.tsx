@@ -6,7 +6,7 @@ const Introdution = () => {
       <section className="container mb-1">
         <div className="row texto-servico">
           <div className="col-md-12">
-            <p className="titulo-portifolio">Introdução</p>
+            <p className="titulo-portifolio mt-1">Introdução</p>
           </div>
           <div className="col-md-6">
             <p className="subtitulo-portifolio">Hacker</p>

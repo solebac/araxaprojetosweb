@@ -4,6 +4,7 @@
   --fonte-master: "Montserrat", Helvetica, Arial, sans-serif;
   --branco: #ffffff;
   --prata: #c0c0c0;
+  --prata-claro: #c1c1c1;
   --orange: orange;
   --orange-six: rgb(255, 165, 0, 0.6);
   --orange-dark-btn: rgb(244, 90, 8);
@@ -12,6 +13,7 @@
   --blog-sidebar: #999999;
   --blog-sidebar-post: #dcdcdc;
   --blog-item-banner: #e1e1e1;
+  --hacker-gray: #eeeeee;
   --blog-artigo: #666666;
   --blog-breadcrumb: rgba(11, 249, 238, 0.25);
   --blog-bh-text: #c0c0c0;
@@ -20,9 +22,11 @@
   --btn-font-rigth: rgb(226, 134, 85);
   --ouro-escuro: rgb(45, 43, 43);
   --ouro-escuro-six: rgba(31, 23, 10, 0.6);
+  --black-two: rgba(0, 0, 0, 0.2);
   --black-six: rgba(0, 0, 0, 0.6);
   --black-eight: rgba(0, 0, 0, 0.8);
   --blog-item: #111111;
+  --black: #000000;
 }
 html,
 body,
@@ -52,7 +56,6 @@ a:focus {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
-
 /*---------------------
     Blog|Hacker(pages) Banners
   -----------------------*/

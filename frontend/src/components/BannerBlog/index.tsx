@@ -3,6 +3,7 @@ import { ReactComponent as ImgCapa } from "../../assets/img/navs/banner-04.svg";
 import { ReactComponent as ImgIcoHome } from "../../assets/img/navs/home_mini.svg";
 import { ReactComponent as ImgIcoNext } from "../../assets/img/fonts-icon/next_mini.svg";
 import Navbar from "../../components/Navbar";
+import { Link } from "react-router-dom";
 
 const BannerBlog = () => {
   return (
@@ -18,10 +19,10 @@ const BannerBlog = () => {
               <div className="breadcrumb-text">
                 <h4>Blog</h4>
                 <div className="bt-option breadcrumb-text--line">
-                  <a href="./index.html" className="breadcrumb-text--line">
+                  <Link to="/" className="breadcrumb-text--line">
                     <ImgIcoHome aria-label="Home" />
                     <span className="ml-4">Home</span>
-                  </a>
+                  </Link>
                   <span className="breadcrumb-text--line">
                     <ImgIcoNext aria-label="Proximo" /> <span>Blog</span>
                   </span>

@@ -6,6 +6,8 @@ import Footers from "../../components/Footers";
 import Container from "../../components/conteudo/blog/Container";
 import PostDispache from "../../components/conteudo/blog/PostDispache/indext";
 import PostRecent from "../../components/conteudo/blog/PostRecent";
+import ScrollToTop from "../../utils/ScrollToTop";
+import VLibras from "@djpfs/react-vlibras";
 
 const Blog = () => {
   return (
@@ -15,6 +17,8 @@ const Blog = () => {
         <PostDispache />
         <PostRecent />
       </Container>
+      <VLibras />
+      <ScrollToTop />
       <Footers />
     </>
   );
