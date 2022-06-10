@@ -140,6 +140,7 @@ const PostRecent = () => {
 
         <div className="blog__banner">
           <iframe
+            title="Teste a velocidade da Internet"
             width="100%"
             height="250"
             src="https://fast.com/pt"
