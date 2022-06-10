@@ -14,7 +14,7 @@ const BannerHacker = (props: any) => {
       <Navbar />
       <section className="principal-page">
         <div className="principal-page__logo">
-          <ImgCapa className="img-responsive" aria-label="Mundo Hacker" />
+          <ImgCapa className="img-responsive principal-page__logo--resize" aria-label="Mundo Hacker" />
         </div>
         <div className="container principal-page__text">
           <div className="row">

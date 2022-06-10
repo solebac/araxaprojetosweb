@@ -70,6 +70,9 @@ a:focus {
   height: 360px;
   z-index: -1;
 }
+.principal-page__logo--resize{
+  min-height: 360px;
+}
 /*---------------------
     Blog|Hacker(pages) Details
   -----------------------*/
