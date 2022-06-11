@@ -6,7 +6,9 @@ interface AuxProps {
 
 const Container = ({ children }: AuxProps) => (
   <main>
-    <section className="landscape">{children}</section>
+    <section className="landscape">
+      <div className="container">{children}</div>
+    </section>
   </main>
 );
 

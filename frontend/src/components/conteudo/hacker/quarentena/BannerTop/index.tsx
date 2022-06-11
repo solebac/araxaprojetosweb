@@ -4,7 +4,7 @@ import {ReactComponent as ImgKali} from "../../../../../assets/img/card/avast.sv
 const BannerTop = () =>{
     return (<>
     <aside className="container attack__banner--reset">
-        <div className="row">
+        <div className="row mb-1">
           <div className="col-lg-12">
             <ImgKali className="img-responsive img-logo-cofre"
               aria-label="Aguardando propaganda...! [Parceiros]" />

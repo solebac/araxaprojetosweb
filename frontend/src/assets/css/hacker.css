@@ -41,10 +41,15 @@
 }
 .card-text {
   display: block;
+  text-align: justify;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+.card-text--limitd{
+  height: 180px;
+  overflow-y: auto;
 }
 .card__ethical-item {
   box-shadow: 0 4px 8px 0 var(--black-two);

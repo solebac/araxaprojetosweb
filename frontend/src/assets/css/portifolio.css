@@ -93,7 +93,7 @@ a {
   color: white;
   font-size: 1.6rem;
 }
-.portifolio-menu__lateral--separator{
+.portifolio-menu__lateral--separator {
   border-bottom: 1px solid rgb(238 238 238 / 7%);
   margin-right: 10px;
   margin-left: 10px;
@@ -117,23 +117,32 @@ a {
   box-sizing: border-box;
 }
 .portifolio__around {
-  border-radius: 20px;
+  border-radius: 10px;
   box-sizing: border-box;
   padding: 1.5rem 2rem;
   box-shadow: 2px 1px 1px 2px #000000;
 }
 .portifolio__slog {
+  width: 120px;
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
   padding: 3rem 1rem;
   margin: 2px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: teal;
   text-transform: uppercase;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 .portifolio__data {
   font-size: 1rem;
+}
+.portifolio_box {
+  max-height: 120px;
+  padding: 1px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 .portifolio__titulo {
   font-size: 2rem;
@@ -146,28 +155,17 @@ a {
   font-family: Verdana, "lato";
 }
 
-@media screen and (max-width: 1200px) {
-  .portifolio__linha {
-    width: 380px;
-  }
-  .portifolio-reset {
-    padding: inherit;
-  }
-  .portifolio__slog {
-    border-radius: 10px;
-  }
-  .portifolio__around {
-    border-radius: 10px;
-    padding: 0.8rem 1rem;
-  }
-  .row-mod {
-    margin: 0;
-    padding: 0;
+@media screen and (max-width: 412px) {
+  .portifolio-menu__lateral--link {
+    font-size: 1.4rem;
   }
 }
-@media screen and (max-width: 1100px) {
-  .portifolio__linha {
-    width: 340px;
+@media screen and (max-width: 767px) {
+  .ativa {
+    display: none;
+  }
+  .principal-portifolio {
+    min-height: auto;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -190,17 +188,41 @@ a {
     margin: 12px auto;
     padding: 0;
   }
-}
-@media screen and (max-width: 767px) {
-  .ativa {
-    display: none;
+  .portifolio__slog{
+    width: 100%;
   }
-  .principal-portifolio {
-    min-height: auto;
+  .portifolio_box {
+    max-height: unset;
+    overflow-y: unset;
+  }
+  .portifolio__titulo {
+    font-size: 1.7rem;
   }
 }
-@media screen and (max-width: 412px) {
-  .portifolio-menu__lateral--link {
-    font-size: 1.4rem;
+@media screen and (max-width: 1100px) {
+  .portifolio__linha {
+    width: 340px;
+  }
+  .portifolio__slog {    
+    overflow-x: auto;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .portifolio__linha {
+    width: 380px;
+  }
+  .portifolio-reset {
+    padding: inherit;
+  }
+  .portifolio__slog {
+    border-radius: 10px;
+  }
+  .portifolio__around {
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+  }
+  .row-mod {
+    margin: 0;
+    padding: 0;
   }
 }
