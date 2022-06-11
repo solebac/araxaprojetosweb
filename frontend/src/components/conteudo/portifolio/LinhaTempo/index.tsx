@@ -47,27 +47,27 @@ const LinhaTempo = () => {
 
         <nav className="portifolio-menu__lateral">
           <Link
-            className="portifolio-menu__lateral--link portifolio-menu__lateral--link-ativo"
+            className="portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
             to="/portifolio"
           >
             Home
           </Link>
 
-          <Link className="portifolio-menu__lateral--link" to="../">
+          <Link className="portifolio-menu__lateral--link portifolio-menu__lateral--separator" to="../">
             Meu Site
           </Link>
 
-          <Link className="portifolio-menu__lateral--link" to="../portifolio/about">
+          <Link className="portifolio-menu__lateral--link portifolio-menu__lateral--separator" to="../portifolio/about">
             Sobre Mim
           </Link>
 
           {/*<a href="../portifolio/find.html"
-            className="portifolio-menu__lateral--link">*/}
-          <Link className="portifolio-menu__lateral--link" to="../portifolio/find">
+            className="portifolio-menu__lateral--link portifolio-menu__lateral--separator">*/}
+          <Link className="portifolio-menu__lateral--link portifolio-menu__lateral--separator" to="../portifolio/find">
             Pesquisa
           </Link>
 
-          <Link className="portifolio-menu__lateral--link" to="../contato">
+          <Link className="portifolio-menu__lateral--link portifolio-menu__lateral--separator" to="../contato">
             Contato
           </Link>
         </nav>

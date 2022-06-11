@@ -22,7 +22,8 @@
   color: var(--branco);
 }
 .contato__subtitulo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
   text-align: center;
   padding: 0 0 1rem 0;
   color: var(--cinza-texto);
@@ -76,23 +77,25 @@ input[type="radio"] {
   line-height: normal;
 }
 
+@media screen and (max-width: 1024px) {
+  .contato {
+    width: 90vw;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .contato__titulo {
     font-size: 2rem;
     padding: 1.5rem 1rem;
   }
   .contato__subtitulo {
-    line-height: 1.2;
+    line-height: 1.3;
     font-size: 1rem;
     text-align: justify;
     padding: 0.5rem;
   }
 }
 @media screen and (max-width: 600px) {
-  .contato {
-    width: 90vw;
-    
-  }
   .contato--resize {
     padding: 0.8rem;
   }
