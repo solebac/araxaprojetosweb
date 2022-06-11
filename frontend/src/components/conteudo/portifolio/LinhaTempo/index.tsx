@@ -11,7 +11,7 @@ const LinhaTempo = () => {
         <div className="portifolio__linha-tempo">
           <ImgFrs className="portifolio__img" aria-label="Flávio Rogério" />
 
-          <p className="portifolio__name">Flávio Rogerio</p>
+          <p className="portifolio__name mt-4">Flávio Rogério</p>
 
           <p className="portifolio__funcao">Java Developer</p>
 

@@ -539,7 +539,7 @@ const Curriculo = () => {
                               name="gas_availability"
                               className="pro-chx"
                               value="yes"
-                              checked
+                              defaultChecked
                             />
                             <div className="clab clab--linux">Linux</div>
                           </label>

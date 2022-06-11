@@ -198,6 +198,10 @@ ul.chec-radio li.pz {
   .portifolio__name {
     font-size: 1.8rem;
   }
+  .about__cabecalho--modifield{
+    padding: 2rem 0;
+    margin: 0;
+  }
 }
 @media screen and (max-width: 1020px) {
   .about__cabecalho {
