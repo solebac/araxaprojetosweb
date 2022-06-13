@@ -2,9 +2,10 @@ import React from "react";
 import { ReactComponent as ImgFrs } from "../../../../assets/img/pessoal/Flavio-sf.svg";
 import ImgRedLink from "../../../../assets/img/footer/rede_git.png";
 import ImgGitHub from "../../../../assets/img/footer/rede_linkedin.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const LinhaTempo = () => {
+
   return (
     <>
       <aside className="col-md-4 portifolio__linha portifolio-reset">
@@ -46,33 +47,52 @@ const LinhaTempo = () => {
         </div>
 
         <nav className="portifolio-menu__lateral">
-          <Link
-            className="portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
-            to="/portifolio"
-          >
-            Home
-          </Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
+              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
+              to="/portifolio"
+              end
+            >
+              Home
+            </NavLink>
 
-          <Link className="portifolio-menu__lateral--link portifolio-menu__lateral--separator" to="../">
-            Meu Site
-          </Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
+              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
+              to="../"
+            >
+              Meu Site
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
+              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
+              to="../portifolio/about"
+            >
+              Sobre Mim
+            </NavLink>
 
-          <Link className="portifolio-menu__lateral--link portifolio-menu__lateral--separator" to="../portifolio/about">
-            Sobre Mim
-          </Link>
-
-          {/*<a href="../portifolio/find.html"
+            {/*<a href="../portifolio/find.html"
             className="portifolio-menu__lateral--link portifolio-menu__lateral--separator">*/}
-          <Link className="portifolio-menu__lateral--link portifolio-menu__lateral--separator" to="../portifolio/find">
-            Pesquisa
-          </Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
+              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
+              to="../portifolio/find"
+            >
+              Pesquisa
+            </NavLink>
 
-          <Link className="portifolio-menu__lateral--link portifolio-menu__lateral--separator" to="../contato">
-            Contato
-          </Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
+              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
+              to="../contato"
+            >
+              Contato
+            </NavLink>
         </nav>
+
       </aside>
     </>
   );
 };
+
 export default LinhaTempo;
