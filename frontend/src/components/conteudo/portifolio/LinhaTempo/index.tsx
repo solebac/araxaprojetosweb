@@ -5,7 +5,6 @@ import ImgGitHub from "../../../../assets/img/footer/rede_linkedin.png";
 import { NavLink } from "react-router-dom";
 
 const LinhaTempo = () => {
-
   return (
     <>
       <aside className="col-md-4 portifolio__linha portifolio-reset">
@@ -47,49 +46,63 @@ const LinhaTempo = () => {
         </div>
 
         <nav className="portifolio-menu__lateral">
-            <NavLink
-              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
-              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
-              to="/portifolio"
-              end
-            >
-              Home
-            </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
+                : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
+            }
+            to="/portifolio"
+            end
+          >
+            Home
+          </NavLink>
 
-            <NavLink
-              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
-              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
-              to="../"
-            >
-              Meu Site
-            </NavLink>
-            <NavLink
-              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
-              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
-              to="../portifolio/about"
-            >
-              Sobre Mim
-            </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
+                : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
+            }
+            to="../"
+          >
+            Meu Site
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
+                : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
+            }
+            to="../portifolio/about"
+          >
+            Sobre Mim
+          </NavLink>
 
-            {/*<a href="../portifolio/find.html"
+          {/*<a href="../portifolio/find.html"
             className="portifolio-menu__lateral--link portifolio-menu__lateral--separator">*/}
-            <NavLink
-              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
-              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
-              to="../portifolio/find"
-            >
-              Pesquisa
-            </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
+                : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
+            }
+            to="../portifolio/find"
+          >
+            Pesquisa
+          </NavLink>
 
-            <NavLink
-              className={({ isActive }) => (isActive ? 'portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo' : 
-              'portifolio-menu__lateral--link portifolio-menu__lateral--separator')}
-              to="../contato"
-            >
-              Contato
-            </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
+                : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
+            }
+            to="../contato"
+          >
+            Contato
+          </NavLink>
         </nav>
-
       </aside>
     </>
   );

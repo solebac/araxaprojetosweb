@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Blog from "./pages/Blog";
+import Posts from "./pages/Blog/Posts";
 import Contato from "./pages/Contato";
 import Attack from "./pages/Hacker/Attack";
 import Ethical from "./pages/Hacker/Ethical";
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/posts" element={<Posts />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/portifolio" element={<Portifolio />} />
           <Route path="/portifolio/about" element={<About />} />
