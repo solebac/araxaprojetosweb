@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -13,7 +18,9 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotNull @Length(min = 1, max = 50)
 	private String nome;
+	@NotNull @Size(max = 80)
 	private String descricao;
 	
 	public Categoria() {

@@ -10,10 +10,21 @@ public class CategoriaDto {
 	private String nome;
 	private String descricao;
 	
+	public CategoriaDto() {
+	
+	}
+	
+	public CategoriaDto(Long id, String nome, String descricao) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+	}
+
 	public CategoriaDto(Categoria obj) {
-		this.id = obj.getId();
-		this.nome = obj.getNome();
-		this.descricao = obj.getDescricao();	
+		id = obj.getId();
+		nome = obj.getNome();
+		descricao = obj.getDescricao();	
 	}
 	
 
