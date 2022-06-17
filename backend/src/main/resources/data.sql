@@ -1,0 +1,1 @@
+INSERT INTO tb_categoria(NOME,DESCRICAO)VALUES('Test', 'DESCRICAO Test');
