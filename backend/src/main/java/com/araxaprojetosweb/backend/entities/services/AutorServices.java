@@ -3,6 +3,8 @@ package com.araxaprojetosweb.backend.entities.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -37,9 +39,14 @@ public class AutorServices {
 
 	@Transactional
 	public Autor atualizar(Long id, Autor obj) {
-		Autor result = repository.getReferenceById(id);
-		updateObj(result, obj);
-		return repository.save(result);
+		try {
+			Autor result = repository.getReferenceById(id);
+			updateObj(result, obj);
+			return repository.save(result);
+			
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 
 	public void remover(Long id) {
