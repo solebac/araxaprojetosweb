@@ -57,7 +57,7 @@ public class AutorController {
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> remover(@PathVariable Long id){
 		services.remover(id);
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.noContent().build();
 	}
 
 }
