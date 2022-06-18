@@ -3,7 +3,6 @@ package com.araxaprojetosweb.backend.controllers;
 import java.net.URI;
 import java.util.List;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;

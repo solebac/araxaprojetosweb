@@ -1,1 +1,3 @@
 INSERT INTO tb_categoria(NOME,DESCRICAO)VALUES('Test', 'DESCRICAO Test');
+INSERT INTO tb_autor(NOME,BIO,FOTO,EMAIL,USUARIO,SENHA)VALUES('FLAVIO', 'LIVRO I','C:\TEMP\','solebac@hotmail.com','flavio','123');
+INSERT INTO tb_autor(NOME,BIO,FOTO,EMAIL,USUARIO,SENHA)VALUES('TEST', 'LIVRO II','C:\TEMP\','test@hotmail.com','test','123');
