@@ -1,9 +1,11 @@
 package com.araxaprojetosweb.backend.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,9 +16,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "tb_comentario")
-public class Comentario {
+public class Comentario implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -27,9 +33,10 @@ public class Comentario {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_hora")
 	private Date data;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="id_artigo_comment")
 	@NotNull
+	@JsonBackReference
 	private Artigo artigo;
 	
 	public Comentario() {

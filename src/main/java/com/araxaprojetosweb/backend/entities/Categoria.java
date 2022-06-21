@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -27,6 +28,7 @@ public class Categoria {
 	@NotNull @Size(max = 80)
 	private String descricao;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "categorias")
 	private Set<Artigo> artigos = new HashSet<>();
 	
