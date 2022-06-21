@@ -14,14 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.lang.Nullable;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "tb_artigo")
@@ -35,14 +34,19 @@ public class Artigo {
 	private String conteudo;
 	private String status;
 	private String url;
+
 	@OneToOne
 	@NotNull
 	/* @MapsId */
 	private Autor autor;
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_artigo_comment")
+	@JsonBackReference
 	private List<Comentario> comment = new ArrayList<>();
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "artigo")
+	@JsonBackReference
 	private List<Tag> tag = new ArrayList<>();
 
 	// @Transient //Para o JPA não reconhecer
@@ -64,7 +68,6 @@ public class Artigo {
 		this.url = url;
 		this.autor = autor;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -133,9 +136,11 @@ public class Artigo {
 	public Set<Categoria> getCategorias() {
 		return categorias;
 	}
+
 	public void setCategorias(Categoria cat) {
 		this.categorias.add(cat);
 	}
+
 	public void setTag(Tag tag) {
 		this.tag.add(tag);
 	}
