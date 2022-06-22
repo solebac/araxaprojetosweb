@@ -44,10 +44,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/categoria", "/categoria/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/categoria").permitAll().antMatchers(HttpMethod.PUT, "/categoria/**")
 				.permitAll().antMatchers(HttpMethod.DELETE, "/categoria/**").permitAll()
+				
+				.antMatchers(HttpMethod.GET, "/comment", "/comment/**").permitAll()
+				.antMatchers(HttpMethod.POST, "/comment").permitAll().antMatchers(HttpMethod.PUT, "/comment/**")
+				.permitAll().antMatchers(HttpMethod.DELETE, "/comment/**").permitAll()
 
 				.antMatchers(HttpMethod.GET, "/artigocategoria").permitAll().antMatchers(HttpMethod.GET, "/artigo")
 				.permitAll().antMatchers(HttpMethod.GET, "/autor").permitAll()
-				.antMatchers(HttpMethod.GET, "/comentario").permitAll().anyRequest().authenticated().and().cors().and()
+				
+				.anyRequest().authenticated().and().cors().and()
 				.httpBasic().and().csrf().disable().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
