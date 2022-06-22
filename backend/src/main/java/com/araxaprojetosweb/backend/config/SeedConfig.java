@@ -41,8 +41,8 @@ public class SeedConfig implements CommandLineRunner {
 		Categoria cat3 = new Categoria(null, "AWS", "Descrição Test IV");
 		Categoria cat4 = new Categoria(null, "GNU", "Descrição Test XX");
 		Autor a1 = new Autor(null, "Flavio Rogerio", "Primeiro Livro", "c:\temp", "solebac@hotmail.com", "Flavio",
-				"123");
-		Autor a2 = new Autor(null, "Lucas Rogerio", "Segundo Livro", "c:\temp", "lucas@hotmail.com", "Lucas", "123");
+				"$2a$10$Bcb/zFo0yHKWsIuAoTZFAObzXzzHgw3TVe1F1CTpcs5i4S8x3rC6q");
+		Autor a2 = new Autor(null, "Lucas Rogerio", "Segundo Livro", "c:\temp", "lucas@hotmail.com", "Lucas", "$2a$10$Bcb/zFo0yHKWsIuAoTZFAObzXzzHgw3TVe1F1CTpcs5i4S8x3rC6q");
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat4, cat3));
 		autorRepository.saveAll(Arrays.asList(a1, a2));
 		Artigo art1 = new Artigo(null, "Primeiro Artigo", new Date(),
