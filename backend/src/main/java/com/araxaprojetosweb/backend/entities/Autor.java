@@ -1,18 +1,31 @@
 package com.araxaprojetosweb.backend.entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Entity
 @Table(name = "tb_autor")
-public class Autor {
+public class Autor implements UserDetails{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -30,8 +43,11 @@ public class Autor {
 	@Size(min = 1, max = 20)
 	private String usuario;
 	@NotNull
-	@Size(min = 3, max = 20)
+	@Size(min = 1, max = 100)
 	private String senha;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Perfil> perfis = new ArrayList<>();
 	
 	/*@OneToOne(mappedBy = "autor")
 	private Artigo artigo;*/
@@ -92,7 +108,7 @@ public class Autor {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.senha = new BCryptPasswordEncoder().encode(senha);
 	}
 	
 	@Override
@@ -130,8 +146,33 @@ public class Autor {
 			return false;
 		return true;
 	}
-	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.perfis;
+	}
+	@Override
+	public String getPassword() {
+		return this.getSenha();
+	}
+	@Override
+	public String getUsername() {
+		return this.getEmail();
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
-	
-	
 }
