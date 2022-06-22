@@ -31,10 +31,13 @@ public class Comentario implements Serializable{
 	private String nome;
 	@NotNull
 	private String texto;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_hora")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Date data;
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="id_artigo_comment")
 	@NotNull
