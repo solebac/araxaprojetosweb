@@ -20,6 +20,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.araxaprojetosweb.backend.util.AutenticationEncoder;
+
 @Entity
 @Table(name = "tb_autor")
 public class Autor implements UserDetails{
@@ -108,7 +110,7 @@ public class Autor implements UserDetails{
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = new BCryptPasswordEncoder().encode(senha);
+		this.senha = AutenticationEncoder.passwordBCrypt(senha);
 	}
 	
 	@Override
