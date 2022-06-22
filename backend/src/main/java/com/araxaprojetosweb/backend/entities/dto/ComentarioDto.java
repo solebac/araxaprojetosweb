@@ -50,5 +50,4 @@ public class ComentarioDto {
 		return id_artigo_comment;
 	}
 	
-	
 }

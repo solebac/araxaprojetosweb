@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -22,8 +23,9 @@ public class Tag implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
+	@JsonBackReference @NotNull
 	private Artigo artigo;
 	
 	public Tag() {
