@@ -11,7 +11,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.araxaprojetosweb.backend.entities.Autor;
 import com.araxaprojetosweb.backend.entities.Tag;
 import com.araxaprojetosweb.backend.entities.services.exceptions.DatabaseExceptionOwn;
 import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;

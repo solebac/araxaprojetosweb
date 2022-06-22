@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "tb_comentario")
@@ -32,6 +33,7 @@ public class Comentario implements Serializable{
 	private String texto;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_hora")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Date data;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="id_artigo_comment")
@@ -76,6 +78,7 @@ public class Comentario implements Serializable{
 		this.texto = texto;
 	}
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
 	public Date getData() {
 		return data;
 	}
