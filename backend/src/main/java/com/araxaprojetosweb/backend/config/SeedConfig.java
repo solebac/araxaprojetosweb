@@ -12,11 +12,13 @@ import com.araxaprojetosweb.backend.entities.Artigo;
 import com.araxaprojetosweb.backend.entities.Autor;
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.Comentario;
+import com.araxaprojetosweb.backend.entities.Secao;
 import com.araxaprojetosweb.backend.entities.Tag;
 import com.araxaprojetosweb.backend.repositories.ArtigoRepository;
 import com.araxaprojetosweb.backend.repositories.AutorRepository;
 import com.araxaprojetosweb.backend.repositories.CategoriaRepository;
 import com.araxaprojetosweb.backend.repositories.ComentarioRepository;
+import com.araxaprojetosweb.backend.repositories.SecaoRepository;
 import com.araxaprojetosweb.backend.repositories.TagRepository;
 
 @Configuration
@@ -33,6 +35,8 @@ public class SeedConfig implements CommandLineRunner {
 	private ComentarioRepository comentarioReposiroty;
 	@Autowired
 	private TagRepository tagRepository;
+	@Autowired
+	private SecaoRepository secRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -40,11 +44,27 @@ public class SeedConfig implements CommandLineRunner {
 		Categoria cat2 = new Categoria(null, "Blog", "Discursões Sobre Tecnologias");
 		Categoria cat3 = new Categoria(null, "Hacker", "Comentarios Hacker Ethical");
 		Categoria cat4 = new Categoria(null, "Teste", "Descrição Test");
+		
+		Secao s1 = new Secao(null, "Coleta de Informação", cat3);
+		Secao s2 = new Secao(null, "Vulnerabilidades", cat3);
+		Secao s3 = new Secao(null, "FingerPrinting", cat3);
+		Secao s4 = new Secao(null, "Wireless", cat3);
+		Secao s5 = new Secao(null, "Denial of Service", cat3);
+		Secao s6 = new Secao(null, "SQL Injection", cat3);
+		Secao s7 = new Secao(null, "Cracking", cat3);
+		Secao s8 = new Secao(null, "Man in the Middle", cat3);
+		Secao s9 = new Secao(null, "Engenharia Social", cat3);
+		Secao s10 = new Secao(null, "Pentest", cat3);
+		Secao s11 = new Secao(null, "NMAP | Wireshark", cat3);
+		Secao s12 = new Secao(null, "Reverse Engineering", cat3);
+		Secao s13 = new Secao(null, "Crawlers e Spiders", cat3);
+		
 		Autor a1 = new Autor(null, "Flavio Rogerio", "Primeiro Livro", "c:\temp", "solebac@hotmail.com", "Flavio",
 				"$2a$10$Bcb/zFo0yHKWsIuAoTZFAObzXzzHgw3TVe1F1CTpcs5i4S8x3rC6q");
 		Autor a2 = new Autor(null, "Lucas Rogerio", "Segundo Livro", "c:\temp", "lucas@hotmail.com", "Lucas",
 				"$2a$10$Bcb/zFo0yHKWsIuAoTZFAObzXzzHgw3TVe1F1CTpcs5i4S8x3rC6q");
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat4, cat3));
+		secRepository.saveAll(Arrays.asList(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13));
 		autorRepository.saveAll(Arrays.asList(a1, a2));
 		Artigo art1 = new Artigo(null, "Primeiro Artigo", new Date(),
 				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
