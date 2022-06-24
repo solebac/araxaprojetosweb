@@ -96,6 +96,4 @@ public class Secao implements Serializable{
 		return true;
 	}
 	
-	
-
 }
