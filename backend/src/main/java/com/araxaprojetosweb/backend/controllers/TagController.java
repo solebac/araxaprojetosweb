@@ -40,7 +40,7 @@ public class TagController {
 	}
 
 	@PostMapping
-	public ResponseEntity<TagDto> insert(@RequestBody @Valid Tag obj) {
+	public ResponseEntity<TagDto> insert(@RequestBody @Valid TagDto obj) {
 		Tag result = services.insert(obj);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId())
 				.toUri();
@@ -48,7 +48,7 @@ public class TagController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<TagDto> update(@PathVariable Long id, @RequestBody @Valid Tag obj) {
+	public ResponseEntity<TagDto> update(@PathVariable Long id, @RequestBody @Valid TagDto obj) {
 		Tag result = services.update(id, obj);
 		return ResponseEntity.ok().body(new TagDto(result));
 	}

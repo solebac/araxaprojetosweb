@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.araxaprojetosweb.backend.entities.Artigo;
 import com.araxaprojetosweb.backend.entities.Comentario;
 import com.araxaprojetosweb.backend.entities.dto.ComentarioDto;
-import com.araxaprojetosweb.backend.entities.services.exceptions.DatabaseExceptionOwn;
 import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
 import com.araxaprojetosweb.backend.repositories.ArtigoRepository;
 import com.araxaprojetosweb.backend.repositories.ComentarioRepository;
@@ -67,10 +66,12 @@ public class ComentarioServices {
 	public void remover(Long id) {
 		try {
 			cmtrepository.deleteById(id);
-		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException(id);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(e.getMessage());
 		} catch (DataIntegrityViolationException e) {
-			throw new DatabaseExceptionOwn(e.getMessage());
+			throw new ResourceNotFoundException(e.getMessage());
+		}catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(e.getMessage());
 		}
 	}
 

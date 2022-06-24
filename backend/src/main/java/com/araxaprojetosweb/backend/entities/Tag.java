@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_tag")
@@ -25,18 +25,20 @@ public class Tag implements Serializable{
 	private String nome;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference @NotNull
+	@JsonIgnore @NotNull
 	private Artigo artigo;
 	
 	public Tag() {
 		super();
 	}
-	public Tag(Long id, String nome, Artigo artigo) {
+	
+	public Tag(Long id, String nome, @NotNull Artigo artigo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.artigo = artigo;
 	}
+
 	public Long getId() {
 		return id;
 	}

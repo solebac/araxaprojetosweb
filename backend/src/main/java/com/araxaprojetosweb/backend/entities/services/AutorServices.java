@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.araxaprojetosweb.backend.entities.Autor;
-import com.araxaprojetosweb.backend.entities.services.exceptions.DatabaseExceptionOwn;
 import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
 import com.araxaprojetosweb.backend.repositories.AutorRepository;
 
@@ -52,10 +51,12 @@ public class AutorServices {
 	public void remover(Long id) {
 		try {
 			repository.deleteById(id);
-		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException(id);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(e.getMessage());
 		} catch (DataIntegrityViolationException e) {
-			throw new DatabaseExceptionOwn(e.getMessage());
+			throw new ResourceNotFoundException(e.getMessage());
+		}catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(e.getMessage());
 		}
 	}
 

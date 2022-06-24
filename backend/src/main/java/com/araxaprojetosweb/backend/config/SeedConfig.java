@@ -36,21 +36,22 @@ public class SeedConfig implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Categoria cat1 = new Categoria(null, "Programacao", "Descrição Test I");
-		Categoria cat2 = new Categoria(null, "Network", "Descrição Test II");
-		Categoria cat3 = new Categoria(null, "AWS", "Descrição Test IV");
-		Categoria cat4 = new Categoria(null, "GNU", "Descrição Test XX");
+		Categoria cat1 = new Categoria(null, "Portifolio", "Documentos Uteis");
+		Categoria cat2 = new Categoria(null, "Blog", "Discursões Sobre Tecnologias");
+		Categoria cat3 = new Categoria(null, "Hacker", "Comentarios Hacker Ethical");
+		Categoria cat4 = new Categoria(null, "Teste", "Descrição Test");
 		Autor a1 = new Autor(null, "Flavio Rogerio", "Primeiro Livro", "c:\temp", "solebac@hotmail.com", "Flavio",
 				"$2a$10$Bcb/zFo0yHKWsIuAoTZFAObzXzzHgw3TVe1F1CTpcs5i4S8x3rC6q");
-		Autor a2 = new Autor(null, "Lucas Rogerio", "Segundo Livro", "c:\temp", "lucas@hotmail.com", "Lucas", "$2a$10$Bcb/zFo0yHKWsIuAoTZFAObzXzzHgw3TVe1F1CTpcs5i4S8x3rC6q");
+		Autor a2 = new Autor(null, "Lucas Rogerio", "Segundo Livro", "c:\temp", "lucas@hotmail.com", "Lucas",
+				"$2a$10$Bcb/zFo0yHKWsIuAoTZFAObzXzzHgw3TVe1F1CTpcs5i4S8x3rC6q");
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat4, cat3));
 		autorRepository.saveAll(Arrays.asList(a1, a2));
 		Artigo art1 = new Artigo(null, "Primeiro Artigo", new Date(),
 				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-				"INCLUIDO", "https://www.lipsum.com/", a1);
+				"INCLUIDO", "https://www.lipsum.com/", a1, 12);
 		Artigo art2 = new Artigo(null, "Segundo Artigo", new Date(),
 				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-				"INCLUIDO", "https://www.lipsum.com/", a2);
+				"INCLUIDO", "https://www.lipsum.com/", a2, 12);
 		art1.setCategorias(cat1);
 		art1.setCategorias(cat2);
 		art1.setCategorias(cat3);
@@ -64,8 +65,7 @@ public class SeedConfig implements CommandLineRunner {
 		Tag tg1 = new Tag(null, "JAVA", art1);
 		Tag tg2 = new Tag(null, "LINUX", art2);
 		tagRepository.saveAll(Arrays.asList(tg1, tg2));
-		
-		
+
 	}
 
 }

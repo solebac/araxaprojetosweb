@@ -19,11 +19,13 @@ public class ArtigoDto {
 	private String conteudo;
 	private String status;
 	private String url;
+	private Integer contador;
 	private AutorDto autor;
 	private List<Comentario> comment = new ArrayList<>();
 	private List<Tag> tag = new ArrayList<>();
 	private Set<Categoria> categorias = new HashSet<>();
 	
+	public ArtigoDto() {}
 	public ArtigoDto(Artigo obj) {
 		super();
 		id = obj.getId();
@@ -32,6 +34,7 @@ public class ArtigoDto {
 		conteudo = obj.getConteudo();
 		status = obj.getStatus();
 		url = obj.getUrl();
+		contador = obj.getContador();
 		autor = new AutorDto(obj.getAutor());
 		comment = obj.getComment();
 		tag = obj.getTag();
@@ -62,6 +65,9 @@ public class ArtigoDto {
 		return url;
 	}
 
+	public Integer getContador() {
+		return contador;
+	}
 	public AutorDto getAutor() {
 		return autor;
 	}
