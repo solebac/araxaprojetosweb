@@ -75,12 +75,6 @@ public class TagServices {
 		}
 	}
 
-	private void updateObj(Tag result, Tag obj) {
-		result.setNome(obj.getNome());
-		if (obj.getArtigo() != null) {
-			result.setArtigo(obj.getArtigo());
-		}
-	}
 	private void updateObj(Tag tag, TagDto obj, Artigo artigo) {
 		tag.setNome(obj.getNome());
 		tag.setArtigo(artigo);		
