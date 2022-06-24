@@ -3,12 +3,17 @@ package com.araxaprojetosweb.backend.entities.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.dto.CategoriaDto;
+import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
 import com.araxaprojetosweb.backend.repositories.CategoriaRepository;
 
 @Service
@@ -41,7 +46,7 @@ public class CategoriaServices {
 		return dto;
 
 	}
-	
+
 	@Transactional
 	public Categoria insert(Categoria obj) {
 		return repository.save(obj);
@@ -49,14 +54,25 @@ public class CategoriaServices {
 
 	@Transactional
 	public Categoria atualizar(Long id, CategoriaDto obj) {
-		Categoria result = repository.getReferenceById(id);
-		updateObj(result, obj);
-		return repository.save(result);
+		try {
+			Categoria result = repository.getReferenceById(id);
+			updateObj(result, obj);
+			return repository.save(result);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(e.getMessage());
+		}
 	}
-	
-	@Transactional
+
 	public void remover(Long id) {
-		repository.deleteById(id);
+		try {
+			repository.deleteById(id);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(e.getMessage());
+		} catch (DataIntegrityViolationException e) {
+			throw new ResourceNotFoundException(e.getMessage());
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(e.getMessage());
+		}
 	}
 
 	private void updateObj(Categoria result, CategoriaDto obj) {

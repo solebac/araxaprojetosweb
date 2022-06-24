@@ -11,15 +11,20 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.araxaprojetosweb.backend.entities.Artigo;
 import com.araxaprojetosweb.backend.entities.Tag;
-import com.araxaprojetosweb.backend.entities.services.exceptions.DatabaseExceptionOwn;
+import com.araxaprojetosweb.backend.entities.dto.TagDto;
 import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
+import com.araxaprojetosweb.backend.repositories.ArtigoRepository;
 import com.araxaprojetosweb.backend.repositories.TagRepository;
 
 @Service
 public class TagServices {
 	@Autowired
 	private TagRepository repository;
+	
+	@Autowired
+	private ArtigoRepository artRepository;
 
 	@Transactional(readOnly = true)
 	public List<Tag> findAll() {
@@ -33,16 +38,26 @@ public class TagServices {
 	}
 
 	@Transactional
-	public Tag insert(Tag obj) {
-		return repository.save(obj);
+	public Tag insert(TagDto obj) {
+		Artigo artigo = artRepository.getReferenceById(obj.getArtigo_id());
+		if (artigo == null) {
+			throw new ResourceNotFoundException("Artigo Not Found");
+		}
+		Tag tag = new Tag(obj.getId(), obj.getNome(), artigo);
+		return repository.saveAndFlush(tag);
 	}
 
 	@Transactional
-	public Tag update(Long id, Tag obj) {
+	public Tag update(Long id, TagDto obj) {
+		Artigo artigo = artRepository.getReferenceById(obj.getArtigo_id());
+		if (artigo == null) {
+			throw new ResourceNotFoundException("Artigo Not Found");
+		}
+		
 		try {
-			Tag result = repository.getReferenceById(id);
-			updateObj(result, obj);
-			return repository.save(result);
+			Tag tag = repository.getReferenceById(id);
+			updateObj(tag, obj, artigo);
+			return repository.save(tag);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(e.getMessage());
 		}
@@ -51,10 +66,12 @@ public class TagServices {
 	public void remover(Long id) {
 		try {
 			repository.deleteById(id);
-		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException(id);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(e.getMessage());
 		} catch (DataIntegrityViolationException e) {
-			throw new DatabaseExceptionOwn(e.getMessage());
+			throw new ResourceNotFoundException(e.getMessage());
+		}catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(e.getMessage());
 		}
 	}
 
@@ -63,5 +80,9 @@ public class TagServices {
 		if (obj.getArtigo() != null) {
 			result.setArtigo(obj.getArtigo());
 		}
+	}
+	private void updateObj(Tag tag, TagDto obj, Artigo artigo) {
+		tag.setNome(obj.getNome());
+		tag.setArtigo(artigo);		
 	}
 }
