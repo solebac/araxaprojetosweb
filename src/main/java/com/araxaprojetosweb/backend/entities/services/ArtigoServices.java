@@ -7,6 +7,7 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -75,10 +76,12 @@ public class ArtigoServices {
 
 	public void remover(Long id) {
 		try {
-			autRepository.deleteById(id);
+			artRepository.deleteById(id);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(e.getMessage());
 		} catch (DataIntegrityViolationException e) {
+			throw new ResourceNotFoundException(e.getMessage());
+		}catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(e.getMessage());
 		}
 	}

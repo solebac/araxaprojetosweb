@@ -3,17 +3,21 @@ package com.araxaprojetosweb.backend.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -31,6 +35,9 @@ public class Categoria {
 	@JsonIgnore
 	@ManyToMany(mappedBy = "categorias")
 	private Set<Artigo> artigos = new HashSet<>();
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "categoria", fetch = FetchType.LAZY)
+	private Set<Secao> secao = new HashSet<>();
 	
 	public Categoria() {
 		super();
@@ -70,6 +77,14 @@ public class Categoria {
 	public Set<Artigo> getArtigos() {
 		return artigos;
 	}
-	
+
+	@JsonManagedReference
+	public Set<Secao> getSecao() {
+		return secao;
+	}
+
+	public void setSecao(Secao secao) {
+		this.secao.add(secao);
+	}
 		
 }

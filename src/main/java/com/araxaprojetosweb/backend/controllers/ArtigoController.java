@@ -42,8 +42,12 @@ public class ArtigoController {
 	@PostMapping
 	public ResponseEntity<ArtigoDto> insert(@RequestBody ArtigoDto dto) {
 		ArtigoDto result = services.insert(dto);
-		URI localUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").buildAndExpand(dto.getId()).toUri();
-		return ResponseEntity.created(localUri).body(result);
+		URI uri = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(dto.getId())
+				.toUri();
+		return ResponseEntity.created(uri).body(result);
 	}
 
 	@PutMapping(value = "/{id}")

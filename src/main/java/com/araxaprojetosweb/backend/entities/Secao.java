@@ -1,67 +1,50 @@
 package com.araxaprojetosweb.backend.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tb_comentario")
-public class Comentario implements Serializable{
+@Table(name = "tb_secao")
+public class Secao implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	@NotNull
 	private String nome;
-	@NotNull
-	private String texto;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="data_hora")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Date data;
-	
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="id_artigo_comment")
-	@JsonIgnore @NotNull
-	private Artigo artigo;
-	
-	public Comentario() {
-		super();
+	/*Test @JsonIgnore*/
+	@NotNull
+	private Categoria categoria;
+
+	public Secao() {
 	}
-	
-	public Comentario(Long id, @NotNull String nome, @NotNull String texto, Date data, @NotNull Artigo artigo) {
+
+	public Secao(Integer id, @NotNull String nome, @NotNull Categoria categoria) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.texto = texto;
-		this.data = data;
-		this.artigo = artigo;
+		this.categoria = categoria;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -73,33 +56,14 @@ public class Comentario implements Serializable{
 		this.nome = nome;
 	}
 
-	public String getTexto() {
-		return texto;
+	@JsonBackReference
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
-
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-
-	public Artigo getArtigo() {
-		return artigo;
-	}
-
-
-	public void setArtigo(Artigo artigo) {
-		this.artigo = artigo;
-	}
-
 
 	@Override
 	public int hashCode() {
@@ -118,7 +82,7 @@ public class Comentario implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Comentario other = (Comentario) obj;
+		Secao other = (Secao) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -133,4 +97,5 @@ public class Comentario implements Serializable{
 	}
 	
 	
+
 }

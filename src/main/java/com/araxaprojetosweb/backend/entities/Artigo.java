@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_artigo")
@@ -34,19 +35,19 @@ public class Artigo {
 	private String conteudo;
 	private String status;
 	private String url;
+	private Integer contador;
 
 	@OneToOne
 	@NotNull
 	/* @MapsId */
 	private Autor autor;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_artigo_comment")
-	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "artigo", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Comentario> comment = new ArrayList<>();
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "artigo")
-	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "artigo", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Tag> tag = new ArrayList<>();
 
 	// @Transient //Para o JPA não reconhecer
@@ -58,8 +59,7 @@ public class Artigo {
 	}
 
 	public Artigo(Long id, String titulo, Date dataPublicacao, @Size(max = 1000) String conteudo, String status,
-			String url, @NotNull Autor autor) {
-		super();
+			String url, @NotNull Autor autor, Integer contador) {
 		this.id = id;
 		this.titulo = titulo;
 		this.dataPublicacao = dataPublicacao;
@@ -67,6 +67,7 @@ public class Artigo {
 		this.status = status;
 		this.url = url;
 		this.autor = autor;
+		this.contador = contador; /*Number comment*/
 	}
 
 	public Long getId() {
@@ -115,6 +116,14 @@ public class Artigo {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public Integer getContador() {
+		return contador;
+	}
+
+	public void setContador(Integer contador) {
+		this.contador = contador;
 	}
 
 	public Autor getAutor() {
