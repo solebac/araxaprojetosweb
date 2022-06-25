@@ -11,13 +11,14 @@ import com.araxaprojetosweb.backend.entities.Artigo;
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.Comentario;
 import com.araxaprojetosweb.backend.entities.Tag;
+import com.araxaprojetosweb.backend.entities.enums.ArtigoStatus;
 
 public class ArtigoDto {
 	private Long id;
 	private String titulo;
 	private Date dataPublicacao;
 	private String conteudo;
-	private String status;
+	private ArtigoStatus status;
 	private String url;
 	private Integer contador;
 	private AutorDto autor;
@@ -57,10 +58,9 @@ public class ArtigoDto {
 		return conteudo;
 	}
 
-	public String getStatus() {
+	public ArtigoStatus getStatus() {
 		return status;
 	}
-
 	public String getUrl() {
 		return url;
 	}
@@ -87,8 +87,5 @@ public class ArtigoDto {
 	public static List<ArtigoDto> toConvert(List<Artigo> lista) {
 		return lista.stream().map(ArtigoDto::new).collect(Collectors.toList());
 	}
-	
-	
-	
 	
 }
