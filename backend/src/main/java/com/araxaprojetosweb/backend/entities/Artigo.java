@@ -8,6 +8,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +23,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.araxaprojetosweb.backend.entities.enums.ArtigoStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -33,7 +36,8 @@ public class Artigo {
 	private Date dataPublicacao;
 	@Size(max = 1000)
 	private String conteudo;
-	private String status;
+	@Enumerated(EnumType.STRING)
+	private ArtigoStatus status;
 	private String url;
 	private Integer contador;
 
@@ -58,7 +62,7 @@ public class Artigo {
 	public Artigo() {
 	}
 
-	public Artigo(Long id, String titulo, Date dataPublicacao, @Size(max = 1000) String conteudo, String status,
+	public Artigo(Long id, String titulo, Date dataPublicacao, @Size(max = 1000) String conteudo, ArtigoStatus status,
 			String url, @NotNull Autor autor, Integer contador) {
 		this.id = id;
 		this.titulo = titulo;
@@ -102,11 +106,11 @@ public class Artigo {
 		this.conteudo = conteudo;
 	}
 
-	public String getStatus() {
+	public ArtigoStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(ArtigoStatus status) {
 		this.status = status;
 	}
 

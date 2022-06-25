@@ -14,6 +14,7 @@ import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.Comentario;
 import com.araxaprojetosweb.backend.entities.Secao;
 import com.araxaprojetosweb.backend.entities.Tag;
+import com.araxaprojetosweb.backend.entities.enums.ArtigoStatus;
 import com.araxaprojetosweb.backend.repositories.ArtigoRepository;
 import com.araxaprojetosweb.backend.repositories.AutorRepository;
 import com.araxaprojetosweb.backend.repositories.CategoriaRepository;
@@ -68,10 +69,10 @@ public class SeedConfig implements CommandLineRunner {
 		autorRepository.saveAll(Arrays.asList(a1, a2));
 		Artigo art1 = new Artigo(null, "Primeiro Artigo", new Date(),
 				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-				"INCLUIDO", "https://www.lipsum.com/", a1, 12);
+				ArtigoStatus.PUBLICADO, "https://www.lipsum.com/", a1, 12);
 		Artigo art2 = new Artigo(null, "Segundo Artigo", new Date(),
 				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-				"INCLUIDO", "https://www.lipsum.com/", a2, 12);
+				ArtigoStatus.RESCUNHO, "https://www.lipsum.com/", a2, 12);
 		art1.setCategorias(cat1);
 		art1.setCategorias(cat2);
 		art1.setCategorias(cat3);
