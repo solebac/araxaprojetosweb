@@ -1,0 +1,60 @@
+<form id="contact" className="form">
+        <div className="form-group">
+          <label htmlFor="nome">Nome:</label>
+          <input type="text" className="form-control appsys" id="nome" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="bio">Biografia:</label>
+          <input type="text" className="form-control appsys" id="bio" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="foto">Foto:</label>
+          <input type="text" className="form-control appsys" id="foto" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email address:</label>
+          <input type="email" className="form-control appsys" id="email" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="users">Usuario:</label>
+          <input type="text" className="form-control appsys" id="users" />
+        </div>
+        <label htmlFor="message">Mensagem</label>
+        <textarea
+          className="form-control appsys"
+          id="message"
+          name="message"
+          placeholder="Message"
+          rows={5}
+        ></textarea>
+        <br />
+        <div className="btn-group btn-group-justified">
+          <a
+            href="/#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+            className="btn btn-default"
+          >
+            Voltar
+          </a>
+          <a
+            href="/#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+            className="btn btn-danger"
+          >
+            Cancelar
+          </a>
+          <a
+            href="/#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+            className="btn btn-primary"
+          >
+            Salvar
+          </a>
+        </div>
+      </form>
