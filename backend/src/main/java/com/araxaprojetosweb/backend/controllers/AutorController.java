@@ -37,7 +37,7 @@ public class AutorController {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<AutorDto> findById(@PathVariable Long id){
 		AutorDto obj = AutorDto.toConvertId(services.findById(id));
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(obj);//Flavio
 	}
 	
 	@PostMapping
