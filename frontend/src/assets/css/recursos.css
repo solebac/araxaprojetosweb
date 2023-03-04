@@ -1,0 +1,71 @@
+/*  Recursos */
+#recurso {
+  /*query*/
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin: 3rem auto;
+}
+.alinha-recurso {
+  padding: 5rem 0 0 5rem;
+  box-sizing: border-box;
+}
+.albuns {
+  padding: 0.625rem 0 0.625rem 0;
+}
+.rotacionar {
+  /*query*/
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+.rotacionar-02:hover {
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transition: 30s;
+  transform: rotate(360deg);
+}
+.img {
+  opacity: 0.5;
+}
+.img-feed {
+  padding: 3rem;
+  box-sizing: border-box;
+}
+.img-capa {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-titulo {
+  position: absolute;
+  color: var(--prata);
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-stretch: ultra-expanded;
+  letter-spacing: 1rem;
+  z-index: 1;
+}
+.img-titulo:hover {
+  background-color: var(--ouro-escuro-six);
+  color: var(--branco);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 1rem;
+  font-weight: 700;
+  transition: 2s;
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.img-transform:hover {
+  transition: 4s;
+  transform: scale(1.2);
+}
+.texto-recurso {
+  background: var(--black-six);
+  color: var(--prata);
+}

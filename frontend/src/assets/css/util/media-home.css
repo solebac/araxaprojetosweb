@@ -1,0 +1,85 @@
+/*
+* @author Solebac
+* @version 0.1
+*/
+/*=======================Layout*/
+
+/*Rodapé*/
+
+/* --------------------------------------
+       Media Queries
+       -------------------------------------- */
+
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+  
+}
+
+@media screen and (max-width: 767px) {
+  nav.navbar-transparente {
+    background: var(--black-eight);
+  }
+
+  .btn-custom {
+    /*query*/
+    margin: 10px 2px;
+    font-size: 1.1rem;
+    min-width: unset;
+    width: 80%;
+    box-sizing: border-box;
+    font-weight: 600;
+  }
+  .btn-rigth {
+    color: var(--orange-dark-btn);
+    border: 3px solid var(--ouro-escuro);
+  }
+  .img-transform {
+    max-height: 220px;
+    width: 100vw;
+    margin-bottom: 1rem;
+  }
+  .img-transform:hover {
+    transition: unset;
+    transform: unset;
+  }
+  .img-titulo {
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 0.7rem;
+  }
+  .img-titulo:hover {
+    margin: 0 20px;
+    padding: 1rem;
+    font-weight: 700;
+  }
+  .rodape__text {
+    font-size: 10px;
+  }
+  .alinha-recurso {
+    padding: 1rem 1rem 0 1rem;
+  }
+  .cabecalho__footer {
+    flex-direction: column;
+  }
+  .divisor {
+    margin: 1px auto;
+    width: 92%;
+    height: 1px;
+  }
+  .video {
+    width: 98vw;
+    height: 300px;
+    margin: 1px auto;
+  }
+  #video {
+    margin-bottom: 20rem;
+  }
+  .landscape {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .landscape--news {
+    margin-top: 16rem;
+  }
+}
