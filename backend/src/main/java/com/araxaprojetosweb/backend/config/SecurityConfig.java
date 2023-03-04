@@ -46,7 +46,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 				.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/auth").permitAll()
+<<<<<<< HEAD
 				.antMatchers("/h2-console", "/h2-console/**").permitAll()
+=======
+				.antMatchers(HttpMethod.POST, "/articles/subcategorias/**").permitAll()
+				.antMatchers(HttpMethod.POST, "/articles/autores/**").permitAll()
+				.antMatchers(HttpMethod.POST, "/articles/autorCategoriasArtigos/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/articles/autores/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/articles/recents/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/articles/categorias/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/articles/tags/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/articles/comments/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/categoria/paginacao/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/section/categoria/full/**").permitAll()
+				/*.antMatchers(HttpMethod.GET, "/**").permitAll()*/
+				.antMatchers("/h2-console", "/h2-console/**").permitAll()
+				.antMatchers("/articles/paint/", "/articles/paint/**").permitAll()
+				.antMatchers("/autor/paint/", "/autor/paint/**").permitAll()
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 				.and()
 				.authorizeRequests()
 				.anyRequest().authenticated().and()

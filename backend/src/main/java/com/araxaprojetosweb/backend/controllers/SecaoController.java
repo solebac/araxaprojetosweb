@@ -17,6 +17,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.araxaprojetosweb.backend.entities.Secao;
 import com.araxaprojetosweb.backend.entities.dto.SecaoDto;
+<<<<<<< HEAD
+=======
+import com.araxaprojetosweb.backend.entities.dto.projection.ISecaoProjecaoFull;
+import com.araxaprojetosweb.backend.entities.dto.projection.ISecaoProjecaoSingle;
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 import com.araxaprojetosweb.backend.entities.services.SecaoServices;
 
 @RestController
@@ -30,6 +35,22 @@ public class SecaoController {
 		List<Secao> lista = services.findAll();
 		return ResponseEntity.ok().body(lista);
 	}
+<<<<<<< HEAD
+=======
+	@GetMapping(value = "/categoria/single/{categoria_id}")
+	public ResponseEntity<List<ISecaoProjecaoSingle>> findByCategoriaSingle(@PathVariable Integer categoria_id){
+		List<ISecaoProjecaoSingle> lista = services.findByCategoriaSingle(categoria_id);
+		lista.forEach(System.out::println);//teste
+		return ResponseEntity.ok().body(lista);
+	}
+	@GetMapping(value = "/categoria/full/{categoria_id}")
+	public ResponseEntity<List<ISecaoProjecaoFull>> findByCategoriaFull(@PathVariable Integer categoria_id){
+		List<ISecaoProjecaoFull> lista = services.findByCategoriaFull(categoria_id);
+		lista.forEach(System.out::println);//teste
+		return ResponseEntity.ok().body(lista);
+	}
+	
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<SecaoDto> findById(@PathVariable Integer id){
 		Secao obj = services.findById(id);

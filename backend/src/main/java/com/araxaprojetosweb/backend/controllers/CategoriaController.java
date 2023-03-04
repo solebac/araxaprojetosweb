@@ -6,6 +6,11 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
+=======
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +43,15 @@ public class CategoriaController {
 		}
 		return ResponseEntity.ok().body(obj);
 	}
+<<<<<<< HEAD
+=======
+	
+	@GetMapping(path = "/paginacao")
+	public ResponseEntity<Page<CategoriaDto>> findAllPage(Pageable pageable){
+		Page<CategoriaDto> result = services.findAllPage(pageable);
+		return ResponseEntity.ok().body(result);
+	}
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CategoriaDto> findById(@PathVariable Long id) {

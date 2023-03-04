@@ -14,6 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.Secao;
 import com.araxaprojetosweb.backend.entities.dto.SecaoDto;
+<<<<<<< HEAD
+=======
+import com.araxaprojetosweb.backend.entities.dto.projection.ISecaoProjecaoFull;
+import com.araxaprojetosweb.backend.entities.dto.projection.ISecaoProjecaoSingle;
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
 import com.araxaprojetosweb.backend.repositories.CategoriaRepository;
 import com.araxaprojetosweb.backend.repositories.SecaoRepository;
@@ -31,6 +36,21 @@ public class SecaoServices {
 		List<Secao> lista = repository.findAll();
 		return lista;
 	}
+<<<<<<< HEAD
+=======
+	
+	@Transactional(readOnly = true)
+	public List<ISecaoProjecaoSingle> findByCategoriaSingle(Integer categoria_id) {
+		List<ISecaoProjecaoSingle> lista = repository.findByCategoriaSingle(categoria_id);
+		return lista;
+	}
+	
+	@Transactional(readOnly = true)
+	public List<ISecaoProjecaoFull> findByCategoriaFull(Integer categoria_id) {
+		List<ISecaoProjecaoFull> lista = repository.findByCategoriaFull(categoria_id);
+		return lista;
+	}
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 
 	@Transactional(readOnly = true)
 	public Secao findById(Integer id) {

@@ -39,6 +39,10 @@ public class Autor implements UserDetails{
 	private String foto;
 	@NotNull
 	@Size(min = 1, max = 80) @Email
+<<<<<<< HEAD
+=======
+	@Column(unique=true)
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 	private String email;
 	@NotNull
 	@Size(min = 1, max = 20)

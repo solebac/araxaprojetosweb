@@ -8,10 +8,21 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+<<<<<<< HEAD
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.araxaprojetosweb.backend.entities.Categoria;
+=======
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.araxaprojetosweb.backend.entities.Autor;
+import com.araxaprojetosweb.backend.entities.Categoria;
+import com.araxaprojetosweb.backend.entities.dto.AutorDto;
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 import com.araxaprojetosweb.backend.entities.dto.CategoriaDto;
 import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
 import com.araxaprojetosweb.backend.repositories.CategoriaRepository;
@@ -79,4 +90,14 @@ public class CategoriaServices {
 		result.setNome(obj.getNome());
 		result.setDescricao(obj.getDescricao());
 	}
+<<<<<<< HEAD
+=======
+
+	@Transactional(readOnly = true)
+	public Page<CategoriaDto> findAllPage(Pageable pageable) {
+		Page<Categoria> result = repository.findAll(pageable);
+		Page<CategoriaDto> objPage = result.map(x -> new CategoriaDto(x));
+		return objPage;
+	}
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 }

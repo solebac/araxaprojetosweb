@@ -43,6 +43,13 @@ public class AutorDto {
 	public String getFoto() {
 		return foto;
 	}
+<<<<<<< HEAD
+=======
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+>>>>>>> ba1fdc0a2f44b864a5f7403e041b64d5e36004a8
 	public String getEmail() {
 		return email;
 	}
