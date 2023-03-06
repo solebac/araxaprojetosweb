@@ -69,9 +69,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/#" onClick={(e) => e.preventDefault()}>
-                Entrar
-              </Link>
+              <Link to="/login">Entrar</Link>
             </li>
           </ul>
         </div>
