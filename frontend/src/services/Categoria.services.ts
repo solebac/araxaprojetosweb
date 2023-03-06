@@ -11,7 +11,8 @@ export interface ICategoria {
 export const ResetCategoria = {
     id: 0,
     nome: "",
-    descricao: ""
+    descricao: "",
+    secao: []
 }
 export const ResetCategoriaPage = {
     content: [],
