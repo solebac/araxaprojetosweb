@@ -72,8 +72,8 @@ const FormContato = () => {
         <div className="contato contato--moon contato--resize">
           <legend className="contato__titulo">Fale conosco</legend>
           <legend className="contato__subtitulo">
-            VocÃª pode esclarecer todas as suas dÃºvidas sobre produtos e
-            serviÃ§os.
+            Você pode esclarecer todas as suas dúvidas sobre produtos e
+            serviços.
           </legend>
           <form
             className="contato__form"
@@ -182,10 +182,10 @@ const FormContato = () => {
 
               <fieldset>
                 <legend className="contato__etiqueta">
-                  Qual horÃ¡rio prefere ser atendido?
+                  Qual horário prefere ser atendido?
                 </legend>
                 <select id="preferencial" name="preferencial">
-                  <option value="1">ManhÃ£</option>
+                  <option value="1">Manhã</option>
                   <option value="2">Tarde</option>
                   <option value="3">Noite</option>
                 </select>

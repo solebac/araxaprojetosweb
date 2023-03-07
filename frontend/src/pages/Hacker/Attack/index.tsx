@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import "../../../assets/css/hacker.css";
 import BannerHacker from "../../../components/BannerHacker";
 import BannerTop from "../../../components/conteudo/hacker/attack/BannerTop";
 import Container from "../../../components/conteudo/hacker/Container";
@@ -11,16 +12,17 @@ import ModalInfor from "../../../components/conteudo/hacker/ModalInfor";
 
 const Attack = () => {
   useEffect(() => {
-    testOnload() 
-  });
+    testOnload();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   function testOnload() {
     const test = document.getElementById("btnInitial");
-    test?.click();
+    test?.click(); //Load components <ModalInfor>
   }
   return (
     <>
       <BannerHacker uri="Attack" />
-      <Container> 
+      <Container>
         <BannerTop />
         <PostDispatcher />
         <Distribuition />

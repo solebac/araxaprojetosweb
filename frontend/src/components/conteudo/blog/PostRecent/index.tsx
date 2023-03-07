@@ -1,22 +1,24 @@
-import React from "react";
-import {ReactComponent as ImgInstragram} from "../../../../assets/img/redes/instagram.svg";
-import {ReactComponent as ImgTwitter} from "../../../../assets/img/redes/twitter.svg";
-import {ReactComponent as ImgYoutube} from "../../../../assets/img/redes/youtube.svg";
-import {ReactComponent as ImgFacebook} from "../../../../assets/img/redes/facebook.svg";
-import imgTest01 from "../../../../assets/img/blog/samples/rp-1.jpg";
-import imgTest02 from "../../../../assets/img/blog/samples/rp-2.jpg";
-import imgTest03 from "../../../../assets/img/blog/samples/rp-3.jpg";
-import imgTest04 from "../../../../assets/img/blog/samples/rp-4.jpg";
+import { ReactComponent as ImgInstragram } from "../../../../assets/img/redes/instagram.svg";
+import { ReactComponent as ImgTwitter } from "../../../../assets/img/redes/twitter.svg";
+import { ReactComponent as ImgYoutube } from "../../../../assets/img/redes/youtube.svg";
+import { ReactComponent as ImgFacebook } from "../../../../assets/img/redes/facebook.svg";
+import RecentPostCard from "./RecentPostCard";
+import { ArtigoRecents } from "../../../../types/artigo";
 
-const PostRecent = () => {
+type Props = {
+  post: ArtigoRecents[];
+};
+
+const PostRecent = ({ post }: Props) => {
   return (
     <>
       <div className="col-lg-4">
         <div className="blog-sidebar">
           <div className="follow-us">
             <div className="section-title sidebar-title-b">
-              <h6>Follow us</h6>
+              <h6>Siga-nos</h6>
             </div>
+
             <div className="fu-links">
               <a
                 href="/#"
@@ -61,67 +63,19 @@ const PostRecent = () => {
 
           <div className="feature-post">
             <div className="section-title sidebar-title-b">
-              <h6>Feature posts</h6>
+              <h6>Posts recentes</h6>
             </div>
             <div className="recent-post">
-              
-              {/** BEGIN DIV POST-PUBLICAÇÃO-RECENTE */}
-              <article className="rp-item">
-                <div className="rp-pic">
-                  <img src={imgTest01} alt="" />
-                </div>
-                <div className="rp-text">
-                  <h6>
-                    <a href="/#" onClick={(e)=>{e.preventDefault()}}>
-                      Vancouver real estate advisurges conference goers...
-                    </a>
-                  </h6>
-                  <span>Seb 24, 2019</span>
-                </div>
-              </article>
-              {/** END DIV POST-PUBLICAÇÃO-RECENTE */}
+              {/** BEGIN DIV POST-PUBLICAÃ‡ÃƒO-RECENTE */}
+              {/** MAXIMO DE POSTAGENS 5 POST'S */}
+              {post?.map((item) => {
+                return <RecentPostCard key={item.id} post={item} />;
+              })}
 
-              <div className="rp-item">
-                <div className="rp-pic">
-                  <img src={imgTest02} alt="" />
-                </div>
-                <div className="rp-text">
-                  <h6>
-                    <a href="/#" onClick={(e)=>{e.preventDefault()}}>
-                      Vancouver real estate advisurges conference goers...
-                    </a>
-                  </h6>
-                  <span>Seb 24, 2019</span>
-                </div>
-              </div>
-              <div className="rp-item">
-                <div className="rp-pic">
-                  <img src={imgTest03} alt="" />
-                </div>
-                <div className="rp-text">
-                  <h6>
-                    <a href="/#" onClick={(e)=>{e.preventDefault()}}>
-                      Vancouver real estate advisurges conference goers...
-                    </a>
-                  </h6>
-                  <span>Seb 24, 2019</span>
-                </div>
-              </div>
-              <div className="rp-item">
-                <div className="rp-pic">
-                  <img src={imgTest04} alt="" />
-                </div>
-                <div className="rp-text">
-                  <h6>
-                    <a href="/#" onClick={(e)=>{e.preventDefault()}}>
-                      Vancouver real estate advisurges conference goers...
-                    </a>
-                  </h6>
-                  <span>Seb 24, 2019</span>
-                </div>
-              </div>
+              {/** END DIV POST-PUBLICAÃ‡ÃƒO-RECENTE */}
             </div>
           </div>
+
           <div className="subscribe-form">
             <div className="section-title sidebar-title-b">
               <h6>Subscribe</h6>
@@ -132,7 +86,7 @@ const PostRecent = () => {
             <form action="#">
               <input type="text" placeholder="Email" />
               <button type="submit" className="site-btn">
-                Subscribe
+                Inscreva-se
               </button>
             </form>
           </div>
@@ -145,7 +99,8 @@ const PostRecent = () => {
             height="250"
             src="https://fast.com/pt"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            frameBorder="0" allowFullScreen
+            frameBorder="0"
+            allowFullScreen
           ></iframe>
         </div>
       </div>
