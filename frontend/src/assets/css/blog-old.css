@@ -10,7 +10,10 @@ a:focus {
 .img-subdestaque {
   width: 330px;
   height: 220px;
-} /*---------------------   Blog -----------------------*/
+}
+/*---------------------
+  Blog
+-----------------------*/
 .blog__banner {
   border: 1px solid var(--blog-item-banner);
   margin-top: 30px;
@@ -37,17 +40,19 @@ a:focus {
 }
 .blog-artigo {
   font-size: 14px;
-  font-family: \"Montserrat\", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--blog-artigo);
   font-weight: 400;
   line-height: 24px;
   margin: 0 0 15px 0;
 }
+/*Begin-Restore 33.pack*/
 .blog-artigo--limit-line {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: justify;
-  display: -webkit-box; /*-webkit-line-clamp: 3;*/
+  display: -webkit-box;
+  /*-webkit-line-clamp: 3;*/
   -webkit-box-orient: vertical;
 }
 .blog-artigo--two-line {
@@ -57,6 +62,8 @@ a:focus {
 .blog-artigo--three-line {
   -webkit-line-clamp: 3;
 }
+
+/*End-Restore 33.pack*/
 .blog-item.large-blog .bi-pic {
   float: none;
   margin-bottom: 25px;
@@ -121,7 +128,8 @@ a:focus {
   height: 6px;
   width: 6px;
   border: 1px solid var(--blog-sidebar-post);
-  content: \"\";
+  content: "";
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .blog-item .bi-text .read-more {
@@ -136,6 +144,7 @@ a:focus {
   right: -2px;
   font-weight: 600;
 }
+
 .blog-sidebar .follow-us {
   margin-bottom: 60px;
 }
@@ -180,7 +189,7 @@ a:focus {
 .blog-sidebar .feature-post .recent-post .rp-item .rp-text h6 a {
   color: var(--blog-item);
   font-weight: 700;
-  font-family: \"Lato\", sans-serif;
+  font-family: "Lato", sans-serif;
   line-height: 21px;
   font-size: 16px;
 }
@@ -197,7 +206,8 @@ a:focus {
   height: 6px;
   width: 6px;
   border: 1px solid var(--blog-sidebar-post);
-  content: \"\";
+  content: "";
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .subscribe-form {
@@ -224,13 +234,15 @@ a:focus {
 .blog-sidebar .subscribe-form form input::placeholder {
   color: var(--blog-sidebar);
 }
+
 .section-title {
   margin-bottom: 40px;
 }
 .section-title.sidebar-title-b {
   margin-bottom: 30px;
-  font-family: \"Lato\", sans-serif;
+  font-family: "Lato", sans-serif;
 }
+
 .section-title h4,
 .section-title h5,
 .section-title h6 {
@@ -250,12 +262,13 @@ a:focus {
   width: 5px;
   height: 46px;
   background: #00c89e;
-  content: \"\";
+  content: "";
 }
 .section-title.sidebar-title-b h6:after {
   height: 20px;
   top: 0;
 }
+
 .site-btn {
   font-size: 14px;
   color: var(--branco);
@@ -266,11 +279,16 @@ a:focus {
   letter-spacing: 0.5px;
   display: inline-block;
   padding: 14px 30px;
-} /*---------------------   Blog Details -----------------------*/
+}
+
+/*---------------------
+  Blog Details
+-----------------------*/
 .blog-details-section {
   padding-top: 80px;
   padding-bottom: 60px;
 }
+
 .blog-details-content .bc-top {
   margin-bottom: 24px;
 }
@@ -412,7 +430,8 @@ a:focus {
   height: 6px;
   width: 6px;
   border: 1px solid var(--blog-sidebar-post);
-  content: \"\";
+  content: "";
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .blog-details-content .bc-widget .comment-option {
@@ -472,13 +491,18 @@ a:focus {
   font-size: 14px;
   color: #00c89e;
   margin-right: 5px;
-} /*---------------------   Blog Hero -----------------------*/
+}
+
+/*---------------------
+  Blog Hero
+-----------------------*/
 .blog-hero-section {
   height: 640px;
   display: flex;
   align-items: center;
   text-align: center;
 }
+
 .bh-text {
   display: inline-block;
   background: var(--branco);
@@ -525,9 +549,14 @@ a:focus {
   height: 6px;
   width: 6px;
   border: 1px solid var(--blog-sidebar-post);
-  content: \"\";
+  content: "";
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-} /*---------------------   Pagination -----------------------*/
+}
+
+/*---------------------
+  Pagination
+-----------------------*/
 svg:not(:root) {
   vertical-align: middle;
   border: 0;
@@ -539,6 +568,7 @@ ol {
   margin: 0;
   margin-bottom: 0px;
 }
+
 .property-pagination {
   text-align: center;
   padding-top: 10px;
@@ -561,12 +591,11 @@ ol {
   font-size: 20px;
   font-weight: 600;
   line-height: 46px;
-  text-align: center; /*border-radius: 50%;*/
+  text-align: center;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   margin-right: 6px;
-}
-.property-pagination button {
-  line-height: 26px;
 }
 .property-pagination a:last-child,
 .property-pagination button:last-child {
@@ -589,6 +618,7 @@ ol {
 .ml-4 {
   margin-left: 4px;
 }
+
 @media only screen and (max-width: 767px) {
   .blog-sidebar {
     padding-top: 50px;
@@ -609,6 +639,7 @@ ol {
   .blog-details-content .bc-details .bc-pic img {
     min-width: 100%;
   }
+
   .blog-details-content .bc-widget .comment-option .co-item .ci-text ul {
     position: relative;
   }
@@ -618,16 +649,20 @@ ol {
     text-align: right;
     margin-top: 10px;
   }
+
   .blog-details-content .bc-widget .comment-option .co-item.reply-item {
     padding-left: 0;
   }
+
   .blog-details-content .bc-widget .comment-option .co-item .ci-text ul li {
     margin-right: 5px;
   }
+
   .blog-details-content .bc-widget .comment-option .co-item .ci-pic {
     float: none;
     margin-bottom: 20px;
   }
+
   .blog-details-content .bc-widget .comment-option .co-item.reply-item {
     padding-left: 10%;
   }
@@ -636,10 +671,12 @@ ol {
     width: 100%;
     max-height: 240px;
   }
+
   .blog-section {
     padding-top: 20px;
     padding-bottom: 50px;
   }
+
   div.principal-page__logo > svg {
     height: 320px;
   }

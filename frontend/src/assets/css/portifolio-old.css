@@ -1,6 +1,3 @@
-.menu-portifolio--ativo {
-  display: none;
-}
 .principal-portifolio {
   min-height: 1024px;
   background: rgba(0, 0, 0, 0.8);
@@ -24,11 +21,11 @@ ul {
   border-bottom: unset;
 }
 .portifolio-reset {
-  overflow: clip;
   padding: 0px;
 }
 .portifolio__linha {
-  width: 410px; /*background-color: #252526;*/
+  width: 410px;
+  /*background-color: #252526;*/
   background-color: #111111;
   border-radius: 0px 40px;
   position: fixed;
@@ -63,7 +60,7 @@ ul {
 .portifolio__name {
   font-size: 2.8rem;
   font-weight: 700;
-  font-family: \"Franklin Gothic Medium\", \"lato\";
+  font-family: "Franklin Gothic Medium", "lato";
 }
 .portifolio__funcao {
   font-size: 1.8rem;
@@ -80,6 +77,7 @@ ul {
 .portifolio__redes--mini {
   width: 28px;
 }
+
 .portifolio-menu__lateral {
   display: flex;
   flex-direction: column;
@@ -95,10 +93,6 @@ a {
   color: white;
   font-size: 1.6rem;
 }
-.portifolio-menu__lateral--ativo {
-  position: relative !important;
-  left: 0 !important;
-}
 .portifolio-menu__lateral--separator {
   border-bottom: 1px solid rgb(238 238 238 / 7%);
   margin-right: 10px;
@@ -109,7 +103,8 @@ a {
   color: orange;
   border-left: 8px solid rgb(155, 100, 32);
   background-image: linear-gradient(to left, rgb(56, 58, 71), rgb(30, 83, 90));
-} /*Secao Artigos*/
+}
+/*Secao Artigos*/
 .portifolio-blog {
   /*background-color: #1e1e1e;*/
   border-radius: 40px;
@@ -125,11 +120,10 @@ a {
   border-radius: 10px;
   box-sizing: border-box;
   padding: 1.5rem 2rem;
-  box-shadow: 2px 1px 1px 2px #c1e1e1;
+  box-shadow: 2px 1px 1px 2px #000000;
 }
 .portifolio__slog {
   width: 120px;
-  height: 100px;
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
@@ -138,9 +132,8 @@ a {
   border-radius: 10px;
   background-color: teal;
   text-transform: uppercase;
-  box-sizing: border-box; /*overflow-x: auto;*/
-  display: table-cell;
-  vertical-align: middle;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 .portifolio__data {
   font-size: 1rem;
@@ -154,12 +147,65 @@ a {
 .portifolio__titulo {
   font-size: 2rem;
   font-weight: 700;
-  font-family: \"Franklin Gothic Medium\", \"Montserrat\";
+  font-family: "Franklin Gothic Medium", "Montserrat";
 }
 .portifolio__subtitulo {
   font-size: 1.3rem;
   font-weight: 700;
-  font-family: Verdana, \"lato\";
+  font-family: Verdana, "lato";
+}
+
+@media screen and (max-width: 412px) {
+  .portifolio-menu__lateral--link {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .ativa {
+    display: none;
+  }
+  .principal-portifolio {
+    min-height: auto;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .ativa {
+    display: none;
+  }
+  .portifolio__linha {
+    width: unset !important;
+    position: relative;
+    border-radius: 10px;
+    margin: 2rem 0;
+  }
+  .portifolio-blog {
+    width: 100%;
+    min-height: auto;
+    border-radius: 10px;
+    padding: 1.5rem 1.5rem;
+  }
+  .portifolio__artigos {
+    margin: 12px auto;
+    padding: 0;
+  }
+  .portifolio__slog{
+    width: 100%;
+  }
+  .portifolio_box {
+    max-height: unset;
+    overflow-y: unset;
+  }
+  .portifolio__titulo {
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .portifolio__linha {
+    width: 340px;
+  }
+  .portifolio__slog {    
+    overflow-x: auto;
+  }
 }
 @media screen and (max-width: 1200px) {
   .portifolio__linha {
@@ -178,65 +224,5 @@ a {
   .row-mod {
     margin: 0;
     padding: 0;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .portifolio__linha {
-    width: 340px;
-  }
-  .portifolio__slog {
-    font-size: 1.5rem;
-    width: 100%;
-    padding: 3rem 0.1rem;
-    display: inline-grid;
-    box-sizing: border-box;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .ativa {
-    display: none;
-  }
-  .menu-portifolio--ativo {
-    display: block;
-  }
-  .portifolio__linha {
-    width: 100%;
-    position: relative;
-    border-radius: 10px;
-    margin: 2rem 0;
-  }
-  .portifolio-blog {
-    width: 100%;
-    min-height: auto;
-    border-radius: 10px;
-    padding: 1.5rem 1.5rem;
-  }
-  .portifolio__artigos {
-    margin: 12px auto;
-    padding: 0;
-  }
-  .portifolio_box {
-    max-height: unset;
-    overflow-y: unset;
-  }
-  .portifolio__titulo {
-    font-size: 1.7rem;
-  }
-  .portifolio-menu__lateral {
-    position: absolute;
-    left: -100vw;
-  }
-}
-@media screen and (max-width: 767px) {
-  .ativa {
-    display: none;
-  }
-  .principal-portifolio {
-    min-height: auto;
-  }
-}
-@media screen and (max-width: 412px) {
-  .portifolio-menu__lateral--link {
-    font-size: 1.4rem;
   }
 }
