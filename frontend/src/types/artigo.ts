@@ -40,13 +40,23 @@ export type Artigo = {
   categorias: Categoria[];
 }
 export type ArtigoPage = {
-  content: Artigo[],
-  last: boolean,
-  totalPages: number,
-  totalElements: number,
-  size: number,
-  number: number,
-  first: boolean,
-  numberOfElements: number,
-  empty: boolean,
+  content: Artigo[];
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
+}
+export type ArtigoRecents = {
+  id: number;
+  contador: number;
+  conteudo: string;
+  data_publicacao: string;
+  status: string;
+  titulo: string;
+  url: string;
+  autor_id: number;
 }
