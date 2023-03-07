@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../../../assets/css/hacker.css";
 import BannerHacker from "../../../components/BannerHacker";
 import BannerTop from "../../../components/conteudo/hacker/attack/BannerTop";

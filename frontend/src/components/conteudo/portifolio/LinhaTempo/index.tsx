@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as ImgFrs } from "../../../../assets/img/pessoal/Flavio-sf.svg";
 import ImgRedLink from "../../../../assets/img/footer/rede_git.png";
 import ImgGitHub from "../../../../assets/img/footer/rede_linkedin.png";
+import { ReactComponent as ImgMenu } from "../../../../assets/img/navs/menu.svg";
 import { NavLink } from "react-router-dom";
 
 const LinhaTempo = () => {
+  const [isOpen, setOpen] = useState(false);
+  function hasToggle() {
+    /*const botao = document.getElementById("menu-portifolio");*/
+    const menu = document.querySelector(".portifolio-menu__lateral");
+    menu?.classList.toggle("portifolio-menu__lateral--ativo");
+  }
+  useEffect(() => {
+    if (isOpen) {
+      hasToggle();
+    }
+  }, [isOpen]);
+  function handleClick(event: any) {
+    event.preventDefault();
+    hasToggle();
+    setOpen(false);
+    console.log("toggle");
+  }
   return (
     <>
       <aside className="col-md-4 portifolio__linha portifolio-reset">
-        <div className="portifolio__linha-tempo">
-          <ImgFrs className="portifolio__img" aria-label="Flávio Rogério" />
+        <header className="portifolio__linha-tempo">
+          <ImgFrs className="portifolio__img" aria-label="FlÃ¡vio RogÃ©rio" />
 
           <p className="portifolio__name mt-4">Flávio Rogério</p>
 
@@ -42,8 +60,23 @@ const LinhaTempo = () => {
                 />
               </a>
             </li>
+            <li className="menu-portifolio--ativo">
+              <a
+                href="/#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <ImgMenu
+                  style={{ border: "3px solid #fff", padding: "2px" }}
+                  id="menu-portifolio"
+                  aria-label="Menu"
+                  onClick={handleClick}
+                />
+              </a>
+            </li>
           </ul>
-        </div>
+        </header>
 
         <nav className="portifolio-menu__lateral">
           <NavLink
@@ -53,6 +86,9 @@ const LinhaTempo = () => {
                 : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
             }
             to="/portifolio"
+            onClick={() => {
+              setOpen(true);
+            }}
             end
           >
             Home
@@ -65,6 +101,9 @@ const LinhaTempo = () => {
                 : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
             }
             to="../"
+            onClick={() => {
+              setOpen(true);
+            }}
           >
             Meu Site
           </NavLink>
@@ -75,6 +114,9 @@ const LinhaTempo = () => {
                 : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
             }
             to="../portifolio/about"
+            onClick={() => {
+              setOpen(true);
+            }}
           >
             Sobre Mim
           </NavLink>
@@ -88,6 +130,9 @@ const LinhaTempo = () => {
                 : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
             }
             to="../portifolio/find"
+            onClick={() => {
+              setOpen(true);
+            }}
           >
             Pesquisa
           </NavLink>
@@ -99,6 +144,9 @@ const LinhaTempo = () => {
                 : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
             }
             to="../contato"
+            onClick={() => {
+              setOpen(true);
+            }}
           >
             Contato
           </NavLink>

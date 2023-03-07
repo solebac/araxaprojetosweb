@@ -1,48 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  getArticlesPagabledLight,
+  ICategorias,
+  ResetPage,
+} from "../../../../services/ArticlesHome.services";
+import { ArtigoPage } from "../../../../types/artigo";
+import CardDispatcher from "./CardDispatcher";
+import Pagination from "./Pagination";
+
+const categorias: ICategorias = {
+  id: "1",
+  nome: "Portifolio",
+  descricao: "Documentos Uteis",
+};
 
 const Blackboard = () => {
+  const [visible, setVisible] = useState(true);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [page, setPage] = useState<ArtigoPage>(ResetPage);
+
+  useEffect(() => {
+    getArticlesPagabledLight(setPage, pageNumber, categorias);
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+    if (page.totalPages === 1) {
+      setVisible(false);
+    }
+  }, [pageNumber, page.totalPages]);
+
+  const handlerPageNumber = (newPager: number) => {
+    setPageNumber(newPager);
+  };
+
   return (
     <>
       <aside className="col-md-8 portifolio-blog">
-        <article className="portifolio__artigos">
-          <div className="row portifolio__around">
-            <div className="col-md-2 portifolio-reset">
-              <p className="portifolio__slog">MySql</p>
-            </div>
-            <div className="col-md-10">
-              <div className="portifolio_box">
-                <p className="portifolio__data">
-                  08 de março de 2000 - 4 min de leitura
-                </p>
-                <p className="portifolio__titulo">
-                  O lorem ipsum lorem ipsum lorem ipsum MySql Contraint
-                </p>
-                <p className="portifolio__subtitulo">
-                  Entenda como funciona o fluxo de validações de um SGDB MySql
-                </p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article className="portifolio__artigos">
-          <div className="row portifolio__around">
-            <div className="col-md-2 portifolio-reset">
-              <p className="portifolio__slog">React</p>
-            </div>
-            <div className="col-md-10">
-              <p className="portifolio__data">
-                08 de março de 2000 - 4 min de leitura
-              </p>
-              <p className="portifolio__titulo">
-                O que você não deve fazer sobre MySql Contraint
-              </p>
-              <p className="portifolio__subtitulo">
-                Entenda como funciona o fluxo de validações de um SGDB MySql
-              </p>
-            </div>
-          </div>
-        </article>
+        {page?.content?.map((item) => {
+          return <CardDispatcher key={item.id} post={item} />;
+        })}
+        <section>
+          {visible ? (
+            <Pagination page={page} onChange={handlerPageNumber} />
+          ) : (
+            ""
+          )}
+        </section>
       </aside>
     </>
   );

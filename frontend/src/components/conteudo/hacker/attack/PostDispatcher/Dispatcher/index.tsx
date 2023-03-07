@@ -1,8 +1,13 @@
 import React from "react";
 import imgTest01 from "../../../../../../assets/img/blog/blog-1.jpg";
-import {ReactComponent as ImgIcoRight} from "../../../../../../assets/img/fonts-icon/arrow_right.svg";
+import { ReactComponent as ImgIcoRight } from "../../../../../../assets/img/fonts-icon/arrow_right.svg";
+import { Artigo } from "../../../../../../types/artigo";
 
-const Dispatche = () => {
+type Props = {
+  post: Artigo;
+};
+
+const Dispatche = ({ post }: Props) => {
   return (
     <>
       <article className="attack__cabecalho">
@@ -13,15 +18,11 @@ const Dispatche = () => {
             alt=""
           />
         </a>
-        <p className="attack__titulo">
-          Companies often use reverse engineering on old electronic components,
-          such as discontinued printed circuit boards (PCBs) and connecting
-          cards.
+        <p className="attack__titulo attack__text--limit-line attack__text--two-line">
+          {post.titulo}
         </p>
-        <p className="attack__text">
-          If an old piece of computer equipment had functions that have since
-          been lost amid the subsequent changes in technology, reverse
-          engineering allows manufacturers to rediscover these
+        <p className="attack__text attack__text--limit-line attack__text--three-line">
+          {post.conteudoIntroducao}
         </p>
         <p>
           <a
@@ -31,12 +32,12 @@ const Dispatche = () => {
             }}
             className="attack__read-more"
           >
-            Read more
+            Leia mais
             <ImgIcoRight />
           </a>
         </p>
       </article>
     </>
   );
-}
+};
 export default Dispatche;
