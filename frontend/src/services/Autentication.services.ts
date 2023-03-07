@@ -39,7 +39,7 @@ export const storeToken = (token: Token) => {
     window.localStorage.setItem('token', token)
 }
 export const storeBasic = (basic: AutBasic, credentials: Credentials) => {
-    const verify = fromBase64(credentials.email  ':'  credentials.senha);
+    const verify = fromBase64(credentials.email + ':' + credentials.senha);
     window.localStorage.setItem('basic', basic)
     window.localStorage.setItem('verify', verify)
     http.defaults.headers.common.Authorization = `Basic ${verify}`;

@@ -1,0 +1,244 @@
+import axios from "axios";
+import { useEffect } from "react";
+import imgTest02 from "../../../../assets/img/blog/samples/blog-3.jpg";
+import imgTest03 from "../../../../assets/img/blog/samples/blog-4.jpg";
+import imgTest04 from "../../../../assets/img/blog/samples/blog-5.jpg";
+import { ReactComponent as ImgIcoRight } from "../../../../assets/img/fonts-icon/arrow_right.svg";
+import { Artigo } from "../../../../types/artigo";
+import { BASE_URL } from "../../../../utils/requests";
+import DispacheCard from "./DispacheCard";
+import RecentCard from "./RecentCard";
+
+const PostDispache = () => {
+  const url = `${BASE_URL}/autor/2`;
+
+  const tempPost = {
+    id: 1,
+    titulo:
+      "Araxa Projects: The app changing real estate and construction forever",
+    dataPublicacao: "2022-06-25T12:05:27.84300:00",
+    conteudo:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    status: "PUBLICADO",
+    url: "https://www.lipsum.com/",
+    contador: 12,
+    autor: [
+      {
+        id: 1,
+        nome: "Flavio Rogerio",
+        bio: "Primeiro Livro",
+        foto: "c:\temp",
+        email: "solebac@hotmail.com",
+        usuario: "Flavio",
+      },
+    ],
+    comment: [
+      {
+        id: 1,
+        nome: "Adalberto",
+        texto: "LOREM IPSUM",
+        data: "2022-06-25",
+      },
+    ],
+    tag: [
+      {
+        id: 1,
+        nome: "JAVA",
+      },
+    ],
+    categorias: [
+      {
+        id: 2,
+        nome: "Blog",
+        descricao: "Discursões Sobre Tecnologias",
+        secao: [],
+      },
+    ],
+  };
+
+  // Similar ao componentDidMount e componentDidUpdate:
+  useEffect(() => {
+    axios
+      .get(url, {
+        auth: {
+          username: "lucas@hotmail.com",
+          password: "123",
+        },
+      })
+      .then((response) => {
+        const data = response.data as Artigo;
+        console.log(data);
+      });
+  }, []);
+
+  return (
+    <>
+      <div className="col-lg-8">
+        <div className="blog-item-list">
+          <DispacheCard post={tempPost} />
+
+          {/** BEGIN DIV POST-PUBLICAÇÃO */}
+          <RecentCard />
+          {/** END DIV POST-PUBLICAÇÃO */}
+
+          <div className="blog-item">
+            <div className="bi-pic">
+              <img
+                src={imgTest02}
+                className="img-responsive img-subdestaque"
+                alt=""
+              />
+            </div>
+            <div className="bi-text">
+              <h5>
+                <a
+                  href="./blog-details.html"
+                  className="blog-artigo--limit-line blog-artigo--two-line"
+                >
+                  what3words: The app changing real estate and construction
+                  forever
+                </a>
+              </h5>
+              <ul>
+                <li>
+                  by <span>Jonathan Doe</span>
+                </li>
+                <li>Seb 24, 2019</li>
+                <li>12 Comment</li>
+              </ul>
+              <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
+                Lorem Ipsum has been the industry’s standard dummy text ever
+                since the 1500s, when an unknown...
+              </p>
+              <a
+                href="/#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+                className="read-more"
+              >
+                Read more <ImgIcoRight />
+              </a>
+            </div>
+          </div>
+          <div className="blog-item">
+            <div className="bi-pic">
+              <img
+                src={imgTest03}
+                className="img-responsive img-subdestaque"
+                alt=""
+              />
+            </div>
+            <div className="bi-text">
+              <h5>
+                <a
+                  href="./blog-details.html"
+                  className="blog-artigo--limit-line blog-artigo--two-line"
+                >
+                  what3words: The app changing real estate and construction
+                  forever
+                </a>
+              </h5>
+              <ul>
+                <li>
+                  by <span>Jonathan Doe</span>
+                </li>
+                <li>Seb 24, 2019</li>
+                <li>12 Comment</li>
+              </ul>
+              <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
+                Lorem Ipsum has been the industry’s standard dummy text ever
+                since the 1500s, when an unknown...
+              </p>
+              <a
+                href="/#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+                className="read-more"
+              >
+                Read more <ImgIcoRight />
+              </a>
+            </div>
+          </div>
+          <div className="blog-item">
+            <div className="bi-pic">
+              <img
+                src={imgTest04}
+                className="img-responsive img-subdestaque"
+                alt=""
+              />
+            </div>
+            <div className="bi-text">
+              <h5>
+                <a
+                  href="./blog-details.html"
+                  className="blog-artigo--limit-line blog-artigo--two-line"
+                >
+                  what3words: The app changing real estate and construction
+                  forever
+                </a>
+              </h5>
+              <ul>
+                <li>
+                  by <span>Jonathan Doe</span>
+                </li>
+                <li>Seb 24, 2019</li>
+                <li>12 Comment</li>
+              </ul>
+              <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
+                Lorem Ipsum has been the industry’s standard dummy text ever
+                since the 1500s, when an unknown...
+              </p>
+              <a
+                href="/#"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+                className="read-more"
+              >
+                Read more <ImgIcoRight />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="blog-pagination property-pagination ">
+          <a
+            href="/#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            1
+          </a>
+          <a
+            href="/#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            2
+          </a>
+          <a
+            href="/#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            3
+          </a>
+          <a
+            href="/#"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <ImgIcoRight />
+          </a>
+        </div>
+      </div>
+    </>
+  );
+};
+export default PostDispache;

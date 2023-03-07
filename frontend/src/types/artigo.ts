@@ -5,7 +5,7 @@ import { Secao } from "./secao";
 import { Tag } from "./tag";
 
 //id: 1;
-export type Artigo = {
+/*export type Artigo = {
   id: number;
   titulo: string;
   dataPublicacao: string;
@@ -18,10 +18,10 @@ export type Artigo = {
   tag: Tag[];
   secao: Secao[];
   categorias: Categoria[];
-};
-export type ArtigoPage = {
+};*/
+export type Artigo = {
   id: number;
-  titulo: number;
+  titulo: string;
   dataPublicacao: string;
   conteudoIntroducao: string;
   conteudoParagrafoOne: string;
@@ -38,4 +38,15 @@ export type ArtigoPage = {
   tag: Tag[];
   secao: Secao[];
   categorias: Categoria[];
+}
+export type ArtigoPage = {
+  content: Artigo[],
+  last: boolean,
+  totalPages: number,
+  totalElements: number,
+  size: number,
+  number: number,
+  first: boolean,
+  numberOfElements: number,
+  empty: boolean,
 }
