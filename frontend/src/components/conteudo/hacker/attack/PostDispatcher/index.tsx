@@ -26,13 +26,13 @@ const PostDispatcher = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const [secao, setSecao] = useState<SecaoCategoria[]>([ResetSecao]);
   const [page, setPage] = useState<ArtigoPage>(ResetPage);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     getSecao(3, setSecao);
     getArticlesPagabledLight(setPage, pageNumber, categorias);
-    if (page.totalPages === 1) {
-      setVisible(false);
+    if (page.totalPages > 1) {
+      setVisible(true);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, page.totalPages]);

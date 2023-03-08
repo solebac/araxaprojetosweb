@@ -15,15 +15,15 @@ const categorias: ICategorias = {
 };
 
 const Blackboard = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [pageNumber, setPageNumber] = useState(0);
   const [page, setPage] = useState<ArtigoPage>(ResetPage);
 
   useEffect(() => {
     getArticlesPagabledLight(setPage, pageNumber, categorias);
     //eslint-disable-next-line react-hooks/exhaustive-deps
-    if (page.totalPages === 1) {
-      setVisible(false);
+    if (page.totalPages > 1) {
+      setVisible(true);
     }
   }, [pageNumber, page.totalPages]);
 

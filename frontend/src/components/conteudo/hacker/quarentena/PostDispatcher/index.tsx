@@ -23,6 +23,7 @@ const categorias: ICategorias = {
 const PostDispatcher = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const [page, setPage] = useState<ArtigoPage>(ResetPage);
+  const [visible, setVisible] = useState(false);
 
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);
@@ -31,7 +32,10 @@ const PostDispatcher = () => {
   useEffect(() => {
     getArticlesPagabledLight(setPage, pageNumber, categorias);
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber]);
+    if (page.totalPages > 1) {
+      setVisible(true);
+    }
+  }, [pageNumber, page.totalPages]);
 
   return (
     <>
@@ -45,7 +49,8 @@ const PostDispatcher = () => {
 
         <div className="row">
           <div className="col-md-12">
-            <Pagination page={page} onChange={handlerPageNumber} />
+            {/*<Pagination page={page} onChange={handlerPageNumber} />*/}
+            {visible && <Pagination page={page} onChange={handlerPageNumber} />}
           </div>
         </div>
 
