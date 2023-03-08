@@ -104,7 +104,7 @@
 
 .img_principal {
   /*width: 770px; 
-        height: 320px;*/
+      height: 320px;*/
   width: 100%;
   height: 320px;
   object-fit: cover; /* or object-fit: contain; */
@@ -240,8 +240,8 @@
 }
 
 /*---------------------
-      Links Uteis
-    -----------------------*/
+    Links Uteis
+  -----------------------*/
 
 ul.chec-radio {
   margin: 15px;

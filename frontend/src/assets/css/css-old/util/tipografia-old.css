@@ -28,7 +28,8 @@
 }
 .texto-servico--modifield {
   color: var(--texto-servico);
-} /*=======================Tipografia*/
+}
+/*=======================Tipografia*/
 .titulo {
   font-size: 2.8rem;
   font-weight: 900;
@@ -42,6 +43,7 @@
 .texto-modifica {
   font-style: italic;
 }
+
 @media screen and (max-width: 767px) {
   .titulo {
     font-weight: 700;

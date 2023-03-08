@@ -25,7 +25,7 @@
   margin-left: 3rem;
 }
 .about_infor-link:before {
-  content: \"\\1F5F8\";
+  content: "\\1F5F8";
   margin-right: 5px;
 }
 .about__text {
@@ -92,7 +92,7 @@ a:focus {
   box-sizing: border-box;
 }
 #accordion .panel-body:after {
-  content: \"\";
+  content: "";
   position: absolute;
   top: -30px;
   left: 40px;
@@ -105,10 +105,10 @@ ul.chec-radio {
 ul.chec-radio li.pz {
   display: inline;
 }
-.chec-radio label.radio-inline input[type=\"checkbox\"] {
+.chec-radio label.radio-inline input[type="checkbox"] {
   display: none;
 }
-.chec-radio label.radio-inline input[type=\"checkbox\"]:checked + div {
+.chec-radio label.radio-inline input[type="checkbox"]:checked + div {
   color: var(--branco);
   background-color: var(--black);
 }
@@ -151,22 +151,22 @@ ul.chec-radio li.pz {
   background-color: var(--portifolio-clab);
   color: var(--black);
 }
-.chec-radio label.radio-inline input[type=\"checkbox\"]:checked + div:before {
-  content: \"\\e013\";
+.chec-radio label.radio-inline input[type="checkbox"]:checked + div:before {
+  content: "\\e013";
   margin-right: 5px;
-  font-family: \"Glyphicons Halflings\";
+  font-family: "Glyphicons Halflings";
 }
-.chec-radio label.radio-inline input[type=\"radio\"] {
+.chec-radio label.radio-inline input[type="radio"] {
   display: none;
 }
-.chec-radio label.radio-inline input[type=\"radio\"]:checked + div {
+.chec-radio label.radio-inline input[type="radio"]:checked + div {
   color: var(--branco);
   background-color: var(--black);
 }
-.chec-radio label.radio-inline input[type=\"radio\"]:checked + div:before {
-  content: \"\\e013\";
+.chec-radio label.radio-inline input[type="radio"]:checked + div:before {
+  content: "\\e013";
   margin-right: 5px;
-  font-family: \"Glyphicons Halflings\";
+  font-family: "Glyphicons Halflings";
 }
 @media screen and (max-width: 767px) {
   .btn-about__custom {

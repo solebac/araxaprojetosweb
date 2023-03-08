@@ -2,6 +2,7 @@
   position: relative;
   float: left;
 }
+
 .dl-unsur dd {
   width: 100%;
   border-top: 1px solid #959595;
@@ -12,6 +13,7 @@
 .dl-unsur dd:first-child {
   border-top: 0;
 }
+
 .dl-unsur dd > a {
   width: 100%;
   margin-left: 5px;
@@ -33,9 +35,11 @@
 .dl-unsur dd > p {
   width: 89%;
   margin: 0 0 0 5px;
-} /* Portrait & landscape phone */
+}
+
+/* Portrait & landscape phone */
 @media (max-width: 480px) {
-  /* en Ã§ok okunan listeleme */
+  /* en çok okunan listeleme */
   .dl-unsur dd > a > h2 {
     font-size: 250%;
   }

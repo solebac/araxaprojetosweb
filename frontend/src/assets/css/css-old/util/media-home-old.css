@@ -1,14 +1,24 @@
-/* * @author Solebac * @version 0.1 */
-/*=======================Layout*/ /*RodapÃ©*/
-/* --------------------------------------        
-            Media Queries        
--------------------------------------- */
+/*
+* @author Solebac
+* @version 0.1
+*/
+/*=======================Layout*/
+
+/*Rodapé*/
+
+/* --------------------------------------
+       Media Queries
+       -------------------------------------- */
+
 @media screen and (min-width: 768px) and (max-width: 1000px) {
+  
 }
+
 @media screen and (max-width: 767px) {
   nav.navbar-transparente {
     background: var(--black-eight);
   }
+
   .btn-custom {
     /*query*/
     margin: 10px 2px;

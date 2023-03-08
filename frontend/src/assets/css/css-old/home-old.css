@@ -8,7 +8,8 @@ header {
   left: 0;
   top: 0;
   z-index: -1;
-} /*Capa principal do Layout*/
+}
+/*Capa principal do Layout*/
 .capa {
   display: table;
   width: 100%;

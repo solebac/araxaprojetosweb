@@ -28,9 +28,11 @@
   padding: 0 0 1rem 0;
   color: var(--cinza-texto);
 }
+
 .contato__form {
   margin-top: 2rem;
 }
+
 .contato__form--input-padrao {
   display: block;
   margin: 0 0 1.2rem;
@@ -48,9 +50,11 @@
 .checkboks {
   margin: 1.2rem 0;
 }
+
 .enviar {
   width: 40%;
-  padding: 0.938rem 0; /*background: #00cd40 ;*/
+  padding: 0.938rem 0;
+  /*background: #00cd40 ;*/
   background: var(--contato-enviar);
   color: var(--branco);
   font-weight: bold;
@@ -65,17 +69,20 @@
   transition: 3s all;
   transform: scale(1.1);
 }
-input[type=\"checkbox\"],
-input[type=\"radio\"] {
+
+input[type="checkbox"],
+input[type="radio"] {
   margin: 4px;
-  margin-top: 1px\\9;
+  margin-top: 1px\9;
   line-height: normal;
 }
+
 @media screen and (max-width: 1024px) {
   .contato {
     width: 90vw;
   }
 }
+
 @media screen and (max-width: 800px) {
   .contato__titulo {
     font-size: 2rem;
