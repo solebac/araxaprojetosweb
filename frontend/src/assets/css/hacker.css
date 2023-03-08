@@ -80,6 +80,10 @@
 }
 .attack__hiperlink {
   color: var(--black);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--black);
 }
 .attack__cabecalho {
   border-bottom: 1px solid var(--prata-claro);
@@ -151,7 +155,8 @@
   color: #111111;
   font-weight: 600;
 }
-.attack__read-more:hover {
+.attack__read-more:hover,
+.attack__hiperlink:hover {
   transition: 5s;
   color: var(--black);
   font-weight: 800;

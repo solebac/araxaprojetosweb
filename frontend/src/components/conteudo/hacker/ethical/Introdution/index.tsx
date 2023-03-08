@@ -35,14 +35,15 @@ const Introdution = () => {
           <div className="col-md-6">
             <p className="subtitulo-portifolio">Lei Carolina Dieckmann</p>
             <p className="text-portifolio texto-servico--modifield">
-              A
+              A{" "}
               <a
                 href="http://www.planalto.gov.br/ccivil_03/_Ato2011-2014/2012/Lei/L12737.htm"
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="attack__hiperlink"
               >
                 Lei Nº 12.737/2012
-              </a>
+              </a>{" "}
               é uma alteração no Código Penal Brasileiro voltada para crimes
               virtuais e delitos informáticos. Com o avanço da tecnologia e a
               democratização e o acesso facilitado às redes sociais, o sistema
