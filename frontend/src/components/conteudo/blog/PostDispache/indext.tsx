@@ -27,7 +27,7 @@ const PostDispache = ({ destaque, page, onChange }: Props) => {
           {page?.content?.map((item) => {
             return <RecentCard key={item.id} post={item} />;
           })}
-          {/** END DIV POST-PUBLICAÃ‡ÃƒO */}
+          {/** END DIV POST-PUBLICAÇÃO */}
         </div>
 
         {visible ? <Pagination page={page} onChange={onChange} /> : ""}

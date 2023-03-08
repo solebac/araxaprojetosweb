@@ -9,10 +9,13 @@ type Props = {
 
 const DispacheCard = ({ post }: Props) => {
   //recupera o Object
-  const autor = post.autor;
+  const autor = post?.autor;
   return (
     <Fragment>
-      <div className="blog-item large-blog">
+      <div
+        className="blog-item large-blog"
+        style={{ borderBottom: "1px solid #e1e1e1" }}
+      >
         <div className="bi-pic">
           <img
             src={imgMainDestaque}
@@ -22,7 +25,7 @@ const DispacheCard = ({ post }: Props) => {
         </div>
         <div className="bi-text">
           <h4>
-            <a href="./blog-details.html">{post.titulo}</a>
+            <a href="./blog-details.html">{post?.titulo}</a>
           </h4>
           <ul>
             <li>
@@ -33,11 +36,11 @@ const DispacheCard = ({ post }: Props) => {
                 }
               })}
             </li>
-            <li>{post.dataPublicacao}</li>
-            <li>{post.contador} Comentários</li>
+            <li>{post?.dataPublicacao}</li>
+            <li>{post?.contador} Comentários</li>
           </ul>
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
-            {post.conteudoIntroducao}
+            {post?.conteudoIntroducao}
           </p>
           <a
             href="/#"
