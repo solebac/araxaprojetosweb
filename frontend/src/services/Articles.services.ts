@@ -2,7 +2,7 @@ import { Artigo, ArtigoPage } from "../types/artigo";
 import { Autor } from "../types/autor";
 import { Categoria } from "../types/categoria";
 import { Comentario } from "../types/comentario";
-import { Secao } from "../types/secao";
+/*import { Secao } from "../types/secao";*/
 import { Tag } from "../types/tag";
 import http from "../utils/http";
 import { BASE_URL } from "../utils/requests";

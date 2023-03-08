@@ -1,7 +1,7 @@
 import { ArtigoPage } from "../types/artigo";
 import { Categoria } from "../types/categoria";
 import http from "../utils/http";
-import { BASE_URL } from "../utils/requests";
+/*import { BASE_URL } from "../utils/requests";*/
 
 export interface ICategoria {
     id: number;

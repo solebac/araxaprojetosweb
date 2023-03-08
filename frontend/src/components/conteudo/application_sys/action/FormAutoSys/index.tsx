@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import AplicationSys from "../../../../../pages/AplicationSys";
 import FormAutorInsert from "../../../../../pages/AplicationSys/components/Formularios/adicionar/FormAutor";
 import FormAutorEdit from "../../../../../pages/AplicationSys/components/Formularios/editar/FormAutor";
-import FormAutorVisualizar from "../../../../../pages/AplicationSys/components/Formularios/visualizar/FormAutor";
+/*import FormAutorVisualizar from "../../../../../pages/AplicationSys/components/Formularios/visualizar/FormAutor";*/
 /** 0-INSERT 1-UPDATE */
 type Props = {
   tipo: number;

@@ -131,7 +131,7 @@
 }
 .menu-lateral__link--ativo {
   padding-left: 56px;
-  background-image: linear-gradient(270deg, #fdfdfd, #142224);
+  background-image: linear-gradient(to right, 270deg, #fdfdfd, #142224);
   border-left: 6px solid #f3b875;
   /*color: black;*/
 }
@@ -623,7 +623,7 @@ select.appsys {
   background-image: -moz-linear-gradient(top, #eeeeee 0%, #f4f4f4 100%);
   background-image: -ms-linear-gradient(top, #eeeeee 0%, #f4f4f4 100%);
   background-image: -o-linear-gradient(top, #eeeeee 0%, #f4f4f4 100%);
-  background-image: linear-gradient(top, #eeeeee 0%, #f4f4f4 100%);
+  background-image: linear-gradient(to left, #eeeeee 0%, #f4f4f4 100%);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2) inset,
     0 1px 0 rgba(255, 255, 255, 0.4);
 }
