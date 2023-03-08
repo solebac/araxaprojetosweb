@@ -34,7 +34,7 @@ const DispacheCard = ({ post }: Props) => {
               })}
             </li>
             <li>{post.dataPublicacao}</li>
-            <li>{post.contador} ComentÃ¡rios</li>
+            <li>{post.contador} Comentários</li>
           </ul>
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
             {post.conteudoIntroducao}

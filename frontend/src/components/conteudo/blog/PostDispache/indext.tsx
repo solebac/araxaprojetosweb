@@ -23,7 +23,7 @@ const PostDispache = ({ destaque, page, onChange }: Props) => {
       <div className="col-lg-8">
         <div className="blog-item-list">
           <DispacheCard post={destaque} />
-          {/** BEGIN DIV POST-PUBLICAÃ‡ÃƒO */}
+          {/** BEGIN DIV POST-PUBLICAÇÃO */}
           {page?.content?.map((item) => {
             return <RecentCard key={item.id} post={item} />;
           })}

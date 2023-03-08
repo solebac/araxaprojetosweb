@@ -82,9 +82,9 @@
   color: var(--black);
   text-decoration: none;
 }
-a:visited {
+/*a:visited {
   color: var(--black);
-}
+}*/
 .attack__cabecalho {
   border-bottom: 1px solid var(--prata-claro);
   margin: 0 0 5rem;
