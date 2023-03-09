@@ -1,7 +1,34 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getToken } from "../../services/Autentication.services";
 
 const Navbar = () => {
+  const [logon, setLogon] = useState(false);
+  const [title, setTitle] = useState("Entrar");
+  const test = getToken();
+  const nav = useNavigate();
+  useEffect(() => {
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+    hasToggle(logon);
+  }, [logon]);
+
+  function handleClick(event: any) {
+    event.preventDefault();
+    if (!(test === null)) {
+      setLogon(true);
+      nav("/aplicationsys");
+    } else {
+      nav("/login");
+    }
+  }
+  function hasToggle(e: boolean) {
+    if (test === null) {
+      setTitle("Entrar");
+    } else {
+      setTitle("Control");
+    }
+  }
+
   return (
     <nav className="navbar navbar-fixed-top navbar-inverse navbar-transparente">
       <div className="container-fluid">
@@ -69,7 +96,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/login">Entrar</Link>
+              <Link to="" onClick={handleClick}>
+                {title}
+              </Link>
             </li>
           </ul>
         </div>

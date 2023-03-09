@@ -7,14 +7,25 @@ import BreadcrumbSys from "./components/BreadcrumbSys";
 import MatrixContainer from "./components/MatrixContainer";
 import MatrixContainerFluid from "./components/MatrixContainerFluid";
 import MainContent from "./components/MainContent";
+import { useEffect } from "react";
+import { getToken } from "../../services/Autentication.services";
+import { useNavigate } from "react-router-dom";
 
 interface AuxProps {
   children: JSX.Element[] | JSX.Element;
 }
 
 const AplicationSys = ({ children }: AuxProps) => {
-  //UIX Do System
+  const nav = useNavigate();
+  useEffect(() => {
+    const test = getToken();
+    if (test === null) {
+      nav("/login");
+    }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  //UIX Do System
   return (
     <>
       <MatrixContainer>

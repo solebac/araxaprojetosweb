@@ -1,17 +1,31 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+//import imgLogo1 from "../../../../assets/img/logo/logo-02.png";
+import imgLogo1 from "../../assets/img/logo/logo-02.png";
+
 import {
   login,
   storeAutor,
   storeBasic,
   storeToken,
+  getToken,
 } from "../../services/Autentication.services";
 import "./style.css";
 
 const Login = () => {
   const nav = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", senha: "" });
+
+  useEffect(() => {
+    const test = getToken();
+
+    if (test !== null) {
+      nav("/aplicationsys");
+    }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -55,6 +69,17 @@ const Login = () => {
       </Link> */}
         <div className="login-wrap">
           <div className="login-html">
+            <h1 className="tab tab--center">
+              <Link to="/" className="menu-lateral__logo--a">
+                <img
+                  src={imgLogo1}
+                  alt="Logotipo Araxá Projetos Web"
+                  className="menu-lateral__logo"
+                  style={{ margin: "auto" }}
+                />
+              </Link>
+            </h1>
+
             <input
               id="tab-1"
               type="radio"
@@ -62,18 +87,18 @@ const Login = () => {
               className="sign-in"
               defaultChecked
             />
-            <label htmlFor="tab-1" className="tab">
-              Sign In
+            <label htmlFor="tab-1" className="tab tab--center">
+              Entrar
             </label>
             <input id="tab-2" type="radio" name="tab" className="for-pwd" />
-            <label htmlFor="tab-2" className="tab">
-              Forgot Password
+            <label htmlFor="tab-2" className="tab tab--center">
+              Esqueceu sua senha
             </label>
             <div className="login-form">
               <form className="sign-in-htm" onSubmit={handleFormSubmit}>
                 <div className="group">
                   <label htmlFor="email" className="label">
-                    Username or Email
+                    Email
                   </label>
                   <input
                     id="email"
@@ -86,7 +111,7 @@ const Login = () => {
                 </div>
                 <div className="group">
                   <label htmlFor="senha" className="label">
-                    Password
+                    Senha
                   </label>
                   <input
                     id="senha"
@@ -106,7 +131,7 @@ const Login = () => {
                     defaultChecked
                   />
                   <label htmlFor="check">
-                    <span className="icon"></span> Keep me Signed in
+                    <span className="icon"></span> Mantenha-me conectado
                   </label>
                 </div>
                 <div className="group">
@@ -114,14 +139,14 @@ const Login = () => {
                 </div>
                 <div className="hr"></div>
                 <div className="foot-lnk">
-                  <label htmlFor="tab-2">Forgot Password?</label>
+                  <label htmlFor="tab-2">Esqueceu sua senha?</label>
                 </div>
               </form>
 
               <form className="for-pwd-htm">
                 <div className="group">
                   <label htmlFor="user" className="label">
-                    Username or Email
+                    Email
                   </label>
                   <input id="user" type="text" className="input" />
                 </div>
