@@ -15,6 +15,7 @@ const FormContato = () => {
   const [radioWhatsapp, setRadioWhatsapp] = useState(true);
   const [radioTelefone, setRadioTelefone] = useState(false);
   const [radioEmail, setRadioEmail] = useState(false);
+  const [retorno, setRetorno] = useState("");
 
   useEffect(() => {
     setNome("");
@@ -25,7 +26,11 @@ const FormContato = () => {
     setContato("radio-whatsapp");
     setReceber(false);
     setVisible(true);
-  }, []);
+    if (retorno !== "") {
+      console.log("Retorno.: " + retorno);
+      setVisible(false);
+    }
+  }, [retorno]);
 
   const handleFormSubmit = async (event: any) => {
     event.preventDefault();
@@ -51,10 +56,17 @@ const FormContato = () => {
         receber,
       }),
     });
-    const rest = await rawResponse.json();
-    console.log(rest);
-    console.log("--------------------------");
-    console.log(rest.response);
+    const content = await rawResponse.json();
+    const rest = content.response;
+    //console.log(rest);
+    //console.log("--------------------------");
+    //console.log(rest.response);
+    if (rest != null && rest.length > 3) {
+      let testTmp = rest.substring(0, 3);
+      if (testTmp === "250") {
+        setRetorno(testTmp);
+      }
+    }
   };
   const handleRadioChange = (event: any) => {
     /*Case: With Object.: 
@@ -87,7 +99,7 @@ const FormContato = () => {
                 }}
                 type="text"
                 name="nomeSobrenome"
-                defaultValue={nome}
+                value={nome}
                 className="contato__form--input-padrao"
                 placeholder="Nome e sobrenome"
                 required
@@ -98,7 +110,7 @@ const FormContato = () => {
                 }}
                 type="email"
                 name="email"
-                defaultValue={email}
+                value={email}
                 className="contato__form--input-padrao"
                 required
                 placeholder="seuemail@dominio.com"
@@ -109,7 +121,7 @@ const FormContato = () => {
                 }}
                 type="tel"
                 name="telefone"
-                defaultValue={telefone}
+                value={telefone}
                 className="contato__form--input-padrao"
                 required
                 placeholder="(xx)xxxxx-xxxx"
@@ -121,7 +133,7 @@ const FormContato = () => {
                 }}
                 type="text"
                 name="assunto"
-                defaultValue={assunto}
+                value={assunto}
                 className="contato__form--input-padrao"
                 required
                 placeholder="Assunto"
@@ -136,7 +148,7 @@ const FormContato = () => {
                   setMsg(event.target.value);
                 }}
                 name="mensagem"
-                defaultValue={msg}
+                value={msg}
                 rows={3}
                 className="contato__form--input-padrao"
               ></textarea>
@@ -198,7 +210,7 @@ const FormContato = () => {
                   onChange={(event) => {
                     setReceber(event.target.checked);
                   }}
-                />
+                />{" "}
                 Gostaria de receber nossas novidades por email?
               </label>
               {visible ? <BotaoEnviar /> : ""}
