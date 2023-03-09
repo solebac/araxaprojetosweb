@@ -14,8 +14,8 @@ const Footers = () => {
           <div className="rodape__redes">
             <ul className="rodape__footer">
               <li>
-                <a
-                  href="https://github.com/solebac?tab=repositories"
+                <Link
+                  to="https://github.com/solebac?tab=repositories"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -24,11 +24,11 @@ const Footers = () => {
                     className="rodape__footer--mini"
                     alt="Linkedin"
                   />
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://www.linkedin.com/in/fl%C3%A1vio-rog%C3%A9rio-722a56159/"
+                <Link
+                  to="https://www.linkedin.com/in/fl%C3%A1vio-rog%C3%A9rio-722a56159/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -37,18 +37,18 @@ const Footers = () => {
                     className="rodape__footer--mini"
                     alt="GitHub"
                   />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
-        <a href="/portifolio">
+        <Link to="/portifolio/about">
           <p className="rodape__text copyright">
-            © Copyright Araxá Projetos Web - 2022
+            © Copyright Araxá Projetos Web - 2018
           </p>
           <p className="rodape__text">Flávio Rogério</p>
           <p className="rodape__text">Java Developer</p>
-        </a>
+        </Link>
       </footer>
     </>
   );
