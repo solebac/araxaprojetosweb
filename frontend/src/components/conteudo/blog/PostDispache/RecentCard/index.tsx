@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
-import imgTest01 from "../../../../../assets/img/blog/panel-test.jpg";
+import imgSemFoto from "../../../../../assets/img/blog/semFotoCard.png";
 import { ReactComponent as ImgIcoRight } from "../../../../../assets/img/fonts-icon/arrow_right.svg";
 import { Artigo } from "../../../../../types/artigo";
+import { BASE_URL } from "../../../../../utils/requests";
 
 type Props = {
   post: Artigo;
@@ -9,13 +10,16 @@ type Props = {
 
 const RecentCard = ({ post }: Props) => {
   const autor = post.autor;
-
   return (
     <Fragment>
       <article className="blog-item">
         <div className="bi-pic">
           <img
-            src={imgTest01}
+            src={
+              post?.imgCard !== ""
+                ? `${BASE_URL}/articles/paint/${post?.imgCard}`
+                : imgSemFoto
+            }
             className="img-responsive img-subdestaque"
             alt=""
           />

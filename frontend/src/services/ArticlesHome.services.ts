@@ -59,7 +59,7 @@ export const ResetSecao = {
 export const getArticlesPagabled = async (setPage: any, setDestaque: any, page: number, responseBody: ICategorias) => {
 
     await http
-        .post(`/articles/subcategorias?size=3&page=${page}&sort=id`, responseBody)
+        .post(`/articles/subcategorias?size=3&page=${page}&sort=id,desc`, responseBody)
         .then(res => {
             const data = res.data as ArtigoPage;
             if (data.content.length > 0) {

@@ -1,7 +1,9 @@
 import { Fragment } from "react";
-import imgMainDestaque from "../../../../../assets/img/blog/blog-1.jpg";
+import { Link } from "react-router-dom";
+import imgSemFoto from "../../../../../assets/img/blog/blog-1.jpg";
 import { ReactComponent as ImgIcoRight } from "../../../../../assets/img/fonts-icon/arrow_right.svg";
 import { Artigo } from "../../../../../types/artigo";
+import { BASE_URL } from "../../../../../utils/requests";
 
 type Props = {
   post: Artigo;
@@ -18,14 +20,18 @@ const DispacheCard = ({ post }: Props) => {
       >
         <div className="bi-pic">
           <img
-            src={imgMainDestaque}
+            src={
+              post?.imgDestaque !== ""
+                ? `${BASE_URL}/articles/paint/${post?.imgDestaque}`
+                : imgSemFoto
+            }
             className="img-responsive img-destaque"
             alt="Destaque principal"
           />
         </div>
         <div className="bi-text">
           <h4>
-            <a href="./blog-details.html">{post?.titulo}</a>
+            <Link to="./blog-details.html">{post?.titulo}</Link>
           </h4>
           <ul>
             <li>

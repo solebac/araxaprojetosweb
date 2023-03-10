@@ -61,6 +61,7 @@ const FormAutor = ({ autorId }: Props) => {
   };
 
   useEffect(() => {
+    console.log(`${BASE_URL}/autor/paint/${autor?.foto}`);
     if (typeof id === "number" && id !== 0) {
       nav("/aplicationsys/autor");
     } else {
