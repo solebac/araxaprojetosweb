@@ -14,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -35,20 +36,20 @@ public class Artigo implements Serializable{
 	private String titulo;
 	private Date dataPublicacao;
 	
-	@Size(max = 1000) @Column(name = "introducao")
+	@Lob @Column(name = "introducao")
 	private String conteudoIntroducao;
-	@Size(max = 1000) @Column(name = "paragrafo_one")
+	@Lob @Column(name = "paragrafo_one")
 	private String conteudoParagrafoOne;
-	@Size(max = 1000) @Column(name = "paragrafo_two")
+	@Lob @Column(name = "paragrafo_two")
 	private String conteudoParagrafoTwo;
-	@Size(max = 1000) @Column(name = "conclusao")
+	@Lob @Column(name = "conclusao")
 	private String conteudoConclusao;
 	
 	@Enumerated(EnumType.STRING)
 	private ArtigoStatus status;
 	private String url;
 	private Integer contador;
-	@Size(max = 7)
+	@Size(max = 25)
 	private String slog;
 	
 	private String imgDestaque;
@@ -85,8 +86,8 @@ public class Artigo implements Serializable{
 	public Artigo() {
 	}
 
-	public Artigo(Long id, String titulo, Date dataPublicacao,@Size(max = 1000) String conteudoIntroducao, @Size(max = 1000) String conteudoParagrafoOne,
-			@Size(max = 1000) String conteudoParagrafoTwo, @Size(max = 1000) String conteudoConclusao, ArtigoStatus status,
+	public Artigo(Long id, String titulo, Date dataPublicacao, String conteudoIntroducao, String conteudoParagrafoOne,
+			String conteudoParagrafoTwo, String conteudoConclusao, ArtigoStatus status,
 			String url, String slog, String imgDestaque, String imgCard, @NotNull Autor autor, Integer contador, @NotNull Categoria categoria, Secao secao) {
 		this.id = id;
 		this.titulo = titulo;
@@ -108,7 +109,7 @@ public class Artigo implements Serializable{
 	
 	/*
 	 * #alt 
-	 public Artigo(Long id, String titulo, Date dataPublicacao, @Size(max = 1000) String conteudo, ArtigoStatus status,
+	 public Artigo(Long id, String titulo, Date dataPublicacao, String conteudo, ArtigoStatus status,
 			String url, String slog, @NotNull Autor autor, Integer contador) {
 		this.id = id;
 		this.titulo = titulo;
