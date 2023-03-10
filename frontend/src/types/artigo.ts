@@ -59,4 +59,5 @@ export type ArtigoRecents = {
   titulo: string;
   url: string;
   autor_id: number;
+  img_card: string;
 }

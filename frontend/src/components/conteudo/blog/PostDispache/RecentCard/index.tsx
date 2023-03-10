@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import imgSemFoto from "../../../../../assets/img/blog/semFotoCard.png";
 import { ReactComponent as ImgIcoRight } from "../../../../../assets/img/fonts-icon/arrow_right.svg";
 import { Artigo } from "../../../../../types/artigo";
@@ -27,7 +28,7 @@ const RecentCard = ({ post }: Props) => {
 
         <div className="bi-text">
           <h5>
-            <a href="./blog-details.html">{post.titulo}</a>
+            <Link to="./blog-details.html">{post.titulo}</Link>
           </h5>
           <ul>
             <li>
@@ -38,21 +39,21 @@ const RecentCard = ({ post }: Props) => {
                 }
               })}
             </li>
-            <li>{post.dataPublicacao}</li>
+            <li>{new Date(post.dataPublicacao).toLocaleDateString()}</li>
             <li>{`${post.contador} Comment`}</li>
           </ul>
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
             {post.conteudoIntroducao}
           </p>
-          <a
-            href="/#"
+          <Link
+            to="/#"
             onClick={(e) => {
               e.preventDefault();
             }}
             className="read-more"
           >
             Leia mais <ImgIcoRight />
-          </a>
+          </Link>
         </div>
       </article>
     </Fragment>

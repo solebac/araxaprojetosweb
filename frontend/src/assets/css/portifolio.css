@@ -26,6 +26,7 @@ ul {
 .portifolio-reset {
   overflow: clip;
   padding: 0px;
+  margin-top: 10px;
 }
 .portifolio__linha {
   width: 410px; /*background-color: #252526;*/
@@ -63,7 +64,7 @@ ul {
 .portifolio__name {
   font-size: 2.8rem;
   font-weight: 700;
-  font-family: \"Franklin Gothic Medium\", \"lato\";
+  font-family: "Franklin Gothic Medium", "lato";
 }
 .portifolio__funcao {
   font-size: 1.8rem;
@@ -142,6 +143,9 @@ a {
   display: table-cell;
   vertical-align: middle;
 }
+.portifolio__slog--tipografia {
+  color: white;
+}
 .portifolio__data {
   font-size: 1rem;
 }
@@ -154,12 +158,21 @@ a {
 .portifolio__titulo {
   font-size: 2rem;
   font-weight: 700;
-  font-family: \"Franklin Gothic Medium\", \"Montserrat\";
+  font-family: "Franklin Gothic Medium", "Montserrat";
 }
 .portifolio__subtitulo {
   font-size: 1.3rem;
-  font-weight: 700;
-  font-family: Verdana, \"lato\";
+  font-weight: 500;
+  font-family: Verdana, "lato";
+}
+.portifolio__subtitulo--hidden {
+  font-size: 1.18rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 @media screen and (max-width: 1200px) {
   .portifolio__linha {

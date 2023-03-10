@@ -3,7 +3,8 @@ import { ReactComponent as ImgTwitter } from "../../../../assets/img/redes/twitt
 import { ReactComponent as ImgYoutube } from "../../../../assets/img/redes/youtube.svg";
 import { ReactComponent as ImgFacebook } from "../../../../assets/img/redes/facebook.svg";
 import RecentPostCard from "./RecentPostCard";
-import { ArtigoRecents } from "../../../../types/artigo";
+import { Artigo, ArtigoRecents } from "../../../../types/artigo";
+import { Link } from "react-router-dom";
 
 type Props = {
   post: ArtigoRecents[];
@@ -20,16 +21,16 @@ const PostRecent = ({ post }: Props) => {
             </div>
 
             <div className="fu-links">
-              <a
-                href="/#"
+              <Link
+                to="/#"
                 onClick={(e) => {
                   e.preventDefault();
                 }}
               >
                 <ImgFacebook aria-label="Facebook" />
-              </a>
-              <a
-                href="/#"
+              </Link>
+              <Link
+                to="/#"
                 onClick={(e) => {
                   e.preventDefault();
                 }}
@@ -37,9 +38,9 @@ const PostRecent = ({ post }: Props) => {
                 className="twitter"
               >
                 <ImgTwitter />
-              </a>
-              <a
-                href="/#"
+              </Link>
+              <Link
+                to="/#"
                 onClick={(e) => {
                   e.preventDefault();
                 }}
@@ -47,9 +48,9 @@ const PostRecent = ({ post }: Props) => {
                 className="youtube"
               >
                 <ImgYoutube />
-              </a>
-              <a
-                href="/#"
+              </Link>
+              <Link
+                to="/#"
                 onClick={(e) => {
                   e.preventDefault();
                 }}
@@ -57,7 +58,7 @@ const PostRecent = ({ post }: Props) => {
                 className="instagram"
               >
                 <ImgInstragram />
-              </a>
+              </Link>
             </div>
           </div>
 

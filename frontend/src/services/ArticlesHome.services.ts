@@ -47,7 +47,8 @@ export const ResetRecents = {
     conteudo: "",
     contador: 0,
     autor_id: 0,
-    data_publicacao: ""
+    data_publicacao: "",
+    img_card: ""
 }
 export const ResetSecao = {
     contador: 0,
@@ -68,6 +69,7 @@ export const getArticlesPagabled = async (setPage: any, setDestaque: any, page: 
                 data.content.push(ResetArt);
             }
             const objectDestaque = Object.values(data.content)[0];
+            console.log(data);
             setDestaque(objectDestaque);
         })
         .catch(error => {

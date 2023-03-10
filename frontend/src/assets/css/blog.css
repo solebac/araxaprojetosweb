@@ -10,7 +10,12 @@ a:focus {
 .img-subdestaque {
   width: 330px;
   height: 220px;
-} /*---------------------   Blog -----------------------*/
+}
+.img-cardrecents {
+  width: 105px;
+  height: 80px;
+}
+/*---------------------   Blog -----------------------*/
 .blog__banner {
   border: 1px solid var(--blog-item-banner);
   margin-top: 30px;
@@ -37,7 +42,7 @@ a:focus {
 }
 .blog-artigo {
   font-size: 14px;
-  font-family: \"Montserrat\", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--blog-artigo);
   font-weight: 400;
   line-height: 24px;
@@ -121,7 +126,7 @@ a:focus {
   height: 6px;
   width: 6px;
   border: 1px solid var(--blog-sidebar-post);
-  content: \"\";
+  content: "";
   transform: rotate(45deg);
 }
 .blog-item .bi-text .read-more {
@@ -180,24 +185,26 @@ a:focus {
 .blog-sidebar .feature-post .recent-post .rp-item .rp-text h6 a {
   color: var(--blog-item);
   font-weight: 700;
-  font-family: \"Lato\", sans-serif;
+  font-family: "Lato", sans-serif;
   line-height: 21px;
   font-size: 16px;
 }
-.blog-sidebar .feature-post .recent-post .rp-item .rp-text span {
+.blog-sidebar .feature-post .recent-post .rp-item .rp-text span,
+.blog-recents {
   font-size: 12px;
   color: var(--blog-sidebar);
   position: relative;
   padding-left: 22px;
 }
-.blog-sidebar .feature-post .recent-post .rp-item .rp-text span:after {
+.blog-sidebar .feature-post .recent-post .rp-item .rp-text span:after,
+.blog-recents:after {
   position: absolute;
   left: 0;
   top: 5px;
   height: 6px;
   width: 6px;
   border: 1px solid var(--blog-sidebar-post);
-  content: \"\";
+  content: "";
   transform: rotate(45deg);
 }
 .subscribe-form {
@@ -229,7 +236,7 @@ a:focus {
 }
 .section-title.sidebar-title-b {
   margin-bottom: 30px;
-  font-family: \"Lato\", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 .section-title h4,
 .section-title h5,
@@ -250,7 +257,7 @@ a:focus {
   width: 5px;
   height: 46px;
   background: #00c89e;
-  content: \"\";
+  content: "";
 }
 .section-title.sidebar-title-b h6:after {
   height: 20px;
@@ -412,7 +419,7 @@ a:focus {
   height: 6px;
   width: 6px;
   border: 1px solid var(--blog-sidebar-post);
-  content: \"\";
+  content: "";
   transform: rotate(45deg);
 }
 .blog-details-content .bc-widget .comment-option {
@@ -525,7 +532,7 @@ a:focus {
   height: 6px;
   width: 6px;
   border: 1px solid var(--blog-sidebar-post);
-  content: \"\";
+  content: "";
   transform: rotate(45deg);
 } /*---------------------   Pagination -----------------------*/
 svg:not(:root) {
