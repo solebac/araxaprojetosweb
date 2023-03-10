@@ -32,10 +32,10 @@ const FormAutor = () => {
   const handlerCopyImage = async (e: any) => {
     e.preventDefault();
     const data = e.target.files[0];
-    console.log("Loading Imagem...", data); //Test
+    //console.log("Loading Imagem...", data); //Test
     setImage(data);
     setImgName(data.name);
-    carregarImg(e.target.dataset.imagens);
+    carregarImg(e.target.dataset.imagens, e.target.id);
   };
   const handledFormAutor = async (event: any) => {
     //event: React.FormEvent<HTMLInputElement>
@@ -46,7 +46,7 @@ const FormAutor = () => {
     //(old-formData)let formData: IValues = {};
     let formData = new FormData();
 
-    for (let i = 0; i < target.length; i) {
+    for (let i = 0; i < target.length; i++) {
       //(old-formData) formData[target.elements[i].getAttribute("id")] =  target.elements[i].value;
       formData.append(
         target.elements[i].getAttribute("id"),
@@ -66,9 +66,13 @@ const FormAutor = () => {
     responseBody.senha = formData.get("pass") as string;
     responseBody.usuario = formData.get("usuario") as string;
     const dto = JSON.stringify(responseBody);
+    console.log(image);
+    console.log(imgName);
+    console.log(responseBody);
     let dados = new FormData();
     dados.append("dto", dto);
     dados.append("files", image, imgName);
+
     //Inativo await postAutores(setAutor, responseBody);
     await postAutoresInsertFile(setAutor, dados);
   };

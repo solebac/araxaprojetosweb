@@ -130,17 +130,18 @@ const Login = () => {
                     className="check"
                     defaultChecked
                   />
-                  <label htmlFor="check">
+                  {/*<label htmlFor="check">
                     <span className="icon"></span> Mantenha-me conectado
-                  </label>
+                    </label>*/}
                 </div>
+                <div className="hr"></div>
                 <div className="group">
                   <input type="submit" className="button" value="Sign In" />
                 </div>
-                <div className="hr"></div>
+                {/*<div className="hr"></div>
                 <div className="foot-lnk">
                   <label htmlFor="tab-2">Esqueceu sua senha?</label>
-                </div>
+                </div>*/}
               </form>
 
               <form className="for-pwd-htm">

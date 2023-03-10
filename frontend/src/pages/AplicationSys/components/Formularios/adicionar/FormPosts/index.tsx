@@ -12,7 +12,7 @@ import { Categoria } from "../../../../../../types/categoria";
 import { Secao } from "../../../../../../types/secao";
 import http from "../../../../../../utils/http";
 import { carregarImg } from "../../../../../../utils/loadimg";
-import { BASE_PEOPLE, BASE_URL } from "../../../../../../utils/requests";
+import { BASE_PEOPLE } from "../../../../../../utils/requests";
 import ButtonGroups from "../../components/ButtonGroups";
 
 const FormPosts = () => {
@@ -40,15 +40,14 @@ const FormPosts = () => {
     const data = e.target.files[0];
     setDestaque(data);
     setImageDestaque(data.name);
-    carregarImg(e.target.dataset.imagens);
+    carregarImg(e.target.dataset.imagens, e.target.id);
   };
   const handlerCopyImageMini = async (e: any) => {
     e.preventDefault();
-    const data = e.target.files[0];
-    console.log("Loading Imagem...", data);
-    setCard(data);
-    setImageCard(data.name);
-    carregarImg(e.target.dataset.imagens);
+    const data1 = e.target.files[0];
+    setCard(data1);
+    setImageCard(data1.name);
+    carregarImg(e.target.dataset.imagens, e.target.id);
   };
   const handlerSendPost = async (e: any) => {
     e.preventDefault();
@@ -402,18 +401,17 @@ const FormPosts = () => {
             className="form-control appsys"
             id="contador"
             name="contador"
-            defaultValue={0}
+            value={0}
           />
 
           <ButtonGroups handledGo={handleGoBack} />
         </form>
       </div>
 
-      <section>
-        {/**Modelo Test load [img] image */}
+      {/*<section>
         <h5>Teste de Imagem 02</h5>
         <img src={`${BASE_URL}/articles/paint/semFotoCard.png`} alt="" />
-      </section>
+      </section>*/}
     </>
   );
 };

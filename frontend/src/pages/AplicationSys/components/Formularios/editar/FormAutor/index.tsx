@@ -30,10 +30,10 @@ const FormAutor = ({ autorId }: Props) => {
   const handlerCopyImage = async (e: any) => {
     e.preventDefault();
     const data = e.target.files[0];
-    console.log("Loading Imagem...", data); //Test
+    //console.log("Loading Imagem...", data); //Test
     setImage(data);
     setImgName(data.name);
-    carregarImg(e.target.dataset.imagens);
+    carregarImg(e.target.dataset.imagens, e.target.id);
   };
   const handledFormAutor = async (e: any) => {
     e.preventDefault();

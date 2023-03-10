@@ -37,8 +37,8 @@ const TbodyArtigos = ({ line, autor }: Props) => {
             <i></i>
           </Link>
 
-          <a
-            href="/#"
+          <Link
+            to="/#"
             onClick={(e) => {
               e.preventDefault();
             }}
@@ -49,7 +49,7 @@ const TbodyArtigos = ({ line, autor }: Props) => {
             data-original-title="Excluir Cliente"
           >
             <i className="icon-remove icon-white"></i>
-          </a>
+          </Link>
         </td>
       </tr>
     </>

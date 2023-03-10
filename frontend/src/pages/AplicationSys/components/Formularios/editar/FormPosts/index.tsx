@@ -47,14 +47,14 @@ const FormPosts = ({ articlesId }: Props) => {
     const data = e.target.files[0];
     setDestaque(data);
     setImageDestaque(data.name);
-    carregarImg(e.target.dataset.imagens);
+    carregarImg(e.target.dataset.imagens, e.target.id);
   };
   const handlerCopyImageMini = async (e: any) => {
     e.preventDefault();
     const data = e.target.files[0];
     setCard(data);
     setImageCard(data.name);
-    carregarImg(e.target.dataset.imagens);
+    carregarImg(e.target.dataset.imagens, e.target.id);
   };
   const handlerBlurUrl = (e: any) => {
     const myArray = e.target.value.split(" ");
@@ -66,16 +66,16 @@ const FormPosts = ({ articlesId }: Props) => {
   const handlerSendPost = async (e: any) => {
     e.preventDefault();
     const responseBody = {} as IArtigo;
-    //responseBody.id: null;
     var today = new Date();
     const strToday = today.toISOString().slice(0, 10);
+    responseBody.id = e.target.postId.value;
     responseBody.titulo = e.target.titulo.value;
     responseBody.dataPublicacao = strToday;
     responseBody.conteudoIntroducao = e.target.introducao.value;
     responseBody.conteudoParagrafoOne = e.target.paragrafoone.value;
     responseBody.conteudoParagrafoTwo = e.target.paragrafotwo.value;
     responseBody.conteudoConclusao = e.target.conclusao.value;
-    responseBody.status = status; //e.target.artigoStatus.value;
+    responseBody.status = e.target.artigoStatus.value;
     responseBody.url = e.target.url.value;
     responseBody.slog = ""; //e.target.slog.value;
     responseBody.imgDestaque = imageDestaque;
@@ -89,7 +89,7 @@ const FormPosts = ({ articlesId }: Props) => {
 
     // let target   = event.target  as HTMLTextAreaElement;
     const dto = JSON.stringify(responseBody);
-    //console.log(responseBody);
+
     let formData = new FormData();
     formData.append("dto", dto);
     formData.append("destaque", destaque, imageDestaque);
@@ -103,12 +103,14 @@ const FormPosts = ({ articlesId }: Props) => {
       nav("/aplicationsys/posts");
     } else {
       if (typeof articles?.imgCard === "string" && articles?.imgCard !== "") {
+        setImageCard(articles?.imgCard);
         loadImageServer(setCard, articles?.imgCard, "imgCard");
       }
       if (
         typeof articles?.imgDestaque === "string" &&
         articles?.imgDestaque !== ""
       ) {
+        setImageDestaque(articles?.imgDestaque);
         loadImageServer(setDestaque, articles?.imgDestaque, "imgdestaque");
       }
     }
@@ -450,6 +452,7 @@ const FormPosts = ({ articlesId }: Props) => {
                   id="url"
                   name="url"
                   defaultValue={articles?.url}
+                  readOnly
                 />
               </div>
             </div>

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { BASE_URL } from "./requests";
 
-export function carregarImg(id) {
+export function carregarImg(id, imagem) {
   var target = document.getElementById(id);
-  var file = document.querySelector("input[type=file]").files[0];
+  //var file = document.querySelector("input[type=file]").files[0]; //Get Reference
+  var file = document.getElementById(imagem).files[0];
   var reader = new FileReader();
 
   reader.onloadend = function () {
@@ -23,7 +24,6 @@ export const loadImageServer = async (setDados, image, inputFileId) => {
     //var target = document.getElementById("img"); //! ou  as HTMLElement;
     const file = res.data; //get image server
     var blob = new Blob([file]); //convert image blob
-    console.log(blob);
     var strType = convertTypeImage(image);
     if (
       strType.includes("png") ||
@@ -37,6 +37,7 @@ export const loadImageServer = async (setDados, image, inputFileId) => {
 
       document.getElementById(inputFileId).files = file_list;
       setDados(document.getElementById(inputFileId).files[0]);
+      //console.log(document.getElementById(inputFileId).files[0]);
     }
   });
 };

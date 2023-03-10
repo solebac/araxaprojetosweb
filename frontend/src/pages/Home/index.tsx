@@ -11,8 +11,14 @@ import MainHome from "../../components/MainHome";
 import Footers from "../../components/Footers";
 import VLibras from "@djpfs/react-vlibras";
 import ScrollToTop from "../../utils/ScrollToTop";
+import { useEffect } from "react";
+import { clearHeaders } from "../../services/Autentication.services";
 
 function Home() {
+  useEffect(() => {
+    window.localStorage.clear();
+    clearHeaders();
+  }, []);
   return (
     <>
       <BannerHome />
