@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.araxaprojetosweb.backend.entities.Artigo;
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.dto.ArtigoDto;
 import com.araxaprojetosweb.backend.entities.dto.MultiDataArticles;
@@ -100,6 +101,13 @@ public class ArtigoController {
 	public ResponseEntity<List<IArtigoRecentsProjecao>> findLimitPosts(@PathVariable Long intervalo) {
 		List<IArtigoRecentsProjecao> result = services.findLimitPosts(intervalo);
 		return ResponseEntity.ok().body(result);
+	}
+	
+	@GetMapping(path = "/posts/{slug}")
+	public ResponseEntity<ArtigoDto> findPostSlug(@PathVariable String slug){
+		System.out.println(slug);
+		ArtigoDto obj = services.findBySlog(slug);
+		return ResponseEntity.ok().body(obj);
 	}
 
 	@GetMapping(path = "/categorias/{categoria_id}")

@@ -10,6 +10,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -53,9 +54,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/articles/recents/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/articles/categorias/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/articles/tags/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/articles/posts/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/articles/comments/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/categoria/paginacao/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/categoria/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/section/categoria/full/**").permitAll()
 				/*.antMatchers(HttpMethod.GET, "/**").permitAll()*/
 				.antMatchers("/h2-console", "/h2-console/**").permitAll()
@@ -75,6 +78,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	protected AuthenticationManager authenticationManager() throws Exception {
 		return super.authenticationManager();
+	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/*.html", "/v2/**", "/webjars/**", "/configuration/", "/swagger-resources/**");
 	}
 
 	@Bean /* Configuração que libera aplicação com servidores diferentes */

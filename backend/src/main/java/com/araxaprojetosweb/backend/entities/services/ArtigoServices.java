@@ -1,5 +1,6 @@
 package com.araxaprojetosweb.backend.entities.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,7 @@ import com.araxaprojetosweb.backend.repositories.ArtigoRepository;
 import com.araxaprojetosweb.backend.repositories.AutorRepository;
 import com.araxaprojetosweb.backend.repositories.CategoriaRepository;
 import com.araxaprojetosweb.backend.repositories.SecaoRepository;
+import com.araxaprojetosweb.backend.util.AutenticationBase64;
 
 @Service
 public class ArtigoServices {
@@ -55,7 +57,20 @@ public class ArtigoServices {
 		List<IArtigoOfAutorProjecao> page = artRepository.findAllbyArtigoAutor(url);
 		return page;
 	}
-
+	
+	@Transactional(readOnly = true)
+	public ArtigoDto findBySlog(String slog){
+		Optional<Artigo> obj = artRepository.findBySlog(slog);
+		return new ArtigoDto(obj.orElseThrow(() -> new ResourceNotFoundException(slog)));
+	}
+	/*
+	 * 
+	 * @Transactional(readOnly = true)
+	public ArtigoDto findById(Long id) {
+		Optional<Artigo> dto = artRepository.findById(id);
+		return new ArtigoDto(dto.orElseThrow(() -> new ResourceNotFoundException(id)));
+	}*/
+	
 	@Transactional(readOnly = true)
 	public List<IArtigoCategoriaProjecao> findCategoryByArtigo(Integer categoria_id) {
 		List<IArtigoCategoriaProjecao> page = artRepository.findCategoryByArtigo(categoria_id);
@@ -129,9 +144,12 @@ public class ArtigoServices {
 					.orElse(new Secao());	
 			artigo.setSecao(secao);
 		}
-		
+
 		artigo.setAutor(autor);
 		artigo.setCategoria(categoria.get());
+		String slug = AutenticationBase64.passwordEncodeBase64(LocalDateTime.now() + "|" + artigo.getUrl());
+		System.out.println(slug);
+		artigo.setSlog(slug);
 		artigo = artRepository.saveAndFlush(artigo);
 
 		return new ArtigoDto(artigo);

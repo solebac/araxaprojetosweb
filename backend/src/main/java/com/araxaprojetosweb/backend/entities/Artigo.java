@@ -49,7 +49,7 @@ public class Artigo implements Serializable{
 	private ArtigoStatus status;
 	private String url;
 	private Integer contador;
-	@Size(max = 25)
+	@Size(max = 100)
 	private String slog;
 	
 	private String imgDestaque;

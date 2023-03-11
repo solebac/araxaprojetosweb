@@ -1,6 +1,7 @@
 package com.araxaprojetosweb.backend.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,12 +18,13 @@ import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoOfAutorProjec
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoRecentsProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IComentarioProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.ITagProjecao;
+import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
 
 @Repository
 public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
 	/*
 	 * @Query(
-	 * value="SELECT id,contador,conteudo, data_publicacao,status,titulo,\r\n" +
+	 * value="SELECT id,contador,conteudo, data_publicacao,status,titulo," +
 	 * "url, autor_id FROM tb_artigo f order by 1 desc limit :intervalo",
 	 * nativeQuery=true)
 	 */
@@ -32,17 +34,18 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
 	 * @Query(value = "SELECT tab.id,tab.contador,tab.conteudo, tab.data_publicacao,tab.status,tab.titulo, tab.url, tab.autor_id FROM tb_artigo tab inner join TB_ARTIGO_CATEGORIA tab1 on(tab.id = tab1.artigo_id and tab1.categoria_id=2) order by 1 desc limit :intervalo", nativeQuery = true)
 	List<IArtigoRecentsProjecao> findLimitPosts(Long intervalo);*/
 	@Query(value = "SELECT tab.id,tab.contador, concat(tab.introducao, tab.paragrafo_one) as conteudo, tab.data_publicacao,tab.status,tab.titulo, "
-			+ "tab.url, tab.autor_id, tab.img_card FROM tb_artigo tab "
+			+ "tab.url, tab.autor_id, tab.img_card, tab.slog FROM tb_artigo tab "
 			+ "where tab.categoria_id=2 order by 1 desc limit :intervalo", nativeQuery = true)
 	List<IArtigoRecentsProjecao> findLimitPosts(Long intervalo);
 
-	@Query(value = "select tab.id,tab.contador,concat(tab.introducao, tab.paragrafo_one) as conteudo, tab.data_publicacao,tab.status,tab.titulo,\r\n"
-			+ "tab.url, tab1.nome  AS nomeAutor, tab1.id AS autor_id from tb_artigo tab\r\n"
-			+ "inner join tb_autor tab1 on tab.autor_id = tab1.id\r\n" + "where tab.url = :url ", nativeQuery = true)
+	@Query(value = "select tab.id,tab.contador,concat(tab.introducao, tab.paragrafo_one) as conteudo, tab.data_publicacao,tab.status,tab.titulo,"
+			+ " tab.url, tab1.nome  AS nomeAutor, tab1.id AS autor_id "
+			+ " from tb_artigo tab "
+			+ " inner join tb_autor tab1 on tab.autor_id = tab1.id" + "where tab.url = :url ", nativeQuery = true)
 	List<IArtigoOfAutorProjecao> findAllbyArtigoAutor(String url);
 
-	@Query(value = "select tab.id, tab.descricao, tab.nome from tb_categoria tab\r\n"
-			+ "inner join tb_artigo_categoria tab1 on tab.id = tab1.categoria_id\r\n"
+	@Query(value = "select tab.id, tab.descricao, tab.nome from tb_categoria tab"
+			+ "inner join tb_artigo_categoria tab1 on tab.id = tab1.categoria_id"
 			+ "where tab1.categoria_id = :categoria_id", nativeQuery = true)
 	List<IArtigoCategoriaProjecao> findCategoryByArtigo(Integer categoria_id);
 
@@ -51,7 +54,8 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
 
 	@Query(value = "select tab.* from tb_comentario tab where id_artigo_comment = :artigo_id", nativeQuery = true)
 	List<IComentarioProjecao> findCommentByArtigo(Integer artigo_id);
-
+	
+	Optional<Artigo> findBySlog(String slog);
 	
 	/*
 	 * #alt

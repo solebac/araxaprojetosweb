@@ -13,5 +13,5 @@ public interface IArtigoRecentsProjecao {
 	String getUrl();
 	Long getAutor_id();
 	String getImg_card();
-	
+	String getSlog();
 }
