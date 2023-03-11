@@ -29,7 +29,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/posts" element={<Posts />} />
+          {/** <Route path="/blog/posts" element={<Posts />} /> */}
+          <Route path="/blog/posts">
+            <Route path=":slug" element={<Posts />} />
+          </Route>
           <Route path="/contato" element={<Contato />} />
           <Route path="/portifolio" element={<Portifolio />} />
           <Route path="/portifolio/about" element={<About />} />

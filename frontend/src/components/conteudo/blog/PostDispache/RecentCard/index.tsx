@@ -28,7 +28,7 @@ const RecentCard = ({ post }: Props) => {
 
         <div className="bi-text">
           <h5>
-            <Link to="./blog-details.html">{post.titulo}</Link>
+            <Link to={`/blog/posts/${post?.slog}`}>{post.titulo}</Link>
           </h5>
           <ul>
             <li>

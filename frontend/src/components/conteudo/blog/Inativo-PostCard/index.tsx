@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import imgTest01 from "../../../../assets/img/blog/panel-test.jpg";
 import { ReactComponent as ImgIcoRight } from "../../../../assets/img/fonts-icon/arrow_right.svg";
 
@@ -16,9 +17,9 @@ const PostCard = () => {
 
         <div className="bi-text">
           <h5>
-            <a href="./blog-details.html">
+            <Link to="./blog-details.html">
               Flavio: The app changing real estate and construction forever
-            </a>
+            </Link>
           </h5>
           <ul>
             <li>
@@ -31,15 +32,15 @@ const PostCard = () => {
             Lorem Ipsum has been the industry’s standard dummy text ever since
             the 1500s, when an unknown...
           </p>
-          <a
-            href="/#"
+          <Link
+            to="/#"
             onClick={(e) => {
               e.preventDefault();
             }}
             className="read-more"
           >
             Read more <ImgIcoRight />
-          </a>
+          </Link>
         </div>
       </article>
     </>

@@ -1,6 +1,11 @@
 import React from "react";
+import { PostsTitle } from "../../../../../types/blog";
 
-const Capa = () => {
+type Props = {
+  infor: PostsTitle;
+};
+
+const Capa = ({ infor }: Props) => {
   return (
     <section className="capa">
       <div className="texto-capa">
@@ -8,16 +13,15 @@ const Capa = () => {
           <div className="col-lg-12">
             <div className="bh-text bh-text--card">
               <h3>
-                what3words: The app changing real
-                <br />
-                estate and construction forever
+                {infor?.titulo}
+                {/**<br />estate and construction forever */}
               </h3>
               <ul>
                 <li>
-                  by <span className="text--card">Jonathan Doe</span>
+                  by <span className="text--card">{infor?.authorName}</span>
                 </li>
-                <li>Seb 24, 2019</li>
-                <li>12 Comment</li>
+                <li>{infor?.publicacao}</li>
+                <li>0 Comentários</li>
               </ul>
             </div>
           </div>

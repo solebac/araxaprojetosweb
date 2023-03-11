@@ -48,7 +48,8 @@ export const ResetRecents = {
     contador: 0,
     autor_id: 0,
     data_publicacao: "",
-    img_card: ""
+    img_card: "",
+    slog: ""
 }
 export const ResetSecao = {
     contador: 0,
@@ -69,7 +70,6 @@ export const getArticlesPagabled = async (setPage: any, setDestaque: any, page: 
                 data.content.push(ResetArt);
             }
             const objectDestaque = Object.values(data.content)[0];
-            console.log(data);
             setDestaque(objectDestaque);
         })
         .catch(error => {
@@ -83,7 +83,8 @@ export const getArticlesPagabledLight = async (setPage: any, page: number, respo
         .post(`/articles/subcategorias?size=4&page=${page}&sort=id`, responseBody)
         .then(res => {
             const data = res.data as ArtigoPage;
-            setPage(data)
+            setPage(data);
+            console.log(data);
         })
         .catch(error => {
             // do something with error

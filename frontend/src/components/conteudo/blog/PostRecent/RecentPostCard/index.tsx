@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 /*import imgTest01 from "../../../../../assets/img/blog/panel-test.jpg";*/
 import imgSemFoto from "../../../../../assets/img/blog/semFotoCard.png";
-import { Artigo, ArtigoRecents } from "../../../../../types/artigo";
+import { ArtigoRecents } from "../../../../../types/artigo";
 import { BASE_URL } from "../../../../../utils/requests";
 
 type Props = {
@@ -10,7 +10,6 @@ type Props = {
 };
 
 const RecentPostCard = ({ post }: Props) => {
-  console.log(`${BASE_URL}/articles/paint/${post?.img_card}`);
   return (
     <>
       <article className="rp-item">
@@ -28,10 +27,7 @@ const RecentPostCard = ({ post }: Props) => {
         <div className="rp-text">
           <h6>
             <Link
-              to="/#"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
+              to={`/blog/posts/${post?.slog}`}
               className="blog-artigo--limit-line blog-artigo--two-line"
             >
               {post.titulo}

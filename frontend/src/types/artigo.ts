@@ -60,4 +60,5 @@ export type ArtigoRecents = {
   url: string;
   autor_id: number;
   img_card: string;
+  slog: string;
 }
