@@ -16,9 +16,9 @@ import com.araxaprojetosweb.backend.entities.dto.ArtigoDto;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoCategoriaProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoOfAutorProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoRecentsProjecao;
+import com.araxaprojetosweb.backend.entities.dto.projection.IArtigosNews;
 import com.araxaprojetosweb.backend.entities.dto.projection.IComentarioProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.ITagProjecao;
-import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
 
 @Repository
 public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
@@ -63,5 +63,25 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
 	Page<ArtigoDto> findByCategoria(Categoria categoria, Pageable pageable);
 	
 	Page<ArtigoDto> findByCategoriaAndAutor(Categoria categoria, Autor autor, Pageable pageable);
+	
+	@Query(value = "SELECT max(id) as id , categoria_id , "
+			+ "	   titulo, data_publicacao,  slog  "
+			+ "FROM tb_artigo where categoria_id = 1 "
+			+ "group by categoria_id, titulo, data_publicacao, slog "
+			+ "having max(id) = (select max(id) FROM tb_artigo where categoria_id = 1) "
+			+ "union "
+			+ "SELECT max(id)  as id, categoria_id , "
+			+ "	   titulo, data_publicacao,  slog  "
+			+ "FROM tb_artigo where categoria_id = 2 "
+			+ "group by categoria_id, titulo, data_publicacao, slog "
+			+ "having max(id) = (select max(id) FROM tb_artigo where categoria_id = 2) "
+			+ "union "
+			+ "SELECT max(id)  as id, categoria_id, "
+			+ "	   titulo, data_publicacao,  slog  "
+			+ "FROM tb_artigo where categoria_id = 3 "
+			+ "group by categoria_id, titulo, data_publicacao, slog "
+			+ "having max(id) = (select max(id) FROM tb_artigo where categoria_id = 3) "
+			+ "order by 1", nativeQuery = true)
+	List<IArtigosNews> findByNews();
 
 }

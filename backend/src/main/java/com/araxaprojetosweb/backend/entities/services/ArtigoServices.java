@@ -19,9 +19,11 @@ import com.araxaprojetosweb.backend.entities.Autor;
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.Secao;
 import com.araxaprojetosweb.backend.entities.dto.ArtigoDto;
+import com.araxaprojetosweb.backend.entities.dto.ArtigoNewsDto;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoCategoriaProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoOfAutorProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoRecentsProjecao;
+import com.araxaprojetosweb.backend.entities.dto.projection.IArtigosNews;
 import com.araxaprojetosweb.backend.entities.dto.projection.IComentarioProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.ITagProjecao;
 import com.araxaprojetosweb.backend.entities.services.exceptions.ResourceNotFoundException;
@@ -70,7 +72,6 @@ public class ArtigoServices {
 		Optional<Artigo> dto = artRepository.findById(id);
 		return new ArtigoDto(dto.orElseThrow(() -> new ResourceNotFoundException(id)));
 	}*/
-	
 	@Transactional(readOnly = true)
 	public List<IArtigoCategoriaProjecao> findCategoryByArtigo(Integer categoria_id) {
 		List<IArtigoCategoriaProjecao> page = artRepository.findCategoryByArtigo(categoria_id);
@@ -87,6 +88,12 @@ public class ArtigoServices {
 	public List<IComentarioProjecao> findCommentByArtigo(Integer artigo_id) {
 		List<IComentarioProjecao> comment = artRepository.findCommentByArtigo(artigo_id);
 		return comment;
+	}
+	
+	@Transactional(readOnly = true)
+	public List<IArtigosNews> findByNews() {
+		List<IArtigosNews> news = artRepository.findByNews();
+		return news; 
 	}
 
 	@Transactional(readOnly = true)

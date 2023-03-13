@@ -35,10 +35,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.araxaprojetosweb.backend.entities.Artigo;
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.dto.ArtigoDto;
+import com.araxaprojetosweb.backend.entities.dto.ArtigoNewsDto;
 import com.araxaprojetosweb.backend.entities.dto.MultiDataArticles;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoCategoriaProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoOfAutorProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoRecentsProjecao;
+import com.araxaprojetosweb.backend.entities.dto.projection.IArtigosNews;
 import com.araxaprojetosweb.backend.entities.dto.projection.IComentarioProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.ITagProjecao;
 import com.araxaprojetosweb.backend.entities.services.ArtigoServices;
@@ -105,8 +107,12 @@ public class ArtigoController {
 	
 	@GetMapping(path = "/posts/{slug}")
 	public ResponseEntity<ArtigoDto> findPostSlug(@PathVariable String slug){
-		System.out.println(slug);
 		ArtigoDto obj = services.findBySlog(slug);
+		return ResponseEntity.ok().body(obj);
+	}
+	@GetMapping(path = "/posts/news")
+	public ResponseEntity<List<IArtigosNews>> findByNews(){
+		List<IArtigosNews> obj = services.findByNews();
 		return ResponseEntity.ok().body(obj);
 	}
 
