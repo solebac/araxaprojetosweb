@@ -140,7 +140,7 @@ public class ArtigoServices {
 			autor.setNome("Desconhecido");
 			autor.setEmail(dto.getAutor().getEmail());
 			autor.setUsuario("Desconhecido");
-			autor.setFoto("c:\\temp\\");
+			autor.setFoto("Files-Uploads//perfil//");
 			autRepository.saveAndFlush(autor);
 		}
 		Artigo artigo = new Artigo();
@@ -155,7 +155,6 @@ public class ArtigoServices {
 		artigo.setAutor(autor);
 		artigo.setCategoria(categoria.get());
 		String slug = AutenticationBase64.passwordEncodeBase64(LocalDateTime.now() + "|" + artigo.getUrl());
-		System.out.println(slug);
 		artigo.setSlog(slug);
 		artigo = artRepository.saveAndFlush(artigo);
 

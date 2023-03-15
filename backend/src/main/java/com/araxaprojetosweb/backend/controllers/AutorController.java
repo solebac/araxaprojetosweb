@@ -4,6 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -80,8 +82,11 @@ public class AutorController {
 			@RequestPart("dto") String strDto,
 			@RequestPart("files") MultipartFile photos
 			) throws JsonMappingException, JsonProcessingException{
+		
+		String decoded = URLDecoder.decode(strDto, StandardCharsets.UTF_8);
+		
 		ObjectMapper mapper = new ObjectMapper();
-		Autor result = mapper.readValue(strDto, Autor.class);
+		Autor result = mapper.readValue(decoded, Autor.class);
 		boolean photoCard = saveFile(photos);
 		if (!photoCard) {
 			result.setFoto("semFotoCard.png");
@@ -103,8 +108,11 @@ public class AutorController {
 			@PathVariable Long id,
 			@RequestPart("dto") String strDto,
 			@RequestPart("files") MultipartFile photos) throws JsonMappingException, JsonProcessingException{
+		
+		String decoded = URLDecoder.decode(strDto, StandardCharsets.UTF_8);
+		
 		ObjectMapper mapper = new ObjectMapper();
-		Autor autor = mapper.readValue(strDto, Autor.class);
+		Autor autor = mapper.readValue(decoded, Autor.class);
 		boolean photoRetro = saveFile(photos);
 		System.out.println(Arrays.asList(autor));
 		if (!photoRetro) {

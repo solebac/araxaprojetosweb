@@ -49,7 +49,7 @@ public class Artigo implements Serializable{
 	private ArtigoStatus status;
 	private String url;
 	private Integer contador;
-	@Size(max = 100)
+	@Size(max = 250)
 	private String slog;
 	
 	private String imgDestaque;
@@ -88,7 +88,8 @@ public class Artigo implements Serializable{
 
 	public Artigo(Long id, String titulo, Date dataPublicacao, String conteudoIntroducao, String conteudoParagrafoOne,
 			String conteudoParagrafoTwo, String conteudoConclusao, ArtigoStatus status,
-			String url, String slog, String imgDestaque, String imgCard, @NotNull Autor autor, Integer contador, @NotNull Categoria categoria, Secao secao) {
+			String url, @Size(max = 250) String slog, String imgDestaque, String imgCard, @NotNull Autor autor, 
+			Integer contador, @NotNull Categoria categoria, Secao secao) {
 		this.id = id;
 		this.titulo = titulo;
 		this.dataPublicacao = dataPublicacao;
