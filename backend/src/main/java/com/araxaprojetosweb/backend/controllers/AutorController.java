@@ -4,8 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.araxaprojetosweb.backend.assembler.DecoderAssembler;
 import com.araxaprojetosweb.backend.entities.Autor;
 import com.araxaprojetosweb.backend.entities.dto.AutorDto;
 import com.araxaprojetosweb.backend.entities.services.AutorServices;
@@ -49,6 +48,9 @@ public class AutorController {
 	
 	@Autowired
 	private AutorServices services;
+	
+	@Autowired
+	private DecoderAssembler assembler;
 	
 	@GetMapping
 	public ResponseEntity<List<AutorDto>> findAll(){
@@ -83,10 +85,8 @@ public class AutorController {
 			@RequestPart("files") MultipartFile photos
 			) throws JsonMappingException, JsonProcessingException{
 		
-		String decoded = URLDecoder.decode(strDto, StandardCharsets.UTF_8);
-		
 		ObjectMapper mapper = new ObjectMapper();
-		Autor result = mapper.readValue(decoded, Autor.class);
+		Autor result = mapper.readValue(assembler.toDecoder(strDto), Autor.class);
 		boolean photoCard = saveFile(photos);
 		if (!photoCard) {
 			result.setFoto("semFotoCard.png");
@@ -109,10 +109,8 @@ public class AutorController {
 			@RequestPart("dto") String strDto,
 			@RequestPart("files") MultipartFile photos) throws JsonMappingException, JsonProcessingException{
 		
-		String decoded = URLDecoder.decode(strDto, StandardCharsets.UTF_8);
-		
 		ObjectMapper mapper = new ObjectMapper();
-		Autor autor = mapper.readValue(decoded, Autor.class);
+		Autor autor = mapper.readValue(assembler.toDecoder(strDto), Autor.class);
 		boolean photoRetro = saveFile(photos);
 		System.out.println(Arrays.asList(autor));
 		if (!photoRetro) {

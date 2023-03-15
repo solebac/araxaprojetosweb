@@ -4,8 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.araxaprojetosweb.backend.assembler.DecoderAssembler;
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.dto.ArtigoDto;
 import com.araxaprojetosweb.backend.entities.dto.MultiDataArticles;
@@ -56,6 +55,9 @@ public class ArtigoController {
 
 	@Autowired
 	private ArtigoServices services;
+	
+	@Autowired
+	private DecoderAssembler assembler;
 
 	@GetMapping
 	public ResponseEntity<Page<ArtigoDto>> findAll(Pageable pageable) {
@@ -153,10 +155,8 @@ public class ArtigoController {
 			@RequestPart("dto") String strDto, @RequestPart("destaque") MultipartFile destaque,
 			@RequestPart("card") MultipartFile card) throws JsonMappingException, JsonProcessingException {
 
-		String decoded = URLDecoder.decode(strDto, StandardCharsets.UTF_8);
-		
 		ObjectMapper mapper = new ObjectMapper();// Convert String por Object
-		ArtigoDto dto = mapper.readValue(decoded, ArtigoDto.class);
+		ArtigoDto dto = mapper.readValue(assembler.toDecoder(strDto), ArtigoDto.class);
 
 		boolean photoDestaque = saveFile(destaque);
 		boolean photoCard = saveFile(card);
@@ -215,10 +215,8 @@ public class ArtigoController {
 			@RequestParam("destaque") MultipartFile destaque, @RequestParam("card") MultipartFile card)
 			throws JsonMappingException, JsonProcessingException {
 		
-		String decoded = URLDecoder.decode(strDto, StandardCharsets.UTF_8);
-		
 		ObjectMapper mapper = new ObjectMapper();
-		ArtigoDto dto = mapper.readValue(decoded, ArtigoDto.class);
+		ArtigoDto dto = mapper.readValue(assembler.toDecoder(strDto), ArtigoDto.class);
 		boolean photoDestaque = saveFile(destaque);
 		boolean photoCard = saveFile(card);
 		if (!photoDestaque) {
