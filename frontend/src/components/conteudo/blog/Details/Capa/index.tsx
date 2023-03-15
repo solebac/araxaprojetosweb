@@ -1,4 +1,3 @@
-import React from "react";
 import { PostsTitle } from "../../../../../types/blog";
 
 type Props = {
@@ -12,7 +11,7 @@ const Capa = ({ infor }: Props) => {
         <div className="row">
           <div className="col-lg-12">
             <div className="bh-text bh-text--card">
-              <h3>
+              <h3 style={{ fontSize: "35px", fontWeight: "700" }}>
                 {infor?.titulo}
                 {/**<br />estate and construction forever */}
               </h3>

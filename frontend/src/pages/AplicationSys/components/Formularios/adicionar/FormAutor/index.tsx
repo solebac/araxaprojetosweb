@@ -66,11 +66,9 @@ const FormAutor = () => {
     responseBody.senha = formData.get("pass") as string;
     responseBody.usuario = formData.get("usuario") as string;
     const dto = JSON.stringify(responseBody);
-    console.log(image);
-    console.log(imgName);
-    console.log(responseBody);
+    const encodeUri = encodeURIComponent(dto);
     let dados = new FormData();
-    dados.append("dto", dto);
+    dados.append("dto", encodeUri);
     dados.append("files", image, imgName);
 
     //Inativo await postAutores(setAutor, responseBody);

@@ -161,7 +161,7 @@ export const postArticlesUploadsFetch = async (setDados: any, formData: any) => 
                 throw new Error("não foi possível completar cadastro");
 
             //return response.text();
-            console.log(response);
+            //console.log(response);
         })
         .then((data) => data);
 }

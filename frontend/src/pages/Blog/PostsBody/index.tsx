@@ -1,62 +1,39 @@
 import { Link } from "react-router-dom";
-
-const PostsBody = () => {
+import imgTest from "../../../assets/img/blog/samples/bd-pic.jpg";
+import { Artigo, ArtigoRecents } from "../../../types/artigo";
+import PostsRelated from "./PostsRelated";
+type Props = {
+  artigo: Artigo;
+  recents: ArtigoRecents[];
+};
+const PostsBody = ({ artigo, recents }: Props) => {
+  const myArray = artigo.conteudoParagrafoOne.split(".");
+  console.log(myArray);
   return (
     <>
       <section className="blog-details-section spad">
         <div className="container">
           <div className="row">
-            <div className="col-lg-8 m-auto p-0">
-              <div className="blog-details-content">
+            <div className="col-lg-10 m-auto--center">
+              <div className="blog-details-content blog-details-content--tipografia">
                 <div className="bc-top">
-                  <p>
-                    Afashion season can be defined as much by the people on the
-                    catwalk as it can by the clothes they are wearing. This time
-                    around, a key moment came at the end of Marc Jacobs’ New
-                    York show, when an almost makeup-free Christy Turlington
-                    made a rare return to the catwalk, aged 50 (she also stars,
-                    with the designer himself, in the label’s AW ad campaign),
-                    where the average catwalk model is around 18.
-                  </p>
+                  <p className="blog">{artigo.conteudoIntroducao}</p>
                 </div>
                 <div className="bc-details">
-                  <div className="bc-pic">
-                    <img src="img/blog/bd-pic.jpg" alt="" />
-                  </div>
                   <div className="bc-text">
-                    <p>
-                      If they’re still in the awareness stages of getting to
-                      know the brand, then they’ll most likely keep reading more
-                      on what Tock has to offer. They’re using one email design
-                      to speak to two types of readers both in the first stage
-                      of their welcome email.You can also change an email
-                      design’s color based on new product, season or to match a
-                      marketing campaign’s new look and feel.
-                    </p>
-                    <p>
-                      Design: The email imitates a product marketing funnel
-                      system, bringing the reader towards each CTA with
-                      “Awareness, Consideration, and Action” as the main stages.
-                      Harry’s used a color block design to guide reader through
-                      each,
-                    </p>
+                    <img src={imgTest} alt="" className="bc-pic" />
+                    <p className="blog">{artigo.conteudoParagrafoOne}</p>
                   </div>
                 </div>
                 <div className="bc-desc">
-                  <p>
-                    A few days later, Simone Rocha arguably upped the ante. The
-                    32-year-old’s show – in part inspired by Louise Bourgeois,
-                    who lived until she was 98 – featured models in their 30s
-                    and 40s, including cult favourite Jeny Howorth and actor
-                    Chloë Sevigny.
-                  </p>
+                  <p className="blog">{artigo.conteudoParagrafoTwo}</p>
                 </div>
                 <div className="bc-quote">
                   <div className="bq-icon">
                     <i className="fa fa-quote-left"></i>
                   </div>
                   <div className="bq-text">
-                    <p>
+                    <p className="blog">
                       Consectetur adipisicing elit, sed do eiusmod tempor
                       incididunt ut labore dolore magna aliqua. Ut enim ad minim
                       veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -65,21 +42,13 @@ const PostsBody = () => {
                   </div>
                 </div>
                 <div className="bc-desc-last">
-                  <p>
-                    Occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum. Lorem ipsum dolor sit
-                    amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate.
-                  </p>
+                  <p className="blog">{artigo.conteudoConclusao}</p>
                 </div>
                 <div className="bc-tags">
-                  <Link to="#">Fashion</Link>
-                  <Link to="#">Street style</Link>
-                  <Link to="#">Diversity</Link>
-                  <Link to="#">Beauty</Link>
+                  <Link to="#">Tecnológia</Link>
+                  <Link to="#">IoT</Link>
+                  <Link to="#">Oportunidade</Link>
+                  <Link to="#">OpenGpt</Link>
                 </div>
                 <div className="bc-related-post">
                   <a href="#" className="previous-post">
@@ -91,6 +60,7 @@ const PostsBody = () => {
                 </div>
                 {/**Begin Posts Relacionados*/}
                 {/**<PostsRelated /> - Em desenvolvimento*/}
+                <PostsRelated recents={recents} />
                 {/**End Posts Relacionados */}
 
                 {/**Begin Posts Comentários*/}

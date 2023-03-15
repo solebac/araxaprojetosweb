@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import imgTest01 from "../../../../assets/img/blog/panel-test.jpg";
 
 const RecentPostCard = () => {
@@ -10,14 +10,14 @@ const RecentPostCard = () => {
         </div>
         <div className="rp-text">
           <h6>
-            <a
-              href="/#"
+            <Link
+              to="/#"
               onClick={(e) => {
                 e.preventDefault();
               }}
             >
               Vancouver real estate advisurges conference goers...
-            </a>
+            </Link>
           </h6>
           <span>Seb 24, 2019</span>
         </div>

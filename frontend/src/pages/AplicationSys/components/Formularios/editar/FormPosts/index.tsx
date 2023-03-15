@@ -89,9 +89,10 @@ const FormPosts = ({ articlesId }: Props) => {
 
     // let target   = event.target  as HTMLTextAreaElement;
     const dto = JSON.stringify(responseBody);
+    const encodeUri = encodeURIComponent(dto);
 
     let formData = new FormData();
-    formData.append("dto", dto);
+    formData.append("dto", encodeUri);
     formData.append("destaque", destaque, imageDestaque);
     formData.append("card", card, imageCard);
 

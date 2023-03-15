@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getToken } from "../../services/Autentication.services";
+import "./navbar.css";
 
 const Navbar = () => {
   const [logon, setLogon] = useState(false);

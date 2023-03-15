@@ -51,11 +51,12 @@ const FormAutor = ({ autorId }: Props) => {
     //test logica pass
     let confirmPass = formData.get("confirmaPass") as string;
     const dto = JSON.stringify(responseBody);
+    const encodeUri = encodeURIComponent(dto);
+
     const dados = new FormData();
-    dados.append("dto", dto);
+
+    dados.append("dto", encodeUri);
     dados.append("files", image, imgName);
-    console.log(image);
-    console.log(responseBody);
 
     putAutoresUpdateFile(autorId, setId, dados);
   };

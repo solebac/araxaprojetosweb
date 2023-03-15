@@ -11,6 +11,9 @@ a:focus {
   width: 330px;
   height: 220px;
 }
+.img-subdestaque--recents {
+  height: 320px;
+}
 .img-cardrecents {
   width: 105px;
   height: 80px;
@@ -283,6 +286,22 @@ a:focus {
 }
 .blog-details-content .bc-top p {
   font-size: 15px;
+  line-height: 27px;
+}
+.m-auto--center {
+  margin: auto;
+  padding: 0;
+  float: none;
+}
+.blog-details-content--tipografia {
+  text-align: justify;
+}
+.blog-details-content .bc-top p.blog,
+.blog-details-content .bc-details .bc-text p.blog,
+.blog-details-content .bc-desc p.blog,
+.blog-details-content .bc-desc-last p.blog,
+.blog-details-content .bc-quote .bq-text p.blog {
+  font-size: 20px;
   line-height: 27px;
 }
 .blog-details-content .bc-details {

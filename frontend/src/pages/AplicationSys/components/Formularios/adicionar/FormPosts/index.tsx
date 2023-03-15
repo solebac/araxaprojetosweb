@@ -77,10 +77,11 @@ const FormPosts = () => {
     responseBody.categorias = selectCategoria;
 
     // let target   = event.target  as HTMLTextAreaElement;
-    const dto = JSON.stringify(responseBody);
+    const dto: string = JSON.stringify(responseBody);
+    const encodeUri = encodeURIComponent(dto);
 
     let formData = new FormData();
-    formData.append("dto", dto);
+    formData.append("dto", encodeUri);
     formData.append("destaque", destaque, imageDestaque);
     formData.append("card", card, imageCard);
 
@@ -390,7 +391,8 @@ const FormPosts = () => {
                   className="form-control appsys"
                   id="url"
                   name="url"
-                  defaultValue={url}
+                  value={url}
+                  readOnly
                 />
               </div>
             </div>

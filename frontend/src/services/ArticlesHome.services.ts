@@ -91,9 +91,10 @@ export const getArticlesPagabledLight = async (setPage: any, page: number, respo
             console.log(error)
         });
 }
-export const getPosts = async (setDados: any) => {
+export const getPosts = async (setDados: any, count: number) => {
     await http
-        .get<ArtigoRecents[]>(`articles/recents/5`)
+        //.get<ArtigoRecents[]>(`articles/recents/5`)
+        .get<ArtigoRecents[]>(`articles/recents/${count}`)
         .then(res => { setDados(res.data) });
 }
 
