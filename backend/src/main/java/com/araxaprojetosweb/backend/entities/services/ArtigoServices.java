@@ -61,9 +61,9 @@ public class ArtigoServices {
 	}
 	
 	@Transactional(readOnly = true)
-	public ArtigoDto findBySlog(String slog){
-		Optional<Artigo> obj = artRepository.findBySlog(slog);
-		return new ArtigoDto(obj.orElseThrow(() -> new ResourceNotFoundException(slog)));
+	public ArtigoDto findByUrl(String url){
+		Optional<Artigo> obj = artRepository.findByUrl(url);
+		return new ArtigoDto(obj.orElseThrow(() -> new ResourceNotFoundException(url)));
 	}
 	/*
 	 * 
@@ -154,8 +154,8 @@ public class ArtigoServices {
 
 		artigo.setAutor(autor);
 		artigo.setCategoria(categoria.get());
-		String slug = AutenticationBase64.passwordEncodeBase64(LocalDateTime.now() + "|" + artigo.getUrl());
-		artigo.setSlog(slug);
+		String url = AutenticationBase64.passwordEncodeBase64(LocalDateTime.now() + "|" + artigo.getUrl());
+		artigo.setSlog(url);
 		artigo = artRepository.saveAndFlush(artigo);
 
 		return new ArtigoDto(artigo);

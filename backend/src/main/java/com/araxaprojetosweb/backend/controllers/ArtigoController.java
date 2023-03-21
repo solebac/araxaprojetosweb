@@ -107,9 +107,9 @@ public class ArtigoController {
 		return ResponseEntity.ok().body(result);
 	}
 	
-	@GetMapping(path = "/posts/{slug}")
-	public ResponseEntity<ArtigoDto> findPostSlug(@PathVariable String slug){
-		ArtigoDto obj = services.findBySlog(slug);
+	@GetMapping(path = "/posts/{url}")
+	public ResponseEntity<ArtigoDto> findPostSlug(@PathVariable String url){
+		ArtigoDto obj = services.findByUrl(url);
 		return ResponseEntity.ok().body(obj);
 	}
 	@GetMapping(path = "/posts/news")
@@ -194,6 +194,19 @@ public class ArtigoController {
 	public ResponseEntity<InputStreamResource> getImageDynamicType(@PathVariable String strPath,
 			@RequestParam Optional<Boolean> jpg) {
 		Path path = Paths.get("Files-Uploads//" + strPath);
+		MediaType contentType = jpg.orElseGet(() -> false) ? MediaType.IMAGE_JPEG : MediaType.IMAGE_PNG;
+		try (InputStream is = new ByteArrayInputStream(Files.readAllBytes(path))) {
+			return ResponseEntity.ok().contentType(contentType).body(new InputStreamResource(is));
+		} catch (IOException e) {
+			return null;
+		}
+
+	}
+	
+	@GetMapping(path = "/paint/quarentena/{strPath}")
+	public ResponseEntity<InputStreamResource> getImageDynamicTypeQuarentena(@PathVariable String strPath,
+			@RequestParam Optional<Boolean> jpg) {
+		Path path = Paths.get("Files-Uploads//card//" + strPath);
 		MediaType contentType = jpg.orElseGet(() -> false) ? MediaType.IMAGE_JPEG : MediaType.IMAGE_PNG;
 		try (InputStream is = new ByteArrayInputStream(Files.readAllBytes(path))) {
 			return ResponseEntity.ok().contentType(contentType).body(new InputStreamResource(is));

@@ -55,7 +55,8 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
 	@Query(value = "select tab.* from tb_comentario tab where id_artigo_comment = :artigo_id", nativeQuery = true)
 	List<IComentarioProjecao> findCommentByArtigo(Integer artigo_id);
 	
-	Optional<Artigo> findBySlog(String slog);
+	Optional<Artigo> findByUrl(String url);
+
 	
 	/*
 	 * #alt
@@ -65,21 +66,21 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
 	Page<ArtigoDto> findByCategoriaAndAutor(Categoria categoria, Autor autor, Pageable pageable);
 	
 	@Query(value = "SELECT max(id) as id , categoria_id , "
-			+ "	   titulo, data_publicacao,  slog  "
+			+ "	   titulo, data_publicacao,  slog, url  "
 			+ "FROM tb_artigo where categoria_id = 1 "
-			+ "group by categoria_id, titulo, data_publicacao, slog "
+			+ "group by categoria_id, titulo, data_publicacao, slog, url "
 			+ "having max(id) = (select max(id) FROM tb_artigo where categoria_id = 1) "
 			+ "union "
 			+ "SELECT max(id)  as id, categoria_id , "
-			+ "	   titulo, data_publicacao,  slog  "
+			+ "	   titulo, data_publicacao,  slog, url  "
 			+ "FROM tb_artigo where categoria_id = 2 "
-			+ "group by categoria_id, titulo, data_publicacao, slog "
+			+ "group by categoria_id, titulo, data_publicacao, slog, url "
 			+ "having max(id) = (select max(id) FROM tb_artigo where categoria_id = 2) "
 			+ "union "
 			+ "SELECT max(id)  as id, categoria_id, "
-			+ "	   titulo, data_publicacao,  slog  "
+			+ "	   titulo, data_publicacao,  slog, url  "
 			+ "FROM tb_artigo where categoria_id = 3 "
-			+ "group by categoria_id, titulo, data_publicacao, slog "
+			+ "group by categoria_id, titulo, data_publicacao, slog, url "
 			+ "having max(id) = (select max(id) FROM tb_artigo where categoria_id = 3) "
 			+ "order by 1", nativeQuery = true)
 	List<IArtigosNews> findByNews();

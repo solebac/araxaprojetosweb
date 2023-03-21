@@ -6,4 +6,5 @@ public interface IArtigosNews {
 	String getTitulo();
 	String getData_publicacao();
 	String getSlog();
+	String getUrl();
 }
