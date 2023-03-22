@@ -31,7 +31,7 @@ const DispacheCard = ({ post }: Props) => {
         </div>
         <div className="bi-text">
           <h4>
-            <Link to={`/blog/posts/${post?.slog}`}>{post?.titulo}</Link>
+            <Link to={`/blog/posts/${post?.url}`}>{post?.titulo}</Link>
           </h4>
           <ul>
             <li>

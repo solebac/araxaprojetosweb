@@ -32,7 +32,8 @@ const Blog = () => {
 
   const [page, setPage] = useState<ArtigoPage>(ResetPage);
 
-  const [post, setPost] = useState<ArtigoRecents[]>([ResetRecents]);
+  //Old const [post, setPost] = useState<ArtigoRecents[]>([ResetRecents]);
+  const [post, setPost] = useState<ArtigoRecents[] | []>([]);
 
   // Similar ao componentDidMount e componentDidUpdate:
   // Armazenamento da pagina no estada PAGE

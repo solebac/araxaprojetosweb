@@ -213,7 +213,7 @@ const FormContato = () => {
                 />{" "}
                 Gostaria de receber nossas novidades por email?
               </label>
-              {visible ? <BotaoEnviar /> : ""}
+              {visible ? <BotaoEnviar type="submit" /> : ""}
             </fieldset>
           </form>
         </div>

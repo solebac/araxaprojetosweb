@@ -27,7 +27,7 @@ const RecentPostCard = ({ post }: Props) => {
         <div className="rp-text">
           <h6>
             <Link
-              to={`/blog/posts/${post?.slog}`}
+              to={`/blog/posts/${post?.url}`}
               className="blog-artigo--limit-line blog-artigo--two-line"
             >
               {post.titulo}
