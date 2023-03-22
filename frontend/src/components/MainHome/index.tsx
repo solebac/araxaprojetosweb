@@ -16,6 +16,7 @@ const MainHome = () => {
       titulo: "Notícia Desconhecida..!",
       data_publicacao: "0000-00-00",
       slog: "",
+      url: "",
     },
   ]);
   useEffect(() => {

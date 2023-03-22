@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 import { ArtigoPage, ArtigoRecents } from '../types/artigo';
 import http from '../utils/http';
 
@@ -84,7 +85,6 @@ export const getArticlesPagabledLight = async (setPage: any, page: number, respo
         .then(res => {
             const data = res.data as ArtigoPage;
             setPage(data);
-            console.log(data);
         })
         .catch(error => {
             // do something with error
@@ -95,7 +95,31 @@ export const getPosts = async (setDados: any, count: number) => {
     await http
         //.get<ArtigoRecents[]>(`articles/recents/5`)
         .get<ArtigoRecents[]>(`articles/recents/${count}`)
-        .then(res => { setDados(res.data) });
+        .then(res => { setDados(res.data) }).catch(error => {
+            console.log(error)
+        });
+}
+
+export const getPostsUrl = async (
+    setDados: any,
+    setUrl: Dispatch<SetStateAction<string[]>>,
+    count: number,
+    url: string | undefined
+) => {
+    await http
+        //.get<ArtigoRecents[]>(`articles/recents/5`)
+        .get<ArtigoRecents[]>(`articles/recents/${count}`)
+        .then(res => {
+            setDados(res.data);
+            for (let i = 0; i < res.data.length; i++) {
+                if (!(url === res.data[i].url)) {
+                    setUrl((prevNames) => [...prevNames, res.data[i].url]);
+                }
+            }
+
+        }).catch(error => {
+            console.log(error)
+        });
 }
 
 export const getSecao = async (categoria_id: number, setDados: any) => {

@@ -31,13 +31,16 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           {/** <Route path="/blog/posts" element={<Posts />} /> */}
           <Route path="/blog/posts">
-            <Route path=":slug" element={<Posts />} />
+            <Route path=":url" element={<Posts />} />
           </Route>
           <Route path="/contato" element={<Contato />} />
           <Route path="/portifolio" element={<Portifolio />} />
           <Route path="/portifolio/about" element={<About />} />
           <Route path="/portifolio/find" element={<Find />} />
           <Route path="/hacker/attack" element={<Attack />} />
+          <Route path="/hacker/attack/posts">
+            <Route path=":url" element={<Posts />} />
+          </Route>
           <Route path="/hacker/ethical" element={<Ethical />} />
           <Route path="/hacker/quarentena" element={<Quarentena />} />
 

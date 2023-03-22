@@ -2,10 +2,12 @@ import { Artigo } from "../types/artigo";
 import { PostsNews, PostsTitle } from "../types/blog";
 import http from "../utils/http"
 
-export const getPostSlog = async (setPage: any, setInfor: any, slog: any) => {
-    await http.get(`/articles/posts/${slog}`)
+export const getPostSlog = async (setPage: any, setInfor: any, url: any) => {
+    await http.get(`/articles/posts/${url}`)
         .then(res => {
+
             const data = res.data as Artigo;
+
             setPage(data);
 
             const infor: PostsTitle = {

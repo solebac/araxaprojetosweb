@@ -14,8 +14,8 @@ const Footers = () => {
           <div className="rodape__redes">
             <ul className="rodape__footer">
               <li>
-                <Link
-                  to="https://github.com/solebac?tab=repositories"
+                <a
+                  href="https://github.com/solebac?tab=repositories"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -24,11 +24,11 @@ const Footers = () => {
                     className="rodape__footer--mini"
                     alt="Linkedin"
                   />
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  to="https://www.linkedin.com/in/fl%C3%A1vio-rog%C3%A9rio-722a56159/"
+                <a
+                  href="https://www.linkedin.com/in/fl%C3%A1vio-rog%C3%A9rio-722a56159/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -37,7 +37,7 @@ const Footers = () => {
                     className="rodape__footer--mini"
                     alt="GitHub"
                   />
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

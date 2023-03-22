@@ -8,7 +8,7 @@ const Postagens = ({ count, news }: Props) => {
   return (
     <>
       <dd>
-        <Link to={`/blog/posts/${news?.slog}`} className="pull-left">
+        <Link to={`/blog/posts/${news?.url}`} className="pull-left">
           <h2 className="pull-right">{count + 1}</h2>
           <div className="pull-left">
             <p className="text-portifolio texto-servico--modifield">

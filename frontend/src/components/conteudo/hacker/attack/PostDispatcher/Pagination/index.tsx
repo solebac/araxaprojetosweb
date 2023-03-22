@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { ReactComponent as ImgIcoRight } from "../../../../../../assets/img/fonts-icon/arrow_right-pag.svg";
 import { ReactComponent as ImgIcoLeft } from "../../../../../../assets/img/fonts-icon/arrow_left-pag.svg";
 import { ArtigoPage } from "../../../../../../types/artigo";
+import { Link } from "react-router-dom";
 
 type Props = {
   page: ArtigoPage;
@@ -18,14 +19,14 @@ const Pagination = ({ page, onChange }: Props) => {
 
         <button>{page.number + 1}</button>
 
-        <a
-          href="/#"
+        <Link
+          to="/#"
           onClick={(e) => {
             e.preventDefault();
           }}
         >
           de
-        </a>
+        </Link>
 
         <button
           disabled={page.last}

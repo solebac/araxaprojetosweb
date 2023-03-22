@@ -11,7 +11,6 @@ import ScrollToTop from "../../../utils/ScrollToTop";
 const Quarentena = () => {
   useEffect(() => {
     testOnload();
-    console.log("renderizou");
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   function testOnload() {

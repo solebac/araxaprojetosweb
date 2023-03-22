@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 import RecentCard from "./RecentCard";
 
 type Props = {
-  destaque: Artigo;
+  destaque: Artigo | undefined;
   page: ArtigoPage;
   onChange: Function;
 };

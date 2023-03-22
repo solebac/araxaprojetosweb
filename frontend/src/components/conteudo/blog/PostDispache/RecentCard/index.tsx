@@ -11,6 +11,7 @@ type Props = {
 
 const RecentCard = ({ post }: Props) => {
   const autor = post.autor;
+  console.log(post?.url);
   return (
     <Fragment>
       <article className="blog-item">
@@ -28,6 +29,9 @@ const RecentCard = ({ post }: Props) => {
 
         <div className="bi-text">
           <h5>
+            <Link to={`/articles/posts/${post?.url}`}>
+              {post.titulo.replaceAll("@", "")}
+            </Link>
             <Link to={`/blog/posts/${post?.url}`}>{post.titulo}</Link>
           </h5>
           <ul>
@@ -43,7 +47,7 @@ const RecentCard = ({ post }: Props) => {
             <li>{`${post.contador} Comment`}</li>
           </ul>
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
-            {post.conteudoIntroducao}
+            {post.conteudoIntroducao.replaceAll("@", "")}
           </p>
           <Link
             to="/#"

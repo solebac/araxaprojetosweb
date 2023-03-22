@@ -1,17 +1,20 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import imgSemFoto from "../../../../../assets/img/blog/blog-1.jpg";
 import { ReactComponent as ImgIcoRight } from "../../../../../assets/img/fonts-icon/arrow_right.svg";
+import { ResetArt } from "../../../../../services/ArticlesHome.services";
 import { Artigo } from "../../../../../types/artigo";
 import { BASE_URL } from "../../../../../utils/requests";
 
 type Props = {
-  post: Artigo;
+  post: Artigo | undefined;
 };
 
-const DispacheCard = ({ post }: Props) => {
+const DispacheCard = ({ post = ResetArt }: Props) => {
   //recupera o Object
-  const autor = post?.autor;
+  //const autor = post?.autor;
+  const [postagem, setPostagem] = useState<Artigo>(post);
+
   return (
     <Fragment>
       <div
@@ -31,22 +34,26 @@ const DispacheCard = ({ post }: Props) => {
         </div>
         <div className="bi-text">
           <h4>
+            <Link to={`/articles/posts/${post?.url}`}>
+              {post?.titulo.replaceAll("@", "")}
+            </Link>
+
             <Link to={`/blog/posts/${post?.url}`}>{post?.titulo}</Link>
           </h4>
           <ul>
             <li>
               by{" "}
-              {Object.values(autor).map((values: any, i) => {
+              {Object.values(postagem.autor).map((values: any, i) => {
                 if (i === 1) {
                   return <span key={i}>{values}</span>;
                 }
               })}
             </li>
-            <li>{new Date(post?.dataPublicacao).toLocaleDateString()}</li>
+            <li>{new Date(postagem?.dataPublicacao).toLocaleDateString()}</li>
             <li>{post?.contador} Comentários</li>
           </ul>
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
-            {post?.conteudoIntroducao}
+            {post?.conteudoIntroducao.replaceAll("@", "")}
           </p>
           <a
             href="/#"

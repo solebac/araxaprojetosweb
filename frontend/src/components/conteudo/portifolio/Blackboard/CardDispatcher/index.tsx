@@ -12,7 +12,7 @@ const CardDispatcher = ({ post }: Props) => {
         <div className="row portifolio__around">
           <div className="col-md-2 portifolio-reset">
             <p className="portifolio__slog portifolio__slog--tipografia">
-              {post.url}
+              {post.slog}
             </p>
           </div>
           <div className="col-md-10">

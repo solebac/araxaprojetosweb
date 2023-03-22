@@ -9,4 +9,5 @@ export type PostsNews = {
     titulo: string;
     data_publicacao: string;
     slog: string;
+    url: string;
 }

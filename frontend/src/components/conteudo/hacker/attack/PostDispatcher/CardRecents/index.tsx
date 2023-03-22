@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ReactComponent as ImgGoogle } from "../../../../../../assets/img/card/google.svg";
 
 const CardRecents = () => {
@@ -13,15 +14,15 @@ const CardRecents = () => {
             http://www.kali.org, ele é mantido pela mesma empresa de seguranÃ§a
             do Backtrack.
           </p>
-          <a
-            href="/#"
+          <Link
+            to="/#"
             onClick={(e) => {
               e.preventDefault();
             }}
             className="btn btn-outline-dark btn-sm"
           >
             Go somewhere
-          </a>
+          </Link>
         </div>
       </article>
     </>

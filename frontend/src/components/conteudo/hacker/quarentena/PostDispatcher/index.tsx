@@ -1,10 +1,4 @@
-import React, { useEffect, useState } from "react";
-/*import { ReactComponent as ImgFluxion } from "../../../../../assets/img/card/fluxion.svg";
-import { ReactComponent as ImgGoogle } from "../../../../../assets/img/card/google.svg";
-import { ReactComponent as ImgRansomware } from "../../../../../assets/img/card/ransomware.svg";
-import { ReactComponent as ImgAlert } from "../../../../../assets/img/card/alert.svg";
-import { ReactComponent as ImgTroya } from "../../../../../assets/img/card/troya.svg";
-import { ReactComponent as ImgVirus } from "../../../../../assets/img/card/virus.svg";*/
+import { useEffect, useState } from "react";
 import CardDispatcher from "./CardDispatcher";
 import Pagination from "../Pagination";
 import { ArtigoPage } from "../../../../../types/artigo";
@@ -28,7 +22,6 @@ const PostDispatcher = () => {
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);
   };
-
   useEffect(() => {
     getArticlesPagabledLight(setPage, pageNumber, categorias);
     //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,7 +41,7 @@ const PostDispatcher = () => {
         </div>
 
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12" style={{ float: "left" }}>
             {/*<Pagination page={page} onChange={handlerPageNumber} />*/}
             {visible && <Pagination page={page} onChange={handlerPageNumber} />}
           </div>

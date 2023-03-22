@@ -16,7 +16,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Artigo, ArtigoRecents } from "../../../types/artigo";
 import {
-  getPosts,
+  getPostsUrl,
   ResetArt,
   ResetRecents,
 } from "../../../services/ArticlesHome.services";
@@ -25,27 +25,28 @@ import { getPostSlog } from "../../../services/Blog.services";
 import PostsBody from "../PostsBody";
 
 function Posts() {
-  const { slug } = useParams();
+  const { url } = useParams();
   const [infor, setInfor] = useState<PostsTitle>({
     titulo: "Texto em rascunho não liberado.",
     authorName: "Desconhecido",
     publicacao: "0000-00-00",
   });
-  console.log(slug);
+
   const [artigo, setArtigo] = useState<Artigo>(ResetArt);
   const [recents, setRecents] = useState<ArtigoRecents[]>([ResetRecents]);
+  const [slogUrl, setSlogUrl] = useState<string[]>([]);
 
   useEffect(() => {
-    getPostSlog(setArtigo, setInfor, slug);
-    getPosts(setRecents, 3);
-  }, []);
+    getPostSlog(setArtigo, setInfor, url);
+    getPostsUrl(setRecents, setSlogUrl, 3, url);
+  }, [url]);
   return (
     <>
       <BannerHome />
       <Navbar />
       <Capa infor={infor} />
       <MainPosts>
-        <PostsBody artigo={artigo} recents={recents} />
+        <PostsBody artigo={artigo} recents={recents} url={slogUrl} />
       </MainPosts>
       <VLibras />
       <ScrollToTop />

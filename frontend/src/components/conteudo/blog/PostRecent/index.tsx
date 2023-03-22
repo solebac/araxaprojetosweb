@@ -3,7 +3,7 @@ import { ReactComponent as ImgTwitter } from "../../../../assets/img/redes/twitt
 import { ReactComponent as ImgYoutube } from "../../../../assets/img/redes/youtube.svg";
 import { ReactComponent as ImgFacebook } from "../../../../assets/img/redes/facebook.svg";
 import RecentPostCard from "./RecentPostCard";
-import { Artigo, ArtigoRecents } from "../../../../types/artigo";
+import { ArtigoRecents } from "../../../../types/artigo";
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -67,13 +67,13 @@ const PostRecent = ({ post }: Props) => {
               <h6>Posts recentes</h6>
             </div>
             <div className="recent-post">
-              {/** BEGIN DIV POST-PUBLICAÃ‡ÃƒO-RECENTE */}
+              {/** BEGIN DIV POST-PUBLICAÇÃO-RECENTE */}
               {/** MAXIMO DE POSTAGENS 5 POST'S */}
               {post?.map((item) => {
                 return <RecentPostCard key={item.id} post={item} />;
               })}
 
-              {/** END DIV POST-PUBLICAÃ‡ÃƒO-RECENTE */}
+              {/** END DIV POST-PUBLICAÇÃO-RECENTE */}
             </div>
           </div>
 

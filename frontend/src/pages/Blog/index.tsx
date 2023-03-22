@@ -21,14 +21,15 @@ import {
 const categorias: ICategorias = {
   id: "2",
   nome: "Blog",
-  descricao: "DiscursÃµes Sobre Tecnologias",
+  descricao: "Discursões Sobre Tecnologias",
 };
 
 const Blog = () => {
   const [pageNumber, setPageNumber] = useState(0);
   //Criar um states para guardar no components a page
 
-  const [destaque, setDestaque] = useState<Artigo>(ResetArt);
+  //const [destaque, setDestaque] = useState<Artigo>(ResetArt);
+  const [destaque, setDestaque] = useState<Artigo>();
 
   const [page, setPage] = useState<ArtigoPage>(ResetPage);
 
