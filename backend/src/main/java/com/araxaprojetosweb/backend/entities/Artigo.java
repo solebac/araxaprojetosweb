@@ -36,13 +36,13 @@ public class Artigo implements Serializable{
 	private String titulo;
 	private Date dataPublicacao;
 	
-	@Lob @Column(name = "introducao")
+	@Size(max = 2000) @Column(name = "introducao")
 	private String conteudoIntroducao;
-	@Lob @Column(name = "paragrafo_one")
+	@Size(max = 2000) @Column(name = "paragrafo_one")
 	private String conteudoParagrafoOne;
-	@Lob @Column(name = "paragrafo_two")
+	@Size(max = 2000) @Column(name = "paragrafo_two")
 	private String conteudoParagrafoTwo;
-	@Lob @Column(name = "conclusao")
+	@Size(max = 2000) @Column(name = "conclusao")
 	private String conteudoConclusao;
 	
 	@Enumerated(EnumType.STRING)
