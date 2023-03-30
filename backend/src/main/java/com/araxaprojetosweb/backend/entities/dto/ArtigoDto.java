@@ -15,7 +15,7 @@ import com.araxaprojetosweb.backend.entities.enums.ArtigoStatus;
 public class ArtigoDto {
 	private Long id;
 	private String titulo;
-	private Date dataPublicacao;
+	private String dataPublicacao;
 	
 	private String conteudoIntroducao;
 	private String conteudoParagrafoOne;
@@ -42,7 +42,7 @@ public class ArtigoDto {
 		super();
 		id = obj.getId();
 		titulo = obj.getTitulo();
-		dataPublicacao = obj.getDataPublicacao();
+		dataPublicacao = obj.getDataPublicacao().toString();
 		
 		conteudoIntroducao = obj.getConteudoIntroducao();
 		conteudoParagrafoOne = obj.getConteudoParagrafoOne();
@@ -73,7 +73,7 @@ public class ArtigoDto {
 		return titulo;
 	}
 
-	public Date getDataPublicacao() {
+	public String getDataPublicacao() {
 		return dataPublicacao;
 	}
 

@@ -1,6 +1,5 @@
 package com.araxaprojetosweb.backend.config;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
@@ -136,6 +135,13 @@ public class SeedConfig implements CommandLineRunner {
 				 AutenticationBase64.passwordEncodeBase64(r.nextDouble() + "|" + "MCI"),"MCI", "semFotoDestaque.png",
 				"semFotoCard.png", a2, 1, cat3, s6);
 
+		Artigo art119 = new Artigo(null, "Vai na Fé I Artigo 11", new Date(),
+				"@Vai na Fé 3333333Introdução Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. @It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+				"@Primeiro Paragrafo Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. @It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+				"@Segundo Paragrafo Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. @It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+				"@Conclusão Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. @It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",ArtigoStatus.PUBLICADO, 
+				 AutenticationBase64.passwordEncodeBase64(r.nextDouble() + "|" + "React"),"React", "semFotoDestaque.png",
+				"semFotoCard.png", a2, 1, cat1, null);
 		Artigo art9 = new Artigo(null, "Oitavo I Artigo 11", new Date(),
 				"@33333333333333333333333333333333333333Introdução Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. @It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 				"@Primeiro Paragrafo Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. @It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -216,7 +222,7 @@ public class SeedConfig implements CommandLineRunner {
 				 AutenticationBase64.passwordEncodeBase64(r.nextDouble() + "|" + "Twitter"),"Twitter", "semFotoDestaque.png",
 				"semFotoCard.png", a2, 1, cat2, null);
 
-		artigoRepository.saveAll(Arrays.asList(art1, art2, art3, art4, art5, art6, art8, art7, art9, art10, art11,
+		artigoRepository.saveAll(Arrays.asList(art1, art2, art3, art4, art5, art6, art8, art7, art9, art119, art10, art11,
 				art12, art13, art14, art15, art16, art17, art18, art19));
 		/*
 		 * #alt Alteração da Modelagem quanto ao @ManyToMany art1.setCategorias(cat1);

@@ -1,6 +1,7 @@
 package com.araxaprojetosweb.backend.entities.services;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,6 @@ import com.araxaprojetosweb.backend.entities.Autor;
 import com.araxaprojetosweb.backend.entities.Categoria;
 import com.araxaprojetosweb.backend.entities.Secao;
 import com.araxaprojetosweb.backend.entities.dto.ArtigoDto;
-import com.araxaprojetosweb.backend.entities.dto.ArtigoNewsDto;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoCategoriaProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoOfAutorProjecao;
 import com.araxaprojetosweb.backend.entities.dto.projection.IArtigoRecentsProjecao;
@@ -195,7 +195,7 @@ public class ArtigoServices {
 
 	private void preencheArtigo(Artigo artigo, ArtigoDto dto) {
 		artigo.setTitulo(dto.getTitulo());
-		artigo.setDataPublicacao(dto.getDataPublicacao());
+		artigo.setDataPublicacao(new Date(dto.getDataPublicacao()));
 		artigo.setConteudoIntroducao(dto.getConteudoIntroducao());
 		artigo.setConteudoParagrafoOne(dto.getConteudoParagrafoOne());
 		artigo.setConteudoParagrafoTwo(dto.getConteudoParagrafoTwo());
