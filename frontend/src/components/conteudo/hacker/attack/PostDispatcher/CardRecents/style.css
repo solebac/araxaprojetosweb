@@ -1,0 +1,25 @@
+.card-title--attr {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.artigo--limit-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  display: -webkit-box; /*-webkit-line-clamp: 3;*/
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+.artigo--four-line {
+  -webkit-line-clamp: 4;
+}
+.artigo--two-line {
+  -webkit-line-clamp: 2;
+}
+.artigo--one-line {
+  -webkit-line-clamp: 1;
+}
+.card-destaque {
+  width: 100%;
+  height: 180px;
+}

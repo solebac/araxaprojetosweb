@@ -65,11 +65,7 @@ export const getArticlesPagabled = async (setPage: any, setDestaque: any, page: 
         .post(`/articles/subcategorias?size=3&page=${page}&sort=id,desc`, responseBody)
         .then(res => {
             const data = res.data as ArtigoPage;
-            if (data.content.length > 0) {
-                setPage(data);
-            } else {
-                data.content.push(ResetArt);
-            }
+            setPage(data);
             const objectDestaque = Object.values(data.content)[0];
             setDestaque(objectDestaque);
         })

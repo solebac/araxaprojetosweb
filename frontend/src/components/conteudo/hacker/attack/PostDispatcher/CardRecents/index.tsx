@@ -1,27 +1,38 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as ImgGoogle } from "../../../../../../assets/img/card/google.svg";
+import imgSemFoto from "../../../../../../assets/img/blog/semFotoCard.png";
+import { ArtigoRecents } from "../../../../../../types/artigo";
+import { BASE_URL } from "../../../../../../utils/requests";
+import "./style.css";
 
-const CardRecents = () => {
+type Props = {
+  recents: ArtigoRecents;
+};
+
+const CardRecents = ({ recents }: Props) => {
   return (
     <>
-      <article className="card mb-4">
-        <ImgGoogle aria-label="" className="card-img-top" />
+      <article className="card mb-4 mt-4">
+        <img
+          src={
+            recents?.img_card !== ""
+              ? `${BASE_URL}/articles/paint/${recents?.img_card}`
+              : imgSemFoto
+          }
+          className="card-img-top img-responsive card-destaque"
+          alt=""
+        />
         <div className="card-body">
-          <p className="card-title">Card Title</p>
-          <p className="card-text">
-            O Kali Linux é uma evolução do Backtrack e pode ser baixado aqui
-            http://www.kali.org, ele é mantido pela mesma empresa de seguranÃ§a
-            do Backtrack.
+          <p className="card-title card-title--attr artigo--one-line">
+            {recents.titulo}
+          </p>
+          <p className="card-text artigo--limit-line artigo--four-line">
+            {recents.conteudo}
           </p>
           <Link
-            to="/#"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
+            to={`/articles/posts/${recents?.url}`}
             className="btn btn-outline-dark btn-sm"
           >
-            Go somewhere
+            leia mais
           </Link>
         </div>
       </article>

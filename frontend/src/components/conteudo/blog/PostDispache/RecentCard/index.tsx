@@ -11,7 +11,6 @@ type Props = {
 
 const RecentCard = ({ post }: Props) => {
   const autor = post.autor;
-  console.log(post?.url);
   return (
     <Fragment>
       <article className="blog-item">
@@ -29,10 +28,12 @@ const RecentCard = ({ post }: Props) => {
 
         <div className="bi-text">
           <h5>
-            <Link to={`/articles/posts/${post?.url}`}>
+            <Link
+              to={`/articles/posts/${post?.url}`}
+              className="blog-artigo--limit-line blog-artigo--one-line blog-artigo--attr"
+            >
               {post.titulo.replaceAll("@", "")}
             </Link>
-            <Link to={`/blog/posts/${post?.url}`}>{post.titulo}</Link>
           </h5>
           <ul>
             <li>
@@ -49,14 +50,9 @@ const RecentCard = ({ post }: Props) => {
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
             {post.conteudoIntroducao.replaceAll("@", "")}
           </p>
-          <Link
-            to="/#"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-            className="read-more"
-          >
-            Leia mais <ImgIcoRight />
+          <Link to={`/articles/posts/${post?.url}`} className="read-more">
+            Leia mais
+            <ImgIcoRight />
           </Link>
         </div>
       </article>

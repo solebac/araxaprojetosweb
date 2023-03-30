@@ -37,8 +37,6 @@ const DispacheCard = ({ post = ResetArt }: Props) => {
             <Link to={`/articles/posts/${post?.url}`}>
               {post?.titulo.replaceAll("@", "")}
             </Link>
-
-            <Link to={`/blog/posts/${post?.url}`}>{post?.titulo}</Link>
           </h4>
           <ul>
             <li>
@@ -49,14 +47,14 @@ const DispacheCard = ({ post = ResetArt }: Props) => {
                 }
               })}
             </li>
-            <li>{new Date(postagem?.dataPublicacao).toLocaleDateString()}</li>
+            <li>{new Date(post?.dataPublicacao).toLocaleDateString()}</li>
             <li>{post?.contador} Comentários</li>
           </ul>
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
             {post?.conteudoIntroducao.replaceAll("@", "")}
           </p>
-          <a
-            href="/#"
+          <Link
+            to={`/articles/posts/${post?.url}`}
             onClick={(e) => {
               e.preventDefault();
             }}
@@ -64,7 +62,7 @@ const DispacheCard = ({ post = ResetArt }: Props) => {
           >
             Leia mais
             <ImgIcoRight />
-          </a>
+          </Link>
         </div>
       </div>
     </Fragment>

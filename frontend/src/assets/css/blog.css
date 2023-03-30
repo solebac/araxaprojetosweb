@@ -1,3 +1,6 @@
+#root {
+  overflow-x: hidden;
+}
 a,
 a:hover,
 a:focus {
@@ -17,6 +20,10 @@ a:focus {
 .img-cardrecents {
   width: 105px;
   height: 80px;
+}
+.img-blogdestaque {
+  width: 520px;
+  height: 340px;
 }
 /*---------------------   Blog -----------------------*/
 .blog__banner {
@@ -58,11 +65,19 @@ a:focus {
   display: -webkit-box; /*-webkit-line-clamp: 3;*/
   -webkit-box-orient: vertical;
 }
+.blog-artigo--attr {
+  font-size: 1.2em !important;
+}
+.blog-artigo--one-line {
+  text-align: left;
+  -webkit-line-clamp: 1;
+}
 .blog-artigo--two-line {
   text-align: left;
   -webkit-line-clamp: 2;
 }
 .blog-artigo--three-line {
+  text-align: left;
   -webkit-line-clamp: 3;
 }
 .blog-item.large-blog .bi-pic {
@@ -278,8 +293,9 @@ a:focus {
   padding: 14px 30px;
 } /*---------------------   Blog Details -----------------------*/
 .blog-details-section {
-  padding-top: 80px;
-  padding-bottom: 60px;
+  /*padding-top: 80px;*/
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 .blog-details-content .bc-top {
   margin-bottom: 24px;
@@ -658,7 +674,8 @@ ol {
     padding-left: 10%;
   }
   .img-destaque,
-  .img-subdestaque {
+  .img-subdestaque,
+  .img-blogdestaque {
     width: 100%;
     max-height: 240px;
   }

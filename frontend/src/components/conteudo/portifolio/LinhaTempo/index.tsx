@@ -27,7 +27,7 @@ const LinhaTempo = () => {
     <>
       <aside className="col-md-4 portifolio__linha portifolio-reset">
         <header className="portifolio__linha-tempo">
-          <ImgFrs className="portifolio__img" aria-label="FlÃ¡vio RogÃ©rio" />
+          <ImgFrs className="portifolio__img" aria-label="Flávio Rogério" />
 
           <p className="portifolio__name mt-4">Flávio Rogério</p>
 

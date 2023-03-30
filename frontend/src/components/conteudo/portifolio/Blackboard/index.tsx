@@ -5,6 +5,7 @@ import {
   ResetPage,
 } from "../../../../services/ArticlesHome.services";
 import { ArtigoPage } from "../../../../types/artigo";
+import Buscador from "./Buscador";
 import CardDispatcher from "./CardDispatcher";
 import Pagination from "./Pagination";
 
@@ -18,6 +19,7 @@ const Blackboard = () => {
   const [visible, setVisible] = useState(false);
   const [pageNumber, setPageNumber] = useState(0);
   const [page, setPage] = useState<ArtigoPage>(ResetPage);
+  const [busca, setBusca] = useState("");
 
   useEffect(() => {
     getArticlesPagabledLight(setPage, pageNumber, categorias);
@@ -25,7 +27,8 @@ const Blackboard = () => {
     if (page.totalPages > 1) {
       setVisible(true);
     }
-  }, [pageNumber, page.totalPages]);
+    //console.log(page?.content);
+  }, [visible, pageNumber, page.totalPages]);
 
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);
@@ -34,9 +37,13 @@ const Blackboard = () => {
   return (
     <>
       <aside className="col-md-8 portifolio-blog">
+        <Buscador busca={busca} setBusca={setBusca} />
+        <CardDispatcher post={page.content} busca={busca} />
+        {/** 
         {page?.content?.map((item) => {
-          return <CardDispatcher key={item.id} post={item} />;
+          return <CardDispatcher key={item.id} post={item} busca={busca} />;
         })}
+        */}
         <section>
           {visible ? (
             <Pagination page={page} onChange={handlerPageNumber} />

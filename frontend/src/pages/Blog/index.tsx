@@ -46,7 +46,6 @@ const Blog = () => {
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);
   };
-
   return (
     <>
       <BannerBlog />

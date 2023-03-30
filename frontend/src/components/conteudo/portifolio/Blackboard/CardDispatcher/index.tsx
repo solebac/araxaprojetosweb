@@ -1,36 +1,32 @@
-import React, { Fragment } from "react";
+import { useEffect, useState } from "react";
 import { Artigo } from "../../../../../types/artigo";
+import CardItem from "./CardItem";
 
 type Props = {
-  post: Artigo;
+  post: Artigo[];
+  busca: string;
 };
+const CardDispatcher = ({ post, busca }: Props) => {
+  const [lista, setLista] = useState(post);
 
-const CardDispatcher = ({ post }: Props) => {
+  function testaBusca(titulo: string) {
+    const regex = new RegExp(busca, "i");
+    return regex.test(titulo);
+  }
+
+  useEffect(() => {
+    setLista(post);
+    const novaLista = post.filter((item) => testaBusca(item.titulo));
+    setLista(novaLista);
+  }, [busca, post]);
   return (
-    <Fragment>
-      <article className="portifolio__artigos">
-        <div className="row portifolio__around">
-          <div className="col-md-2 portifolio-reset">
-            <p className="portifolio__slog portifolio__slog--tipografia">
-              {post.slog}
-            </p>
-          </div>
-          <div className="col-md-10">
-            <div className="portifolio_box">
-              <p className="portifolio__data">
-                {new Date(post.dataPublicacao).toLocaleDateString()} - 4 min de
-                leitura
-              </p>
-              <p className="portifolio__titulo">{post.titulo}</p>
-              <p className="portifolio__subtitulo portifolio__subtitulo--hidden">
-                {/**attack__text--limit-line attack__text--two-line */}
-                {post.conteudoIntroducao}
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-    </Fragment>
+    <>
+      <div>
+        {lista.map((item) => (
+          <CardItem post={item} key={item.id} />
+        ))}
+      </div>
+    </>
   );
 };
 

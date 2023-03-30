@@ -6,12 +6,14 @@ import CardSection from "./CardSection";
 //import CardDispatcher from "./CardDispatcher";
 import Pagination from "./Pagination";
 import { SecaoCategoria } from "../../../../../types/secao";
-import { ArtigoPage } from "../../../../../types/artigo";
+import { ArtigoPage, ArtigoRecents } from "../../../../../types/artigo";
 import {
   getArticlesPagabledLight,
+  getPosts,
   getSecao,
   ICategorias,
   ResetPage,
+  ResetRecents,
   ResetSecao,
 } from "../../../../../services/ArticlesHome.services";
 import Dispatche from "./Dispatcher";
@@ -27,6 +29,7 @@ const PostDispatcher = () => {
   const [secao, setSecao] = useState<SecaoCategoria[]>([ResetSecao]);
   const [page, setPage] = useState<ArtigoPage>(ResetPage);
   const [visible, setVisible] = useState(false);
+  const [recents, setRecents] = useState<ArtigoRecents[]>([ResetRecents]);
 
   useEffect(() => {
     getSecao(3, setSecao);
@@ -34,6 +37,7 @@ const PostDispatcher = () => {
     if (page.totalPages > 1) {
       setVisible(true);
     }
+    getPosts(setRecents, 3);
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, page.totalPages]);
 
@@ -70,27 +74,10 @@ const PostDispatcher = () => {
             <BannerMidde />
 
             {/*<!--Begin Seção Mini Banner|Loop[Post]-->*/}
-            <div className="card mb-4 mt-4">
-              <ImgFluxion aria-label="" className="card-img-top" />
-              <div className="card-body">
-                <p className="card-title">Card Title</p>
-                <p className="card-text">
-                  O Kali Linux é uma evolução do Backtrack e pode ser baixado
-                  aqui http://www.kali.org, ele é mantido pela mesma empresa de
-                  segurança do Backtrack.
-                </p>
-                <a
-                  href="/#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                  className="btn btn-outline-dark btn-sm"
-                >
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-            <CardRecents />
+            {recents.map((item) => {
+              return <CardRecents recents={item} key={item.id} />;
+            })}
+
             {/*<!--End Seção Mini Banner-->*/}
           </aside>
         </div>
