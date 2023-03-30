@@ -1,7 +1,8 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../assets/css/404.css";
 
 const Pagina404 = () => {
+  const navigate = useNavigate();
   return (
     <main className="container flex flex--centro flex--coluna">
       <div className="error-404">
@@ -19,10 +20,10 @@ const Pagina404 = () => {
           página inicial.
           <div>
             <br />
-            <a href="/" className="btn btn-primary">
+            <button className="btn btn-primary" onClick={() => navigate("/")}>
               <span className="glyphicon glyphicon-home"></span>
               <span className="ml-4">Voltar para a página incial...!</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
