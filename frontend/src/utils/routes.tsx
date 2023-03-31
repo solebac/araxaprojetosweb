@@ -19,6 +19,7 @@ import Pagina404 from "../pages/Pagina404";
 import Portifolio from "../pages/Portifolio";
 import About from "../pages/Portifolio/About";
 import Find from "../pages/Portifolio/Find";
+import Reading from "../pages/Portifolio/Reading";
 
 const AppRoutes = () => {
   return (
@@ -34,6 +35,9 @@ const AppRoutes = () => {
         <Route path="/portifolio" element={<Portifolio />} />
         <Route path="/portifolio/about" element={<About />} />
         <Route path="/portifolio/find" element={<Find />} />
+        <Route path="/portifolio/read">
+          <Route path=":url" element={<Reading />} />
+        </Route>
         <Route path="/hacker/attack" element={<Attack />} />
         <Route path="/hacker/attack/posts">
           <Route path=":url" element={<Posts />} />

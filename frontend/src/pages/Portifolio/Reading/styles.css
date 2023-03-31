@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Italiana&display=swap");
+.read__body {
+  color: rgb(255 255 255/1);
+  background-color: rgb(40, 37, 43);
+  font-family: "Italiana", sans-serif;
+  letter-spacing: 2px;
+}
+.read__nav {
+  background-color: #757575;
+  display: flex;
+  padding: 20px 250px;
+}
+.read__container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.read__ul {
+  align-items: center;
+  display: flex;
+}
+.read__li {
+  padding: 0 25px;
+}
+.read__href {
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+.read__href:hover {
+  color: rgb(40, 37, 43);
+}
+.read__prev {
+  background-color: transparent;
+  border: none;
+  color: #d5c4aa;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+.read__prev--radius {
+  border: 1px solid;
+  padding: 5px 25px;
+  border-radius: 25px;
+}
+.read__top {
+  margin-top: 2em;
+}
+.read__bottom {
+  margin-bottom: 1.5em;
+}
+.read__tipografia {
+  padding: 50px 250px;
+}
+.read__tipografia--titulo {
+  font-size: 2.5em;
+}
+.read__tipografia--paragrafo {
+  font-size: 1.5em;
+  text-align: justify;
+}
+.read__banner {
+  width: 100%;
+}
+.read__img {
+  /*max-width: 100%;*/
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
+}
+@media (max-width: 980px) {
+  .read__tipografia {
+    padding: 5px 25px;
+  }
+}
+@media (min-width: 980px) and (max-width: 1080px) {
+  .read__tipografia {
+    padding: 5px 80px;
+  }
+}
+@media (min-width: 1080px) and (max-width: 1280px) {
+  .read__tipografia {
+    padding: 5px 150px;
+  }
+}

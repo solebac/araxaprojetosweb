@@ -1,21 +1,34 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Artigo } from "../../../../../../types/artigo";
+import color from "../../../../../../data/color.json";
+import "./styles.css";
 
 type Props = {
   post: Artigo;
 };
 const CardItem = ({ post }: Props) => {
+  const navigate = useNavigate();
+  function openPost(doc: Artigo) {
+    navigate(`/portifolio/read/${doc.url}`);
+  }
+  const styles = color.filter(
+    (e) => e.ident === post.slog.slice(0, 1).toLowerCase()
+  )[0];
+  //console.log(post.slog.slice(0, 1).toLowerCase());
   return (
     <Fragment>
       <article className="portifolio__artigos">
-        <div className="row portifolio__around">
+        <div className="row portifolio__around" onClick={() => openPost(post)}>
           <div className="col-md-2 portifolio-reset">
-            <Link to="#">
-              <p className="portifolio__slog portifolio__slog--tipografia">
+            <div>
+              <p
+                className="portifolio__slog portifolio__slog--tipografia"
+                style={{ backgroundColor: `${styles.cor}` }}
+              >
                 {post.slog}
               </p>
-            </Link>
+            </div>
           </div>
           <div className="col-md-10">
             <div className="portifolio_box">

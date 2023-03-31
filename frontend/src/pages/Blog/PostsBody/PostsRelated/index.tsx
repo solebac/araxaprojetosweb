@@ -6,13 +6,16 @@ type Props = {
 };
 
 const PostsRelated = ({ recents }: Props) => {
+  let postsRecents = [...recents];
+  postsRecents = postsRecents.sort(() => 0.5 - Math.random()).slice(0, 3);
+  console.log(postsRecents);
   return (
     <>
       <div className="bc-widget">
         <h4>Posts Relacionados</h4>
         <div className="related-post">
           <div className="row">
-            {recents.map((posts) => {
+            {postsRecents.map((posts) => {
               return <Postagem key={posts.id} posts={posts} />;
             })}
           </div>

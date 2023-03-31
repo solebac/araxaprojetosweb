@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import imgTest from "../../../assets/img/blog/samples/bd-pic.jpg";
 import { Artigo, ArtigoRecents } from "../../../types/artigo";
+import { clearArroba } from "../../../utils/tools";
 import Paragrafos from "./Paragrafos";
 import PostsRelated from "./PostsRelated";
 type Props = {
@@ -9,13 +10,7 @@ type Props = {
   url?: string[];
 };
 const PostsBody = ({ artigo, recents, url = [] }: Props) => {
-  //const myArray = artigo.conteudoParagrafoOne.split(".");
-  const test =
-    artigo.conteudoIntroducao +
-    artigo.conteudoParagrafoOne +
-    artigo.conteudoParagrafoTwo +
-    artigo.conteudoConclusao;
-  const myArray = test.split("@");
+  const myArray = clearArroba(artigo);
   const qkey = Object.values(artigo.categorias)[0];
   return (
     <>

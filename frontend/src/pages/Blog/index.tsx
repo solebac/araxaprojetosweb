@@ -13,9 +13,7 @@ import {
   getArticlesPagabled,
   getPosts,
   ICategorias,
-  ResetArt,
   ResetPage,
-  ResetRecents,
 } from "../../services/ArticlesHome.services";
 
 const categorias: ICategorias = {

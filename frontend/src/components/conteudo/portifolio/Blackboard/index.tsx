@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   getArticlesPagabledLight,
   ICategorias,
@@ -39,11 +39,6 @@ const Blackboard = () => {
       <aside className="col-md-8 portifolio-blog">
         <Buscador busca={busca} setBusca={setBusca} />
         <CardDispatcher post={page.content} busca={busca} />
-        {/** 
-        {page?.content?.map((item) => {
-          return <CardDispatcher key={item.id} post={item} busca={busca} />;
-        })}
-        */}
         <section>
           {visible ? (
             <Pagination page={page} onChange={handlerPageNumber} />

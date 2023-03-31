@@ -3,10 +3,11 @@ import { ReactComponent as ImgFrs } from "../../../../assets/img/pessoal/Flavio-
 import ImgRedLink from "../../../../assets/img/footer/rede_git.png";
 import ImgGitHub from "../../../../assets/img/footer/rede_linkedin.png";
 import { ReactComponent as ImgMenu } from "../../../../assets/img/navs/menu.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const LinhaTempo = () => {
   const [isOpen, setOpen] = useState(false);
+  const navigate = useNavigate();
   function hasToggle() {
     /*const botao = document.getElementById("menu-portifolio");*/
     const menu = document.querySelector(".portifolio-menu__lateral");
@@ -93,20 +94,6 @@ const LinhaTempo = () => {
           >
             Home
           </NavLink>
-
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
-                : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
-            }
-            to="../"
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            Meu Site
-          </NavLink>
           <NavLink
             className={({ isActive }) =>
               isActive
@@ -120,21 +107,18 @@ const LinhaTempo = () => {
           >
             Sobre Mim
           </NavLink>
-
-          {/*<a href="../portifolio/find.html"
-            className="portifolio-menu__lateral--link portifolio-menu__lateral--separator">*/}
           <NavLink
             className={({ isActive }) =>
               isActive
                 ? "portifolio-menu__lateral--link portifolio-menu__lateral--separator portifolio-menu__lateral--link-ativo"
                 : "portifolio-menu__lateral--link portifolio-menu__lateral--separator"
             }
-            to="../portifolio/find"
+            to="../"
             onClick={() => {
               setOpen(true);
             }}
           >
-            Pesquisa
+            Meu Site
           </NavLink>
 
           <NavLink
@@ -150,6 +134,17 @@ const LinhaTempo = () => {
           >
             Contato
           </NavLink>
+          <a
+            href="/#"
+            className="portifolio-menu__lateral--link portifolio-menu__lateral--separator"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+              //setOpen(true);
+            }}
+          >
+            Voltar
+          </a>
         </nav>
       </aside>
     </>

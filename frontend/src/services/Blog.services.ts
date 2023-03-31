@@ -23,6 +23,18 @@ export const getPostSlog = async (setPage: any, setInfor: any, url: any) => {
         });
 }
 
+export const getPortiforioUrl = async (setPage: React.Dispatch<React.SetStateAction<Artigo>>, url: any) => {
+    await http.get(`/articles/posts/${url}`)
+        .then(res => {
+            const data = res.data as Artigo;
+            setPage(data);
+        })
+        .catch(error => {
+            // do something with error
+            console.log(error)
+        });
+}
+
 export const getPostNews = async (setPage: any) => {
     await http.get<PostsNews[]>(`/articles/posts/news`)
         .then(res => {
