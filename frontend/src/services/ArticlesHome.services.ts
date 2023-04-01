@@ -77,7 +77,7 @@ export const getArticlesPagabled = async (setPage: any, setDestaque: any, page: 
 //Seção sem destaques
 export const getArticlesPagabledLight = async (setPage: any, page: number, responseBody: ICategorias) => {
     await http
-        .post(`/articles/subcategorias?size=4&page=${page}&sort=id`, responseBody)
+        .post(`/articles/subcategorias?size=4&page=${page}&sort=id,desc`, responseBody)
         .then(res => {
             const data = res.data as ArtigoPage;
             setPage(data);

@@ -88,6 +88,7 @@
 .attack__cabecalho {
   border-bottom: 1px solid var(--prata-claro);
   margin: 0 0 5rem;
+  border: 1px #f6f6f6 solid;
 }
 .attack__cabecalho-link {
   display: block;
