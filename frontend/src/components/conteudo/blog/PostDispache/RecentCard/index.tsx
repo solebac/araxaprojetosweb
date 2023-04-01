@@ -50,7 +50,7 @@ const RecentCard = ({ post }: Props) => {
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
             {post.conteudoIntroducao.replaceAll("@", "")}
           </p>
-          <Link to={`/articles/posts/${post?.url}`} className="read-more">
+          <Link to={`/blog/posts/${post?.url}`} className="read-more">
             Leia mais
             <ImgIcoRight />
           </Link>
