@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import options from "../../../../../../data/tec.json";
+import Swal from "sweetalert2";
 import {
   IArtigo,
   postArticlesInsertFile,
@@ -14,6 +16,7 @@ import http from "../../../../../../utils/http";
 import { carregarImg } from "../../../../../../utils/loadimg";
 import { BASE_PEOPLE } from "../../../../../../utils/requests";
 import ButtonGroups from "../../components/ButtonGroups";
+import Options from "../../components/Options";
 
 const FormPosts = () => {
   const [id, setId] = useState(0);
@@ -30,6 +33,7 @@ const FormPosts = () => {
   const [selectCategoria, setSelectCategoria] =
     useState<Categoria>(ResetCategoria);
   const [status, setStatus] = useState("RASCUNHO");
+  const [slog, setSlog] = useState("TECNOLOGIA");
   const nav = useNavigate();
   async function handleGoBack(event: any) {
     event.preventDefault();
@@ -63,7 +67,7 @@ const FormPosts = () => {
     responseBody.conteudoConclusao = e.target.conclusao.value;
     responseBody.status = status; //e.target.artigoStatus.value;
     responseBody.url = e.target.url.value;
-    responseBody.slog = ""; //e.target.slog.value;
+    responseBody.slog = slog; //e.target.slog.value;
     responseBody.imgDestaque = imageDestaque;
     responseBody.imgCard = imageCard;
     responseBody.contador = 0;
@@ -75,7 +79,10 @@ const FormPosts = () => {
       nome: "",
     };
     responseBody.categorias = selectCategoria;
-
+    if (responseBody.categorias.id === 0) {
+      Swal.fire("oops!", "Categoria não informada!", "error");
+      return;
+    }
     // let target   = event.target  as HTMLTextAreaElement;
     const dto: string = JSON.stringify(responseBody);
     const encodeUri = encodeURIComponent(dto);
@@ -187,6 +194,35 @@ const FormPosts = () => {
                   </option>
                   <option value="AGENDADO">AGENDADO</option>
                   <option value="PUBLICADO">PUBLICADO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-sm-3">
+              <div className="form-group">
+                <label className="appsys__label" htmlFor="artigoStatus">
+                  Slug:
+                </label>
+              </div>
+            </div>
+            <div className="col-sm-9">
+              <div className="form-group">
+                <select
+                  id="slog"
+                  name="slog"
+                  className="form-control appsys appsys--readOnly"
+                  onChange={(e) => {
+                    setSlog(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                  style={{ padding: "2px 10px", textTransform: "uppercase" }}
+                >
+                  <option value="">SELECIONE...</option>
+                  {options.map((item, index) => (
+                    <Options option={item.value} key={index} />
+                  ))}
                 </select>
               </div>
             </div>

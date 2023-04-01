@@ -15,7 +15,7 @@ const Reading = () => {
   const [artigo, setArtigo] = useState<Artigo>(ResetArt);
   const { url } = useParams();
   const navigate = useNavigate();
-
+  console.log(url);
   const menu = [
     { label: "Portifólio", to: "/portifolio" },
     { label: "Sobre", to: "/portifolio/about" },

@@ -6,6 +6,7 @@ import {
   putArticlesUpdateFile,
   ResetArtigo,
 } from "../../../../../../services/Articles.services";
+import options from "../../../../../../data/tec.json";
 import { storeParseAutor } from "../../../../../../services/Autentication.services";
 import { ResetAutor } from "../../../../../../services/Autor.services";
 import { ResetCategoria } from "../../../../../../services/Categoria.services";
@@ -16,6 +17,7 @@ import http from "../../../../../../utils/http";
 import { carregarImg, loadImageServer } from "../../../../../../utils/loadimg";
 import { BASE_PEOPLE, BASE_URL } from "../../../../../../utils/requests";
 import ButtonGroups from "../../components/ButtonGroups";
+import Options from "../../components/Options";
 
 type Props = {
   articlesId: number;
@@ -35,6 +37,7 @@ const FormPosts = ({ articlesId }: Props) => {
   const [autor, setAutor] = useState<Autor>(ResetAutor);
   const [secao, setSecao] = useState({});
   const [status, setStatus] = useState("");
+  const [slog, setSlog] = useState("");
 
   const nav = useNavigate();
 
@@ -77,7 +80,7 @@ const FormPosts = ({ articlesId }: Props) => {
     responseBody.conteudoConclusao = e.target.conclusao.value;
     responseBody.status = e.target.artigoStatus.value;
     responseBody.url = e.target.url.value;
-    responseBody.slog = ""; //e.target.slog.value;
+    responseBody.slog = slog; //e.target.slog.value;
     responseBody.imgDestaque = imageDestaque;
     responseBody.imgCard = imageCard;
     responseBody.contador = 0;
@@ -133,8 +136,9 @@ const FormPosts = ({ articlesId }: Props) => {
     const people = storeParseAutor(localStorage.getItem(BASE_PEOPLE));
     setAutor(people);
     setStatus(articles?.status);
+    setSlog(articles.slog);
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [articles?.imgDestaque, articles?.imgCard, articles?.id, id]);
+  }, [articles?.imgDestaque, articles?.imgCard, articles?.id, id, slog]);
   return (
     <>
       <div className="widget-box">
@@ -188,7 +192,6 @@ const FormPosts = ({ articlesId }: Props) => {
                   className="form-control appsys appsys--readOnly"
                   value={selectCategoria.id}
                   onChange={(e) => {
-                    console.log(e.target.value);
                     var data = categorias.find((obj) => {
                       return obj.id === Number.parseInt(e.target.value, 10);
                     });
@@ -236,7 +239,6 @@ const FormPosts = ({ articlesId }: Props) => {
                   value={articles?.status}
                   onChange={(e) => {
                     setStatus(e.target.value);
-                    console.log(e.target.value);
                   }}
                   style={{ padding: "2px 10px", textTransform: "uppercase" }}
                 >
@@ -244,6 +246,34 @@ const FormPosts = ({ articlesId }: Props) => {
                   <option value="RASCUNHO">RASCUNHO</option>
                   <option value="AGENDADO">AGENDADO</option>
                   <option value="PUBLICADO">PUBLICADO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-sm-3">
+              <div className="form-group">
+                <label className="appsys__label" htmlFor="artigoStatus">
+                  Slug:
+                </label>
+              </div>
+            </div>
+            <div className="col-sm-9">
+              <div className="form-group">
+                <select
+                  id="slog"
+                  name="slog"
+                  className="form-control appsys appsys--readOnly"
+                  onChange={(e) => {
+                    setSlog(e.target.value);
+                  }}
+                  style={{ padding: "2px 10px", textTransform: "uppercase" }}
+                >
+                  <option value="">SELECIONE...</option>
+                  {options.map((item, index) => (
+                    <Options option={item.value} slog={slog} key={index} />
+                  ))}
                 </select>
               </div>
             </div>
