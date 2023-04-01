@@ -34,7 +34,7 @@ const DispacheCard = ({ post = ResetArt }: Props) => {
         </div>
         <div className="bi-text">
           <h4>
-            <Link to={`/articles/posts/${post?.url}`}>
+            <Link to={`/blog/posts/${post?.url}`}>
               {post?.titulo.replaceAll("@", "")}
             </Link>
           </h4>
@@ -53,13 +53,7 @@ const DispacheCard = ({ post = ResetArt }: Props) => {
           <p className="blog-artigo blog-artigo--limit-line blog-artigo--three-line">
             {post?.conteudoIntroducao.replaceAll("@", "")}
           </p>
-          <Link
-            to={`/articles/posts/${post?.url}`}
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-            className="read-more"
-          >
+          <Link to={`/blog/posts/${post?.url}`} className="read-more">
             Leia mais
             <ImgIcoRight />
           </Link>

@@ -88,6 +88,7 @@ const FormPosts = () => {
     const encodeUri = encodeURIComponent(dto);
 
     let formData = new FormData();
+    console.log(encodeUri);
     formData.append("dto", encodeUri);
     formData.append("destaque", destaque, imageDestaque);
     formData.append("card", card, imageCard);

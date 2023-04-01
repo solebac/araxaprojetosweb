@@ -29,7 +29,7 @@ const RecentCard = ({ post }: Props) => {
         <div className="bi-text">
           <h5>
             <Link
-              to={`/articles/posts/${post?.url}`}
+              to={`/blog/posts/${post?.url}`}
               className="blog-artigo--limit-line blog-artigo--one-line blog-artigo--attr"
             >
               {post.titulo.replaceAll("@", "")}
