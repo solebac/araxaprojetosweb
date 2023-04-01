@@ -155,7 +155,7 @@ public class ArtigoServices {
 		artigo.setAutor(autor);
 		artigo.setCategoria(categoria.get());
 		String url = AutenticationBase64.passwordEncodeBase64(LocalDateTime.now() + "|" + artigo.getUrl());
-		artigo.setSlog(url);
+		artigo.setUrl(url.replaceAll("/", ""));
 		artigo = artRepository.saveAndFlush(artigo);
 
 		return new ArtigoDto(artigo);
@@ -195,7 +195,7 @@ public class ArtigoServices {
 
 	private void preencheArtigo(Artigo artigo, ArtigoDto dto) {
 		artigo.setTitulo(dto.getTitulo());
-		artigo.setDataPublicacao(new Date(dto.getDataPublicacao()));
+		artigo.setDataPublicacao(dto.getDataPublicacao());
 		artigo.setConteudoIntroducao(dto.getConteudoIntroducao());
 		artigo.setConteudoParagrafoOne(dto.getConteudoParagrafoOne());
 		artigo.setConteudoParagrafoTwo(dto.getConteudoParagrafoTwo());

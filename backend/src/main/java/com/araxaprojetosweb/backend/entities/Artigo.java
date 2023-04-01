@@ -14,7 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -22,6 +21,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.araxaprojetosweb.backend.assembler.ChangeDateFormatAssembler;
 import com.araxaprojetosweb.backend.entities.enums.ArtigoStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -152,8 +152,9 @@ public class Artigo implements Serializable{
 		return dataPublicacao;
 	}
 
-	public void setDataPublicacao(Date dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
+	public void setDataPublicacao(String dataPublicacao) {
+		String formatter = "yyyy-dd-MM";
+		this.dataPublicacao = ChangeDateFormatAssembler.toDate(dataPublicacao, formatter);
 	}
 
 	public String getConteudoIntroducao() {
