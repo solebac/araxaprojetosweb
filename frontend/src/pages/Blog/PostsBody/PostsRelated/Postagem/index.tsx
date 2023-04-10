@@ -1,10 +1,10 @@
-import { ArtigoRecents } from "../../../../../types/artigo";
 import { BASE_URL } from "../../../../../utils/requests";
 import imgSemFoto from "../../../../../assets/img/blog/semFotoCard.png";
 import { Link } from "react-router-dom";
+import { IArtigoRecents } from "../../../../../interfaces/IArtigoRecents";
 
 type Props = {
-  posts: ArtigoRecents;
+  posts: IArtigoRecents;
 };
 const Postagem = ({ posts }: Props) => {
   return (

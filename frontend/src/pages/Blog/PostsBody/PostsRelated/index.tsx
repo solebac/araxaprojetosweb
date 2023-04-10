@@ -1,8 +1,8 @@
-import { ArtigoRecents } from "../../../../types/artigo";
+import { IArtigoRecents } from "../../../../interfaces/IArtigoRecents";
 import Postagem from "./Postagem";
 
 type Props = {
-  recents: ArtigoRecents[];
+  recents: IArtigoRecents[];
 };
 
 const PostsRelated = ({ recents }: Props) => {

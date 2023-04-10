@@ -1,4 +1,4 @@
-import { Autor } from '../types/autor';
+import { IAutor } from '../interfaces/IAutor';
 import { fromBase64 } from '../utils/base64';
 import http from '../utils/http';
 import { BASE_PEOPLE } from '../utils/requests';
@@ -19,7 +19,7 @@ declare interface Basic {
     basic: string;
     token: string;
     tipo: string;
-    autor: Autor;
+    autor: IAutor;
 }
 
 type Token = string;
@@ -44,7 +44,7 @@ export const storeBasic = (basic: AutBasic, credentials: Credentials) => {
     window.localStorage.setItem('verify', verify)
     http.defaults.headers.common.Authorization = `Basic ${verify}`;
 }
-export const storeAutor = (autor: Autor) => {
+export const storeAutor = (autor: IAutor) => {
     window.localStorage.setItem(BASE_PEOPLE, JSON.stringify(autor));
 }
 export const storeParseAutor = (obj: any) => {

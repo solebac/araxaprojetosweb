@@ -1,37 +1,39 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import options from "../../../../../../data/tec.json";
-import Swal from "sweetalert2";
-import {
-  IArtigo,
-  postArticlesInsertFile,
-} from "../../../../../../services/Articles.services";
+import { postArticlesInsertFile } from "../../../../../../services/Articles.services";
 import { storeParseAutor } from "../../../../../../services/Autentication.services";
-import { ResetAutor } from "../../../../../../services/Autor.services";
-import { ResetCategoria } from "../../../../../../services/Categoria.services";
-import { Autor } from "../../../../../../types/autor";
-import { Categoria } from "../../../../../../types/categoria";
-import { Secao } from "../../../../../../types/secao";
 import http from "../../../../../../utils/http";
 import { carregarImg } from "../../../../../../utils/loadimg";
 import { BASE_PEOPLE } from "../../../../../../utils/requests";
 import ButtonGroups from "../../components/ButtonGroups";
 import Options from "../../components/Options";
+import { IAutor } from "../../../../../../interfaces/IAutor";
+import { ISecao } from "../../../../../../interfaces/ISecao";
+import { ResetSecao } from "../../../../../../interfaces/reset";
+import { AutorDTO, TResetAutor } from "../../../../../../types/AutorDTO";
+import {
+  CategoriaDTO,
+  TResetCategoria,
+} from "../../../../../../types/CategoriaDTO";
+import { IArtigoDto } from "../../../../../../interfaces/IArtigoDto";
+import { toast } from "react-toastify";
 
 const FormPosts = () => {
   const [id, setId] = useState(0);
   const [imageDestaque, setImageDestaque] = useState("");
   const [imageCard, setImageCard] = useState("");
   const [destaque, setDestaque] = useState("");
+  //const [destaque, setDestaque] = useState<File | null>(null);
   const [card, setCard] = useState("");
-  const [secao, setSecao] = useState<Secao>({
-    id: 0,
-    nome: "",
-  });
-  const [autor, setAutor] = useState<Autor>(ResetAutor);
-  const [categorias, setCategorias] = useState<[Categoria]>([ResetCategoria]);
+  //const [card, setCard] = useState<File | null>(null);
+  const [secao, setSecao] = useState<ISecao>(ResetSecao);
+  const [autor, setAutor] = useState<AutorDTO>(TResetAutor);
+  const [categorias, setCategorias] = useState<[CategoriaDTO]>([
+    TResetCategoria,
+  ]);
   const [selectCategoria, setSelectCategoria] =
-    useState<Categoria>(ResetCategoria);
+    useState<CategoriaDTO>(TResetCategoria);
   const [status, setStatus] = useState("RASCUNHO");
   const [slog, setSlog] = useState("TECNOLOGIA");
   const nav = useNavigate();
@@ -55,7 +57,7 @@ const FormPosts = () => {
   };
   const handlerSendPost = async (e: any) => {
     e.preventDefault();
-    const responseBody = {} as IArtigo;
+    const responseBody = {} as IArtigoDto;
     //responseBody.id: null;
     var today = new Date();
     const strToday = today.toISOString().slice(0, 10);
@@ -75,24 +77,20 @@ const FormPosts = () => {
     responseBody.comment = [];
     responseBody.tag = [];
     responseBody.secao = {
-      id: "",
-      nome: "",
+      id: null,
+      nome: null,
     };
     responseBody.categorias = selectCategoria;
-    if (responseBody.categorias.id === 0) {
-      Swal.fire("oops!", "Categoria não informada!", "error");
-      return;
-    }
+
     // let target   = event.target  as HTMLTextAreaElement;
     const dto: string = JSON.stringify(responseBody);
     const encodeUri = encodeURIComponent(dto);
 
     let formData = new FormData();
-    console.log(encodeUri);
     formData.append("dto", encodeUri);
     formData.append("destaque", destaque, imageDestaque);
     formData.append("card", card, imageCard);
-
+    toast.success("Salvando...");
     await postArticlesInsertFile(setId, formData);
   };
 
@@ -109,10 +107,10 @@ const FormPosts = () => {
       const data = res.data;
       setCategorias(data);
     });
-    const people = storeParseAutor(localStorage.getItem(BASE_PEOPLE));
+    const people: IAutor = storeParseAutor(localStorage.getItem(BASE_PEOPLE));
     setAutor(people);
+
     if (typeof id === "number" && id !== 0) {
-      console.log("Reflesh.: ", id);
       nav(-1);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -148,11 +146,10 @@ const FormPosts = () => {
                   name="artigoCategoria"
                   className="form-control appsys appsys--readOnly"
                   onChange={(e) => {
-                    console.log(e.target.value);
                     var data = categorias.find((obj) => {
                       return obj.id === Number.parseInt(e.target.value, 10);
                     });
-                    setSelectCategoria(data as Categoria);
+                    setSelectCategoria(data as CategoriaDTO);
                   }}
                   style={{ padding: "2px 10px", textTransform: "uppercase" }}
                 >
@@ -185,7 +182,6 @@ const FormPosts = () => {
                   className="form-control appsys appsys--readOnly"
                   onChange={(e) => {
                     setStatus(e.target.value);
-                    console.log(e.target.value);
                   }}
                   style={{ padding: "2px 10px", textTransform: "uppercase" }}
                 >
@@ -216,7 +212,6 @@ const FormPosts = () => {
                   className="form-control appsys appsys--readOnly"
                   onChange={(e) => {
                     setSlog(e.target.value);
-                    console.log(e.target.value);
                   }}
                   style={{ padding: "2px 10px", textTransform: "uppercase" }}
                 >

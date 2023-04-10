@@ -8,16 +8,17 @@ import PostRecent from "../../components/conteudo/blog/PostRecent";
 import ScrollToTop from "../../utils/ScrollToTop";
 import VLibras from "@djpfs/react-vlibras";
 import { useEffect, useState } from "react";
-import { Artigo, ArtigoPage, ArtigoRecents } from "../../types/artigo";
 import {
   getArticlesPagabled,
   getPosts,
-  ICategorias,
-  ResetPage,
 } from "../../services/ArticlesHome.services";
+import { ICategoria } from "../../interfaces/ICategoria";
+import { IArtigo } from "../../interfaces/IArtigo";
+import { IPaginacao } from "../../interfaces/IPaginacao";
+import { IArtigoRecents } from "../../interfaces/IArtigoRecents";
 
-const categorias: ICategorias = {
-  id: "2",
+const categorias: ICategoria = {
+  id: 2,
   nome: "Blog",
   descricao: "Discursões Sobre Tecnologias",
 };
@@ -27,12 +28,12 @@ const Blog = () => {
   //Criar um states para guardar no components a page
 
   //const [destaque, setDestaque] = useState<Artigo>(ResetArt);
-  const [destaque, setDestaque] = useState<Artigo>();
+  const [destaque, setDestaque] = useState<IArtigo>();
 
-  const [page, setPage] = useState<ArtigoPage>(ResetPage);
+  const [page, setPage] = useState<IPaginacao<IArtigo>>();
 
   //Old const [post, setPost] = useState<ArtigoRecents[]>([ResetRecents]);
-  const [post, setPost] = useState<ArtigoRecents[] | []>([]);
+  const [post, setPost] = useState<IArtigoRecents[] | []>([]);
 
   // Similar ao componentDidMount e componentDidUpdate:
   // Armazenamento da pagina no estada PAGE

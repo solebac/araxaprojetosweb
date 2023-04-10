@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import imgLogo from "../../../../assets/img/logo/logo-02.png";
+import { IAutor } from "../../../../interfaces/IAutor";
+import { ResetAutor } from "../../../../interfaces/reset";
 import { storeParseAutor } from "../../../../services/Autentication.services";
-import { ResetAutor } from "../../../../services/Autor.services";
-import { Autor } from "../../../../types/autor";
 import { getLoadImagem } from "../../../../utils/loadimgcss";
 import { BASE_PEOPLE, BASE_URL } from "../../../../utils/requests";
 const HeaderSys = () => {
   const [isOpen, setOpen] = useState(false);
-  const [autor, setAutor] = useState<Autor>(ResetAutor);
+  const [autor, setAutor] = useState<IAutor>(ResetAutor);
   function hasToggle() {
     /*const botao = document.getElementById("menu-portifolio");*/
     const menu = document.querySelector(".menu-lateral");

@@ -3,11 +3,11 @@ import { ReactComponent as ImgTwitter } from "../../../../assets/img/redes/twitt
 import { ReactComponent as ImgYoutube } from "../../../../assets/img/redes/youtube.svg";
 import { ReactComponent as ImgFacebook } from "../../../../assets/img/redes/facebook.svg";
 import RecentPostCard from "./RecentPostCard";
-import { ArtigoRecents } from "../../../../types/artigo";
 import { Link } from "react-router-dom";
+import { IArtigoRecents } from "../../../../interfaces/IArtigoRecents";
 
 type Props = {
-  post: ArtigoRecents[];
+  post: IArtigoRecents[];
 };
 
 const PostRecent = ({ post }: Props) => {

@@ -120,6 +120,17 @@ const LinhaTempo = () => {
           >
             Meu Site
           </NavLink>
+          <a
+            href="/#"
+            className="portifolio-menu__lateral--link portifolio-menu__lateral--separator"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/aplicationsys");
+              //setOpen(true);
+            }}
+          >
+            Meu Sistema
+          </a>
 
           <NavLink
             className={({ isActive }) =>

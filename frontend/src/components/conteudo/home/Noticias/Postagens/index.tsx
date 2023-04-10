@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { PostsNews } from "../../../../../types/blog";
+import { IPostsNews } from "../../../../../interfaces/IBlog";
 type Props = {
   count: number;
-  news: PostsNews;
+  news: IPostsNews;
 };
 const Postagens = ({ count, news }: Props) => {
   return (

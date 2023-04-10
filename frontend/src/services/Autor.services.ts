@@ -1,35 +1,7 @@
-import { Autor, AutorPage } from "../types/autor";
+import React from "react";
+import { IAutor } from "../interfaces/IAutor";
+import { IPaginacao } from "../interfaces/IPaginacao";
 import http from "../utils/http";
-
-export interface IAutor {
-    id: string;
-    nome: string;
-    bio: string;
-    foto: string;
-    email: string;
-    senha: string;
-    usuario: string;
-}
-
-export const ResetAutor = {
-    id: 0,
-    nome: "",
-    bio: "",
-    foto: "",
-    email: "",
-    usuario: "",
-};
-export const ResetAutorPage = {
-    content: [],
-    last: true,
-    totalPages: 0,
-    totalElements: 0,
-    size: 10,
-    number: 0,
-    first: true,
-    numberOfElements: 0,
-    empty: true,
-}
 
 export const getAutores = async (setDados: any) => {
     await http.get("/autor") //Depreciada
@@ -40,10 +12,12 @@ export const getAutores = async (setDados: any) => {
             console.log(error)
         });
 }
-export const getAutoresPage = async (setPage: any, pageNumber: number) => {
-    await http.get(`/autor/paginacao?size=5&page=${pageNumber}&sort=id`)
+export const getAutoresPage = async (setPage: React.Dispatch<React.SetStateAction<IPaginacao<IAutor> | undefined>>
+    , pageNumber: number) => {
+    await http.get<IPaginacao<IAutor>>(`/autor/paginacao?size=5&page=${pageNumber}&sort=id`)
         .then(res => {
-            const data = res.data as AutorPage;
+            //const data = res.data as AutorPage;
+            const data = res.data;
             setPage(data);
         })
         .catch(error => {
@@ -52,9 +26,10 @@ export const getAutoresPage = async (setPage: any, pageNumber: number) => {
 }
 export const getAutorId = async (setDados: any, autorId: number) => {
     await http
-        .get<Autor>(`/autor/${autorId}`)
+        .get<IAutor>(`/autor/${autorId}`)
         .then(res => {
-            const data = res.data as Autor;
+            //const data = res.data as Autor;
+            const data = res.data;
             setDados(data);
         })
         .catch(error => {
@@ -63,9 +38,9 @@ export const getAutorId = async (setDados: any, autorId: number) => {
 }
 export const postAutores = async (setDados: any, responseBody: IAutor) => {
     await http
-        .post("/autor", responseBody)
+        .post<IAutor>("/autor", responseBody)
         .then(res => {
-            const data = res.data as Autor;//Retorno de um DTO
+            const data = res.data;
             //test console.log("Retorno DTO post.: ", data)
             setDados(data);
         })
@@ -75,9 +50,10 @@ export const postAutores = async (setDados: any, responseBody: IAutor) => {
 }
 export const putAutores = async (key: number, setDados: any, responseBody: IAutor) => {
     await http
-        .put(`/autor/${key}`, responseBody)
+        .put<IAutor>(`/autor/${key}`, responseBody)
         .then(res => {
-            const data = res.data as Autor;//Retorno de um DTO
+            //const data = res.data as Autor;//Retorno de um DTO
+            const data = res.data;
             console.log("Retorno DTO post.: ", data)
             setDados(data.id);
         })
@@ -86,15 +62,16 @@ export const putAutores = async (key: number, setDados: any, responseBody: IAuto
         });
 }
 
-export const postAutoresInsertFile = async (setDados: any, formData: any) => {
+export const postAutoresInsertFile = async (setDados: React.Dispatch<React.SetStateAction<IAutor | undefined>>, formData: any) => {
     await http
-        .post("/autor/insertFull", formData, {
+        .post<IAutor>("/autor/insertFull", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
         })
         .then(res => {
-            const data = res.data as Autor;//Retorno de um DTO
+            //const data = res.data as Autor;//Retorno de um DTO
+            const data = res.data;
             //test console.log("Retorno DTO post.: ", data)
             setDados(data);
         })
@@ -102,7 +79,7 @@ export const postAutoresInsertFile = async (setDados: any, formData: any) => {
             console.log(error)
         });
 }
-export const putAutoresUpdateFile = async (key: number, setDados: any, formData: any) => {
+export const putAutoresUpdateFile = async (key: number, setDados: React.Dispatch<React.SetStateAction<number>>, formData: any) => {
     await http
         .put(`/autor/updateFull/${key}`, formData, {
             headers: {
@@ -110,8 +87,9 @@ export const putAutoresUpdateFile = async (key: number, setDados: any, formData:
             },
         })
         .then(res => {
-            const data = res.data as Autor;//Retorno de um DTO
-            console.log("Retorno DTO post.: ", data)
+            //const data = res.data as Autor;//Retorno de um DTO
+            const data = res.data;
+            //console.log("Retorno DTO post.: ", data)
             setDados(data.id);
         })
         .catch(error => {

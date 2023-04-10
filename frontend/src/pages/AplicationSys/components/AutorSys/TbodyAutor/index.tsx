@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Autor } from "../../../../../types/autor";
+import { IAutor } from "../../../../../interfaces/IAutor";
 
 type Props = {
-  line: Autor;
+  line: IAutor;
 };
 
 const TbodyAutor = ({ line }: Props) => {

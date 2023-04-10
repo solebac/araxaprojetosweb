@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ICategoria } from "../../../../../../interfaces/ICategoria";
+import { ResetCategoria } from "../../../../../../interfaces/reset";
 import {
   getCategoriasId,
-  ICategoria,
   putCategoria,
-  ResetCategoria,
 } from "../../../../../../services/Categoria.services";
-import { Categoria } from "../../../../../../types/categoria";
 import ButtonGroups from "../../components/ButtonGroups";
 
 type Props = {
@@ -23,7 +22,7 @@ const FormCategoria = ({ categoriaId }: Props) => {
     console.log(responseBody);
     await putCategoria(categoriaId, setId, responseBody);
   };
-  const [categorias, setCategorias] = useState<Categoria>(ResetCategoria);
+  const [categorias, setCategorias] = useState<ICategoria>(ResetCategoria);
   const nav = useNavigate();
   async function handleGoBack(event: any) {
     event.preventDefault();

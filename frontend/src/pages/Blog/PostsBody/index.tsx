@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import imgTest from "../../../assets/img/blog/samples/bd-pic.jpg";
-import { Artigo, ArtigoRecents } from "../../../types/artigo";
+import { IArtigo } from "../../../interfaces/IArtigo";
+import { IArtigoRecents } from "../../../interfaces/IArtigoRecents";
 import { clearArroba } from "../../../utils/tools";
 import Paragrafos from "./Paragrafos";
 import PostsRelated from "./PostsRelated";
 type Props = {
-  artigo: Artigo;
-  recents: ArtigoRecents[];
+  artigo?: IArtigo;
+  recents: IArtigoRecents[];
   url?: string[];
 };
 const PostsBody = ({ artigo, recents, url = [] }: Props) => {
-  const myArray = clearArroba(artigo);
-  const qkey = Object.values(artigo.categorias)[0];
+  const myArray = artigo && clearArroba(artigo);
+  const qkey = artigo && Object.values(artigo.categorias)[0];
   return (
     <>
       <section className="blog-details-section spad">
@@ -19,7 +20,7 @@ const PostsBody = ({ artigo, recents, url = [] }: Props) => {
           <div className="row">
             <div className="col-lg-10 m-auto--center">
               <div className="blog-details-content blog-details-content--tipografia">
-                {myArray.map((text, index) => {
+                {myArray?.map((text, index) => {
                   const bcTop = "bc-top";
                   const bcDesc = "bc-desc";
                   return !(index === 2) ? (
@@ -34,7 +35,7 @@ const PostsBody = ({ artigo, recents, url = [] }: Props) => {
                     <Paragrafos
                       texto={text}
                       style={bcDesc}
-                      paths={artigo.imgDestaque}
+                      paths={artigo?.imgDestaque}
                       imgs={true}
                       key={index}
                       quarentena={Number(qkey)}

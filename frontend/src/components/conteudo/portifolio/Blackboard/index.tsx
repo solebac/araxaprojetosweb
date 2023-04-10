@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import {
-  getArticlesPagabledLight,
-  ICategorias,
-  ResetPage,
-} from "../../../../services/ArticlesHome.services";
-import { ArtigoPage } from "../../../../types/artigo";
+import { IArtigo } from "../../../../interfaces/IArtigo";
+import { ICategoria } from "../../../../interfaces/ICategoria";
+import { IPaginacao } from "../../../../interfaces/IPaginacao";
+import { getArticlesPagabledLight } from "../../../../services/ArticlesHome.services";
+import Pagination from "../../../Pagination";
 import Buscador from "./Buscador";
 import CardDispatcher from "./CardDispatcher";
-import Pagination from "./Pagination";
 
-const categorias: ICategorias = {
-  id: "1",
+const categorias: ICategoria = {
+  id: 1,
   nome: "Portifolio",
   descricao: "Documentos Uteis",
 };
@@ -18,17 +16,16 @@ const categorias: ICategorias = {
 const Blackboard = () => {
   const [visible, setVisible] = useState(false);
   const [pageNumber, setPageNumber] = useState(0);
-  const [page, setPage] = useState<ArtigoPage>(ResetPage);
+  const [page, setPage] = useState<IPaginacao<IArtigo>>();
   const [busca, setBusca] = useState("");
 
   useEffect(() => {
     getArticlesPagabledLight(setPage, pageNumber, categorias);
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-    if (page.totalPages > 1) {
+    if (page && page?.totalPages > 1) {
       setVisible(true);
     }
-    //console.log(page?.content);
-  }, [visible, pageNumber, page.totalPages]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible, pageNumber, page?.totalPages]);
 
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);
@@ -38,7 +35,7 @@ const Blackboard = () => {
     <>
       <aside className="col-md-8 portifolio-blog">
         <Buscador busca={busca} setBusca={setBusca} />
-        <CardDispatcher post={page.content} busca={busca} />
+        <CardDispatcher post={page?.content} busca={busca} />
         <section>
           {visible ? (
             <Pagination page={page} onChange={handlerPageNumber} />

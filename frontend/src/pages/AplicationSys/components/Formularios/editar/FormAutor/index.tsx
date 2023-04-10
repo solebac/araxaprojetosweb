@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IAutor } from "../../../../../../interfaces/IAutor";
 import {
   getAutorId,
-  IAutor,
   putAutoresUpdateFile,
-  ResetAutor,
 } from "../../../../../../services/Autor.services";
-import { Autor } from "../../../../../../types/autor";
 import { carregarImg, loadImageServer } from "../../../../../../utils/loadimg";
 import { BASE_URL } from "../../../../../../utils/requests";
 import ButtonGroups from "../../components/ButtonGroups";
@@ -16,7 +14,7 @@ type Props = {
 };
 
 const FormAutor = ({ autorId }: Props) => {
-  const [autor, setAutor] = useState<Autor>(ResetAutor);
+  const [autor, setAutor] = useState<IAutor>();
   const [id, setId] = useState(0);
   const [image, setImage] = useState("");
   const [imgName, setImgName] = useState("");
@@ -41,7 +39,7 @@ const FormAutor = ({ autorId }: Props) => {
     let formData = new FormData(target);
     const responseBody = {} as IAutor;
 
-    responseBody.id = formData.get("autorId") as string;
+    responseBody.id = Number(formData.get("autorId"));
     responseBody.nome = formData.get("nome") as string;
     responseBody.foto = imgName; //formData.get("foto") as string;
     responseBody.bio = formData.get("bio") as string;
@@ -66,9 +64,9 @@ const FormAutor = ({ autorId }: Props) => {
     if (typeof id === "number" && id !== 0) {
       nav("/aplicationsys/autor");
     } else {
-      if (typeof autor.foto === "string" && autor.foto !== "") {
-        loadImageServer(setImage, autor.foto, "foto");
-        setImgName(autor.foto);
+      if (typeof autor?.foto === "string" && autor?.foto !== "") {
+        loadImageServer(setImage, autor?.foto, "foto");
+        setImgName(autor?.foto);
       }
     }
     const callData = async () => {
@@ -76,7 +74,7 @@ const FormAutor = ({ autorId }: Props) => {
     };
     callData().catch(console.error);
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autor.id, id]);
+  }, [autor?.id, id]);
 
   return (
     <>
@@ -105,7 +103,7 @@ const FormAutor = ({ autorId }: Props) => {
                   id="autorId"
                   name="autorId"
                   readOnly
-                  defaultValue={autor?.id > 0 ? autor?.id : autorId}
+                  defaultValue={Number(autor?.id) > 0 ? autor?.id : autorId}
                 />
               </div>
             </div>

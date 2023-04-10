@@ -1,9 +1,9 @@
-export type PostsTitle = {
+export interface IPostsTitle {
     titulo: string;
     authorName: string;
     publicacao: string;
 };
-export type PostsNews = {
+export interface IPostsNews {
     id: number;
     categoria_id: number;
     titulo: string;

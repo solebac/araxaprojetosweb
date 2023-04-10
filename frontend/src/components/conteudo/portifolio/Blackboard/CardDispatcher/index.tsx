@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { Artigo } from "../../../../../types/artigo";
+import { IArtigo } from "../../../../../interfaces/IArtigo";
+import { ResetArtigo } from "../../../../../interfaces/reset";
 import CardItem from "./CardItem";
 
 type Props = {
-  post: Artigo[];
+  post?: IArtigo[];
   busca: string;
 };
-const CardDispatcher = ({ post, busca }: Props) => {
+const CardDispatcher = ({ post = [ResetArtigo], busca }: Props) => {
   const [lista, setLista] = useState(post);
 
   function testaBusca(titulo: string) {
@@ -18,6 +19,7 @@ const CardDispatcher = ({ post, busca }: Props) => {
     setLista(post);
     const novaLista = post.filter((item) => testaBusca(item.titulo));
     setLista(novaLista);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [busca, post]);
   return (
     <>

@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 /*import imgTest01 from "../../../../../assets/img/blog/panel-test.jpg";*/
 import imgSemFoto from "../../../../../assets/img/blog/semFotoCard.png";
-import { ArtigoRecents } from "../../../../../types/artigo";
+import { IArtigoRecents } from "../../../../../interfaces/IArtigoRecents";
 import { BASE_URL } from "../../../../../utils/requests";
 
 type Props = {
-  post: ArtigoRecents;
+  post: IArtigoRecents;
 };
 
 const RecentPostCard = ({ post }: Props) => {

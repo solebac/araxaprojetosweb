@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
 import CardDispatcher from "./CardDispatcher";
-import Pagination from "../Pagination";
-import { ArtigoPage } from "../../../../../types/artigo";
-import {
-  getArticlesPagabledLight,
-  ICategorias,
-  ResetPage,
-} from "../../../../../services/ArticlesHome.services";
+import { getArticlesPagabledLight } from "../../../../../services/ArticlesHome.services";
+import { ICategoria } from "../../../../../interfaces/ICategoria";
+import { IArtigo } from "../../../../../interfaces/IArtigo";
+import { IPaginacao } from "../../../../../interfaces/IPaginacao";
+import Pagination from "../../../../Pagination";
 
-const categorias: ICategorias = {
-  id: "4",
+const categorias: ICategoria = {
+  id: 4,
   nome: "Quarentena",
   descricao: "Virus em quarentena",
 };
 
 const PostDispatcher = () => {
   const [pageNumber, setPageNumber] = useState(0);
-  const [page, setPage] = useState<ArtigoPage>(ResetPage);
+  const [page, setPage] = useState<IPaginacao<IArtigo>>();
   const [visible, setVisible] = useState(false);
 
   const handlerPageNumber = (newPager: number) => {
@@ -25,10 +23,10 @@ const PostDispatcher = () => {
   useEffect(() => {
     getArticlesPagabledLight(setPage, pageNumber, categorias);
     //eslint-disable-next-line react-hooks/exhaustive-deps
-    if (page.totalPages > 1) {
+    if (page && page?.totalPages > 1) {
       setVisible(true);
     }
-  }, [pageNumber, page.totalPages]);
+  }, [pageNumber, page?.totalPages]);
 
   return (
     <>

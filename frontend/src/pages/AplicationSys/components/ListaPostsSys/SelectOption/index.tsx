@@ -1,7 +1,7 @@
-import { Categoria } from "../../../../../types/categoria";
+import { ICategoria } from "../../../../../interfaces/ICategoria";
 
 type Props = {
-  cat: Categoria;
+  cat: ICategoria;
 };
 
 const SelectOption = ({ cat }: Props) => {

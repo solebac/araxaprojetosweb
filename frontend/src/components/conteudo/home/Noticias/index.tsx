@@ -1,7 +1,7 @@
-import { PostsNews } from "../../../../types/blog";
+import { IPostsNews } from "../../../../interfaces/IBlog";
 import Postagens from "./Postagens";
 type Props = {
-  news: PostsNews[];
+  news: IPostsNews[];
 };
 const Noticias = ({ news }: Props) => {
   return (

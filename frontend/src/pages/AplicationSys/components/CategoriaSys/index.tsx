@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  getCategoriasPage,
-  ResetCategoriaPage,
-} from "../../../../services/Categoria.services";
-import { CategoriaPage } from "../../../../types/categoria";
+import { ICategoria } from "../../../../interfaces/ICategoria";
+import { IPaginacao } from "../../../../interfaces/IPaginacao";
+import { getCategoriasPage } from "../../../../services/Categoria.services";
 import ControlPage from "../ControlPage";
 import TbodyCategoria from "./TbodyCategoria";
 const CategoriaSys = () => {
-  const [line, setLine] = useState<CategoriaPage>(ResetCategoriaPage);
+  const [line, setLine] = useState<IPaginacao<ICategoria>>();
   const [pageNumber, setPageNumber] = useState(0);
   function handlerPageNumber(page: number) {
     setPageNumber(page);
@@ -44,7 +42,7 @@ const CategoriaSys = () => {
               </tr>
             </thead>
             <tbody>
-              {line.content.map((cat) => {
+              {line?.content.map((cat) => {
                 return <TbodyCategoria key={cat.id} line={cat} />;
               })}
             </tbody>

@@ -1,30 +1,7 @@
-import { ArtigoPage } from "../types/artigo";
-import { Categoria } from "../types/categoria";
+import { ICategoria } from "../interfaces/ICategoria";
+import { IPaginacao } from "../interfaces/IPaginacao";
 import http from "../utils/http";
-/*import { BASE_URL } from "../utils/requests";*/
 
-export interface ICategoria {
-    id: number;
-    nome: string;
-    descricao: string;
-}
-export const ResetCategoria = {
-    id: 0,
-    nome: "",
-    descricao: "",
-    secao: []
-}
-export const ResetCategoriaPage = {
-    content: [],
-    last: true,
-    totalPages: 0,
-    totalElements: 0,
-    size: 10,
-    number: 0,
-    first: true,
-    numberOfElements: 0,
-    empty: true,
-}
 
 export const getCategorias = async (setDados: any) => {
     await http.get("/categoria")
@@ -36,11 +13,12 @@ export const getCategorias = async (setDados: any) => {
         });
 }
 
-export const getCategoriasPage = async (setPage: any, pageNumber: number) => {
+export const getCategoriasPage = async (setPage: React.Dispatch<React.SetStateAction<IPaginacao<ICategoria> | undefined>>, pageNumber: number) => {
     await http
-        .get(`categoria/paginacao?size=5&page=${pageNumber}`)
+        .get<IPaginacao<ICategoria>>(`categoria/paginacao?size=5&page=${pageNumber}`)
         .then(res => {
-            const data = res.data as ArtigoPage;
+            //const data = res.data as ArtigoPage;
+            const data = res.data;
             setPage(data);
         })
         .catch(error => {
@@ -48,22 +26,24 @@ export const getCategoriasPage = async (setPage: any, pageNumber: number) => {
         });
 }
 
-export const getCategoriasId = async (setDados: any, categoriaId: number) => {
+export const getCategoriasId = async (setDados: React.Dispatch<React.SetStateAction<ICategoria>>, categoriaId: number) => {
     await http
-        .get(`/categoria/${categoriaId}`)
+        .get<ICategoria>(`/categoria/${categoriaId}`)
         .then((res) => {
-            const data = res.data as Categoria;
+            //const data = res.data as Categoria;
+            const data = res.data;
             setDados(data);
         }).catch(error => {
             console.log(error)
         });
 }
 
-export const postCategoria = async (setDados: any, responseBody: ICategoria) => {
+export const postCategoria = async (setDados: React.Dispatch<React.SetStateAction<ICategoria | undefined>>,
+    responseBody: ICategoria) => {
     await http
-        .post(`/categoria`, responseBody)
+        .post<ICategoria>(`/categoria`, responseBody)
         .then(res => {
-            const data = res.data as Categoria;
+            const data = res.data;
             setDados(data);
         })
         .catch(error => {
@@ -71,11 +51,11 @@ export const postCategoria = async (setDados: any, responseBody: ICategoria) => 
         });
 }
 
-export const putCategoria = async (categoriaId: number, setDados: any, responseBody: ICategoria) => {
+export const putCategoria = async (categoriaId: number, setDados: React.Dispatch<React.SetStateAction<number>>, responseBody: ICategoria) => {
     await http
         .put(`/categoria/${categoriaId}`, responseBody)
         .then(res => {
-            const data = res.data as Categoria;
+            const data = res.data as ICategoria;
             setDados(data.id);
         })
         .catch(error => {

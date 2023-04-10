@@ -1,7 +1,7 @@
-import { PostsTitle } from "../../../../../types/blog";
+import { IPostsTitle } from "../../../../../interfaces/IBlog";
 
 type Props = {
-  infor: PostsTitle;
+  infor: IPostsTitle;
 };
 
 const Capa = ({ infor }: Props) => {

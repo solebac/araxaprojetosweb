@@ -1,9 +1,21 @@
 import React, { MouseEventHandler } from "react";
 
 type Props = {
-  handledGo: MouseEventHandler;
+  handledGo: React.MouseEventHandler<Element>;
 };
 const ButtonGroups = ({ handledGo }: Props) => {
+  const test = () => {
+    /*toast.success('Salvando artigos!', {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });*/
+  };
   return (
     <>
       <div

@@ -1,45 +1,42 @@
 import { useEffect, useState } from "react";
 import BannerMidde from "./BannerMidde";
 import CardRecents from "./CardRecents";
-import { ReactComponent as ImgFluxion } from "../../../../../assets/img/card/fluxion.svg";
 import CardSection from "./CardSection";
-//import CardDispatcher from "./CardDispatcher";
-import Pagination from "./Pagination";
-import { SecaoCategoria } from "../../../../../types/secao";
-import { ArtigoPage, ArtigoRecents } from "../../../../../types/artigo";
 import {
   getArticlesPagabledLight,
   getPosts,
   getSecao,
-  ICategorias,
-  ResetPage,
-  ResetRecents,
-  ResetSecao,
 } from "../../../../../services/ArticlesHome.services";
 import Dispatche from "./Dispatcher";
+import { ISecaoCategoria } from "../../../../../interfaces/ISecao";
+import { IArtigo } from "../../../../../interfaces/IArtigo";
+import { ICategoria } from "../../../../../interfaces/ICategoria";
+import { IPaginacao } from "../../../../../interfaces/IPaginacao";
+import { IArtigoRecents } from "../../../../../interfaces/IArtigoRecents";
+import Pagination from "../../../../Pagination";
 
-const categorias: ICategorias = {
-  id: "3",
+const categorias: ICategoria = {
+  id: 3,
   nome: "Hacker",
   descricao: "Comentarios Hacker Ethical",
 };
 
 const PostDispatcher = () => {
   const [pageNumber, setPageNumber] = useState(0);
-  const [secao, setSecao] = useState<SecaoCategoria[]>([ResetSecao]);
-  const [page, setPage] = useState<ArtigoPage>(ResetPage);
+  const [secao, setSecao] = useState<ISecaoCategoria[]>([]);
+  const [page, setPage] = useState<IPaginacao<IArtigo>>();
   const [visible, setVisible] = useState(false);
-  const [recents, setRecents] = useState<ArtigoRecents[]>([ResetRecents]);
+  const [recents, setRecents] = useState<IArtigoRecents[]>([]);
 
   useEffect(() => {
     getSecao(3, setSecao);
     getArticlesPagabledLight(setPage, pageNumber, categorias);
-    if (page.totalPages > 1) {
+    if (page && page?.totalPages > 1) {
       setVisible(true);
     }
     getPosts(setRecents, 3);
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber, page.totalPages]);
+  }, [pageNumber, page?.totalPages]);
 
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);

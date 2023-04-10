@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { ReactComponent as ImgFluxion } from "../../../../../../assets/img/card/fluxion.svg";
-import { Artigo } from "../../../../../../types/artigo";
+import { IArtigo } from "../../../../../../interfaces/IArtigo";
 
 type Props = {
-  post: Artigo;
+  post: IArtigo;
 };
 
 const CardDispatcher = ({ post }: Props) => {

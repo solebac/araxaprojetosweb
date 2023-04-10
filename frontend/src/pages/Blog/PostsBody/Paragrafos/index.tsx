@@ -4,7 +4,7 @@ import imgSemFoto from "../../../../assets/img/blog/blog-1.jpg";
 type Props = {
   texto: string;
   style: string;
-  paths: string;
+  paths?: string;
   imgs: boolean;
   quarentena?: number | undefined;
 };

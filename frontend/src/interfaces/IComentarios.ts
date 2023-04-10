@@ -1,5 +1,5 @@
-export type Comentario = {
-  id: 1;
+export interface IComentario {
+  id: number;
   nome: string;
   texto: string;
   data: string;

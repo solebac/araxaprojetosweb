@@ -1,12 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import imgSemFoto from "../../../../../../assets/img/blog/blog-1.jpg";
 import { ReactComponent as ImgIcoRight } from "../../../../../../assets/img/fonts-icon/arrow_right.svg";
-import { Artigo } from "../../../../../../types/artigo";
+import { IArtigo } from "../../../../../../interfaces/IArtigo";
 import { BASE_URL } from "../../../../../../utils/requests";
 
 type Props = {
-  post: Artigo;
+  post: IArtigo;
 };
 
 const Dispatche = ({ post }: Props) => {

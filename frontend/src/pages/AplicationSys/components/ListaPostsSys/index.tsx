@@ -1,32 +1,27 @@
 import { useEffect, useState } from "react";
-import {
-  postArticlesOfAutor,
-  ResetArtigoPage,
-} from "../../../../services/Articles.services";
+import { IArtigo } from "../../../../interfaces/IArtigo";
+import { IAutor } from "../../../../interfaces/IAutor";
+import { ICategoria } from "../../../../interfaces/ICategoria";
+import { IPaginacao } from "../../../../interfaces/IPaginacao";
+import { ResetAutor, ResetCategoria } from "../../../../interfaces/reset";
+import { postArticlesOfAutor } from "../../../../services/Articles.services";
 import { storeParseAutor } from "../../../../services/Autentication.services";
-import { ResetAutor } from "../../../../services/Autor.services";
-import {
-  getCategoriasId,
-  ResetCategoria,
-} from "../../../../services/Categoria.services";
-import { ArtigoPage } from "../../../../types/artigo";
-import { Autor } from "../../../../types/autor";
-import { Categoria } from "../../../../types/categoria";
+import { getCategoriasId } from "../../../../services/Categoria.services";
 import http from "../../../../utils/http";
 import { BASE_PEOPLE } from "../../../../utils/requests";
 import ControlPage from "../ControlPage";
 import SelectOption from "./SelectOption";
 import TbodyListPost from "./TbodyListPosts";
 interface MultiDataArticles {
-  autor: Autor;
-  categoria: Categoria;
+  autor: IAutor;
+  categoria: ICategoria;
 }
 const ListaPostsSys = () => {
-  const [line, setLine] = useState<ArtigoPage>(ResetArtigoPage);
-  const [categorias, setCategorias] = useState<[Categoria]>([ResetCategoria]);
+  const [line, setLine] = useState<IPaginacao<IArtigo>>();
+  const [categorias, setCategorias] = useState<ICategoria[]>([]);
   const [selectCategoria, setSelectCategoria] =
-    useState<Categoria>(ResetCategoria);
-  const [autor, setAutor] = useState<Autor>(ResetAutor);
+    useState<ICategoria>(ResetCategoria);
+  const [autor, setAutor] = useState<IAutor>(ResetAutor);
   const [pageNumber, setPageNumber] = useState(0);
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);
@@ -35,7 +30,7 @@ const ListaPostsSys = () => {
     const responseBody = {} as MultiDataArticles;
     responseBody.autor = autor;
     responseBody.categoria = selectCategoria;
-    if (autor.id > 0 || selectCategoria.id > 0) {
+    if (Number(autor.id) > 0 || Number(selectCategoria.id) > 0) {
       await postArticlesOfAutor(setLine, responseBody, num);
     }
   };
@@ -62,7 +57,7 @@ const ListaPostsSys = () => {
       getPosts(pageNumber);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber, next, line.totalPages]);
+  }, [pageNumber, next, line?.totalPages]);
   return (
     <>
       <div className="row">
@@ -84,7 +79,7 @@ const ListaPostsSys = () => {
                 var data = categorias.find((obj) => {
                   return obj.id === Number.parseInt(e.target.value, 10);
                 });
-                setSelectCategoria(data as Categoria);
+                setSelectCategoria(data as ICategoria);
                 e.target.value = data?.id.toString() || "";
               }}
               style={{ padding: "2px 10px", textTransform: "uppercase" }}
@@ -121,7 +116,7 @@ const ListaPostsSys = () => {
                 </tr>
               </thead>
               <tbody>
-                {line.content.map((event) => {
+                {line?.content.map((event) => {
                   return (
                     <TbodyListPost
                       key={event.id}

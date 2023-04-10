@@ -6,13 +6,13 @@ import photos from "../../../data/photo.json";
 import Footers from "../../../components/Footers";
 import "./styles.css";
 import { useEffect, useState } from "react";
-import { Artigo } from "../../../types/artigo";
-import { ResetArt } from "../../../services/ArticlesHome.services";
 import { getPortiforioUrl } from "../../../services/Blog.services";
 import { clearArroba } from "../../../utils/tools";
+import { IArtigo } from "../../../interfaces/IArtigo";
+import { ResetArtigo } from "../../../interfaces/reset";
 
 const Reading = () => {
-  const [artigo, setArtigo] = useState<Artigo>(ResetArt);
+  const [artigo, setArtigo] = useState<IArtigo>(ResetArtigo);
   const { url } = useParams();
   const navigate = useNavigate();
   console.log(url);
@@ -54,7 +54,7 @@ const Reading = () => {
             <div className="read__banner read__bottom">
               <img src={novo.img} alt="Animação" className="read__img" />
             </div>
-            {post.map((texto, index) => (
+            {post?.map((texto, index) => (
               <article key={index}>
                 <p className="read__tipografia--paragrafo">{texto}</p>
               </article>

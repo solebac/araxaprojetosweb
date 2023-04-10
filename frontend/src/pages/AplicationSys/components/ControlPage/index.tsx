@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
-import Pagination from "./Pagination";
+import Pagination from "../../../../components/Pagination";
+import { IArtigo } from "../../../../interfaces/IArtigo";
+import { IAutor } from "../../../../interfaces/IAutor";
+import { ICategoria } from "../../../../interfaces/ICategoria";
+import { IPaginacao } from "../../../../interfaces/IPaginacao";
+
 type Props = {
-  page: any;
+  page:
+    | IPaginacao<IArtigo>
+    | IPaginacao<IAutor>
+    | IPaginacao<ICategoria>
+    | undefined;
   onChange: Function;
 };
 const ControlPage = ({ page, onChange }: Props) => {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    if (page.totalPages > 1) {
+    if (page && page?.totalPages > 1) {
       setVisible(true);
     }
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page.totalPages]);
+  }, [page?.totalPages]);
   return <>{visible ? <Pagination page={page} onChange={onChange} /> : ""}</>;
 };
 

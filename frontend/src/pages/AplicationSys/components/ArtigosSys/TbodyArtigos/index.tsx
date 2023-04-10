@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
-import { Artigo } from "../../../../../types/artigo";
+import { IArtigo } from "../../../../../interfaces/IArtigo";
 import { formatDate } from "../../../../../utils/convertDate";
 
 type Props = {
-  line: Artigo;
+  line: IArtigo;
   autor: Object;
 };
 
 const TbodyArtigos = ({ line, autor }: Props) => {
-  //console.log(Object.values(line.categorias)[1]);
-  //console.log(line.categorias);
   return (
     <>
       <tr>

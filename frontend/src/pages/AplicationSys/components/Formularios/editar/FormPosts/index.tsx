@@ -2,22 +2,25 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getArticlesId,
-  IArtigo,
   putArticlesUpdateFile,
-  ResetArtigo,
 } from "../../../../../../services/Articles.services";
 import options from "../../../../../../data/tec.json";
 import { storeParseAutor } from "../../../../../../services/Autentication.services";
-import { ResetAutor } from "../../../../../../services/Autor.services";
-import { ResetCategoria } from "../../../../../../services/Categoria.services";
-import { Artigo } from "../../../../../../types/artigo";
-import { Autor } from "../../../../../../types/autor";
-import { Categoria } from "../../../../../../types/categoria";
 import http from "../../../../../../utils/http";
 import { carregarImg, loadImageServer } from "../../../../../../utils/loadimg";
 import { BASE_PEOPLE, BASE_URL } from "../../../../../../utils/requests";
 import ButtonGroups from "../../components/ButtonGroups";
 import Options from "../../components/Options";
+import {
+  CategoriaDTO,
+  TResetCategoria,
+} from "../../../../../../types/CategoriaDTO";
+import { AutorDTO, TResetAutor } from "../../../../../../types/AutorDTO";
+import { ISecao } from "../../../../../../interfaces/ISecao";
+import { ResetSecao } from "../../../../../../interfaces/reset";
+import { IArtigoDto } from "../../../../../../interfaces/IArtigoDto";
+import { TResetArtigoDto } from "../../../../../../types/ArtigoDTO";
+import { toast } from "react-toastify";
 
 type Props = {
   articlesId: number;
@@ -30,12 +33,14 @@ const FormPosts = ({ articlesId }: Props) => {
   const [destaque, setDestaque] = useState("");
   const [card, setCard] = useState("");
 
-  const [articles, setArticles] = useState<Artigo>(ResetArtigo);
-  const [categorias, setCategorias] = useState<[Categoria]>([ResetCategoria]);
+  const [articles, setArticles] = useState<IArtigoDto>(TResetArtigoDto);
+  const [categorias, setCategorias] = useState<[CategoriaDTO]>([
+    TResetCategoria,
+  ]);
   const [selectCategoria, setSelectCategoria] =
-    useState<Categoria>(ResetCategoria);
-  const [autor, setAutor] = useState<Autor>(ResetAutor);
-  const [secao, setSecao] = useState({});
+    useState<CategoriaDTO>(TResetCategoria);
+  const [autor, setAutor] = useState<AutorDTO>(TResetAutor);
+  const [secao, setSecao] = useState<ISecao>(ResetSecao);
   const [status, setStatus] = useState("");
   const [slog, setSlog] = useState("");
 
@@ -68,7 +73,7 @@ const FormPosts = ({ articlesId }: Props) => {
 
   const handlerSendPost = async (e: any) => {
     e.preventDefault();
-    const responseBody = {} as IArtigo;
+    const responseBody = {} as IArtigoDto;
     var today = new Date();
     const strToday = today.toISOString().slice(0, 10);
     responseBody.id = e.target.postId.value;
@@ -89,7 +94,6 @@ const FormPosts = ({ articlesId }: Props) => {
     responseBody.tag = [];
     responseBody.secao = secao;
     responseBody.categorias = selectCategoria;
-
     // let target   = event.target  as HTMLTextAreaElement;
     const dto = JSON.stringify(responseBody);
     const encodeUri = encodeURIComponent(dto);
@@ -98,7 +102,7 @@ const FormPosts = ({ articlesId }: Props) => {
     formData.append("dto", encodeUri);
     formData.append("destaque", destaque, imageDestaque);
     formData.append("card", card, imageCard);
-
+    toast.info("Salvando alterações...");
     await putArticlesUpdateFile(articlesId, setId, formData);
   };
 
@@ -135,8 +139,11 @@ const FormPosts = ({ articlesId }: Props) => {
 
     const people = storeParseAutor(localStorage.getItem(BASE_PEOPLE));
     setAutor(people);
-    setStatus(articles?.status);
-    setSlog(articles.slog);
+    if (articles) {
+      setStatus(articles.status);
+      setSlog(articles.slog);
+    }
+
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [articles?.imgDestaque, articles?.imgCard, articles?.id, id, slog]);
   return (
@@ -169,7 +176,9 @@ const FormPosts = ({ articlesId }: Props) => {
                   className="form-control appsys appsys--readOnly"
                   id="postId"
                   name="postId"
-                  defaultValue={articles?.id > 0 ? articles?.id : articlesId}
+                  defaultValue={
+                    Number(articles?.id) > 0 ? articles?.id : articlesId
+                  }
                   readOnly
                 />
               </div>
@@ -192,16 +201,16 @@ const FormPosts = ({ articlesId }: Props) => {
                   className="form-control appsys appsys--readOnly"
                   value={selectCategoria.id}
                   onChange={(e) => {
-                    var data = categorias.find((obj) => {
+                    var data = categorias?.find((obj) => {
                       return obj.id === Number.parseInt(e.target.value, 10);
                     });
-                    setSelectCategoria(data as Categoria);
+                    setSelectCategoria(data as CategoriaDTO);
                     e.target.value = data?.id.toString() || "";
                   }}
                   style={{ padding: "2px 10px", textTransform: "uppercase" }}
                 >
                   <option value="">SELECIONE...</option>
-                  {categorias.map((e) => {
+                  {categorias?.map((e) => {
                     return (
                       <option
                         key={e.id}

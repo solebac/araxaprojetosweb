@@ -1,6 +1,6 @@
-import { Artigo } from "../types/artigo";
+import { IArtigo } from "../interfaces/IArtigo";
 
-export function clearArroba(artigo: Artigo) {
+export function clearArroba(artigo: IArtigo) {
     const test =
         artigo.conteudoIntroducao +
         artigo.conteudoParagrafoOne +

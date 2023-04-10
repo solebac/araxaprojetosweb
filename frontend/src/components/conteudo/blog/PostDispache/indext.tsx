@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
-import { Artigo, ArtigoPage } from "../../../../types/artigo";
+import { IArtigo } from "../../../../interfaces/IArtigo";
+import { IPaginacao } from "../../../../interfaces/IPaginacao";
+import { ResetPageable } from "../../../../interfaces/reset";
+import Pagination from "../../../Pagination";
 import DispacheCard from "./DispacheCard";
-import Pagination from "./Pagination";
 import RecentCard from "./RecentCard";
 
 type Props = {
-  destaque: Artigo | undefined;
-  page: ArtigoPage;
+  destaque: IArtigo | undefined;
+  page?: IPaginacao<IArtigo>;
   onChange: Function;
 };
 
-const PostDispache = ({ destaque, page, onChange }: Props) => {
+const PostDispache = ({ destaque, page = ResetPageable, onChange }: Props) => {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (page.totalPages > 1) {

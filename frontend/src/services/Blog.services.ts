@@ -1,16 +1,17 @@
-import { Artigo } from "../types/artigo";
-import { PostsNews, PostsTitle } from "../types/blog";
+import { IArtigo } from "../interfaces/IArtigo";
+import { IPostsNews, IPostsTitle } from "../interfaces/IBlog";
 import http from "../utils/http"
 
-export const getPostSlog = async (setPage: any, setInfor: any, url: any) => {
-    await http.get(`/articles/posts/${url}`)
+export const getPostSlog = async (setPage: React.Dispatch<React.SetStateAction<IArtigo | undefined>>,
+    setInfor: React.Dispatch<React.SetStateAction<IPostsTitle>>, url: string | undefined) => {
+    await http.get<IArtigo>(`/articles/posts/${url}`)
         .then(res => {
 
-            const data = res.data as Artigo;
+            const data = res.data;
 
             setPage(data);
 
-            const infor: PostsTitle = {
+            const infor: IPostsTitle = {
                 titulo: data.titulo,
                 publicacao: new Date(data.dataPublicacao).toDateString(),
                 authorName: Object.values(data.autor)[1].toString()
@@ -23,10 +24,10 @@ export const getPostSlog = async (setPage: any, setInfor: any, url: any) => {
         });
 }
 
-export const getPortiforioUrl = async (setPage: React.Dispatch<React.SetStateAction<Artigo>>, url: any) => {
-    await http.get(`/articles/posts/${url}`)
+export const getPortiforioUrl = async (setPage: React.Dispatch<React.SetStateAction<IArtigo>>, url: any) => {
+    await http.get<IArtigo>(`/articles/posts/${url}`)
         .then(res => {
-            const data = res.data as Artigo;
+            const data = res.data;
             setPage(data);
         })
         .catch(error => {
@@ -35,8 +36,8 @@ export const getPortiforioUrl = async (setPage: React.Dispatch<React.SetStateAct
         });
 }
 
-export const getPostNews = async (setPage: any) => {
-    await http.get<PostsNews[]>(`/articles/posts/news`)
+export const getPostNews = async (setPage: React.Dispatch<React.SetStateAction<IPostsNews[]>>) => {
+    await http.get<IPostsNews[]>(`/articles/posts/news`)
         .then(res => {
             const data = res.data;
             setPage(data);

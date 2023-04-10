@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import imgSemFoto from "../../../../../../assets/img/blog/semFotoCard.png";
-import { ArtigoRecents } from "../../../../../../types/artigo";
+import { IArtigoRecents } from "../../../../../../interfaces/IArtigoRecents";
 import { BASE_URL } from "../../../../../../utils/requests";
 import "./style.css";
 
 type Props = {
-  recents: ArtigoRecents;
+  recents: IArtigoRecents;
 };
 
 const CardRecents = ({ recents }: Props) => {

@@ -2,18 +2,18 @@ import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import imgSemFoto from "../../../../../assets/img/blog/blog-1.jpg";
 import { ReactComponent as ImgIcoRight } from "../../../../../assets/img/fonts-icon/arrow_right.svg";
-import { ResetArt } from "../../../../../services/ArticlesHome.services";
-import { Artigo } from "../../../../../types/artigo";
+import { IArtigo } from "../../../../../interfaces/IArtigo";
+import { ResetArtigo } from "../../../../../interfaces/reset";
 import { BASE_URL } from "../../../../../utils/requests";
 
 type Props = {
-  post: Artigo | undefined;
+  post: IArtigo | undefined;
 };
 
-const DispacheCard = ({ post = ResetArt }: Props) => {
+const DispacheCard = ({ post = ResetArtigo }: Props) => {
   //recupera o Object
   //const autor = post?.autor;
-  const [postagem, setPostagem] = useState<Artigo>(post);
+  const [postagem, setPostagem] = useState<IArtigo>(post);
 
   return (
     <Fragment>

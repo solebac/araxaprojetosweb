@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Artigo } from "../../../../../types/artigo";
+import { IArtigo } from "../../../../../interfaces/IArtigo";
 import { formatDate } from "../../../../../utils/convertDate";
 
 type Props = {
-  line: Artigo;
+  line: IArtigo;
   autor: Object;
 };
 const TbodyListPost = ({ line, autor }: Props) => {

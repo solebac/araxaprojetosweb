@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Categoria } from "../../../../../types/categoria";
+import { ICategoria } from "../../../../../interfaces/ICategoria";
 
 type Props = {
-  line: Categoria;
+  line: ICategoria;
 };
 const TbodyCategoria = ({ line }: Props) => {
   return (

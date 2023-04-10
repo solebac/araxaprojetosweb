@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IAutor } from "../../../../../../interfaces/IAutor";
 /*import { IValues } from "../../../../../../interfaces/forms";*/
-import {
-  IAutor,
-  postAutoresInsertFile,
-  ResetAutor,
-} from "../../../../../../services/Autor.services";
-import { Autor } from "../../../../../../types/autor";
+import { postAutoresInsertFile } from "../../../../../../services/Autor.services";
 import { carregarImg } from "../../../../../../utils/loadimg";
 import ButtonGroups from "../../components/ButtonGroups";
 
@@ -15,10 +11,10 @@ import ButtonGroups from "../../components/ButtonGroups";
 const FormAutor = () => {
   const [image, setImage] = useState("");
   const [imgName, setImgName] = useState("");
-  const [autor, setAutor] = useState<Autor>(ResetAutor);
+  const [autor, setAutor] = useState<IAutor | undefined>();
 
   useEffect(() => {
-    if (typeof autor.id === "number" && autor.id !== 0) {
+    if (typeof autor?.id === "number" && autor?.id !== 0) {
       nav("/aplicationsys/autor");
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps

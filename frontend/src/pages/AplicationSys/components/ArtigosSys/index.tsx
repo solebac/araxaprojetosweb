@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  getArtigos,
-  ResetArtigoPage,
-} from "../../../../services/Articles.services";
-import { ArtigoPage } from "../../../../types/artigo";
+import { IArtigo } from "../../../../interfaces/IArtigo";
+import { IPaginacao } from "../../../../interfaces/IPaginacao";
+import { getArtigos } from "../../../../services/Articles.services";
 import ControlPage from "../ControlPage";
 import TbodyArtigos from "./TbodyArtigos";
 
 const ArtigoSys = () => {
-  const [line, setLine] = useState<ArtigoPage>(ResetArtigoPage);
+  const [line, setLine] = useState<IPaginacao<IArtigo>>();
   const [pageNumber, setPageNumber] = useState(0);
 
   const handlerPageNumber = (newPager: number) => {
@@ -50,7 +48,7 @@ const ArtigoSys = () => {
               </tr>
             </thead>
             <tbody>
-              {line.content.map((event) => {
+              {line?.content.map((event) => {
                 return (
                   <TbodyArtigos
                     key={event.id}

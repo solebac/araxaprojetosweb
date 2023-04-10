@@ -14,26 +14,23 @@ import Capa from "../../../components/conteudo/blog/Details/Capa";
 import MainPosts from "../../../components/conteudo/blog/Details/Capa/MainPosts";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Artigo, ArtigoRecents } from "../../../types/artigo";
-import {
-  getPostsUrl,
-  ResetArt,
-  ResetRecents,
-} from "../../../services/ArticlesHome.services";
-import { PostsTitle } from "../../../types/blog";
+import { getPostsUrl } from "../../../services/ArticlesHome.services";
 import { getPostSlog } from "../../../services/Blog.services";
 import PostsBody from "../PostsBody";
+import { IPostsTitle } from "../../../interfaces/IBlog";
+import { IArtigo } from "../../../interfaces/IArtigo";
+import { IArtigoRecents } from "../../../interfaces/IArtigoRecents";
 
 function Posts() {
   const { url } = useParams();
-  const [infor, setInfor] = useState<PostsTitle>({
+  const [infor, setInfor] = useState<IPostsTitle>({
     titulo: "Texto em rascunho não liberado.",
     authorName: "Desconhecido",
     publicacao: "0000-00-00",
   });
 
-  const [artigo, setArtigo] = useState<Artigo>(ResetArt);
-  const [recents, setRecents] = useState<ArtigoRecents[]>([ResetRecents]);
+  const [artigo, setArtigo] = useState<IArtigo>();
+  const [recents, setRecents] = useState<IArtigoRecents[]>([]);
   const [slogUrl, setSlogUrl] = useState<string[]>([]);
 
   useEffect(() => {

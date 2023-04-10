@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 //import imgLogo1 from "../../../../assets/img/logo/logo-02.png";
 import imgLogo1 from "../../assets/img/logo/logo-02.png";
@@ -39,10 +40,12 @@ const Login = () => {
       storeToken(user.token);
       storeBasic(user.basic, credentials);
       storeAutor(user.autor);
+      toast.info("Conectando...");
       //var Objects = storeParseAutor(localStorage.getItem(BASE_PEOPLE));
       nav("/aplicationsys"); //teste to back [home]
     } catch (error: any) {
-      Swal.fire("oops!", error.message, "error");
+      //Swal.fire("oops!", error.message, "error");
+      toast.error("Erro de conexão...");
     }
   };
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

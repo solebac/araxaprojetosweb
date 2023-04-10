@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  getAutoresPage,
-  ResetAutorPage,
-} from "../../../../services/Autor.services";
-import { AutorPage } from "../../../../types/autor";
+import { IAutor } from "../../../../interfaces/IAutor";
+import { IPaginacao } from "../../../../interfaces/IPaginacao";
+import { getAutoresPage } from "../../../../services/Autor.services";
 import ControlPage from "../ControlPage";
 import TbodyAutor from "./TbodyAutor";
 
 const AutorSys = () => {
-  const [line, setLine] = useState<AutorPage>(ResetAutorPage);
+  const [line, setLine] = useState<IPaginacao<IAutor>>();
   const [pageNumber, setPageNumber] = useState(0);
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);
@@ -44,7 +42,7 @@ const AutorSys = () => {
               </tr>
             </thead>
             <tbody>
-              {line.content.map((autor) => {
+              {line?.content.map((autor) => {
                 return <TbodyAutor key={autor.id} line={autor} />;
               })}
             </tbody>

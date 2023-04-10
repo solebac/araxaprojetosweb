@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import imgSemFoto from "../../../../../../assets/img/blog/semFotoCard.png";
-import { Artigo } from "../../../../../../types/artigo";
+import { IArtigo } from "../../../../../../interfaces/IArtigo";
 import { BASE_URL } from "../../../../../../utils/requests";
 
 type Props = {
-  post: Artigo;
+  post: IArtigo;
 };
 
 const CardDispatcher = ({ post }: Props) => {
