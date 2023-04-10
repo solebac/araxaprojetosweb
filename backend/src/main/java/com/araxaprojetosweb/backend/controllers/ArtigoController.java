@@ -7,6 +7,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -181,8 +182,11 @@ public class ArtigoController {
 			byte[] bytes = file.getBytes();
 			Files.createDirectories(Paths.get(UPLOAD_FOLDER));
 			Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
-			Files.write(path, bytes);
-			System.out.println(Arrays.toString(bytes));
+			if (!Files.exists(path)) {
+				Files.write(path, bytes,
+				         StandardOpenOption.CREATE,
+				         StandardOpenOption.TRUNCATE_EXISTING);	
+			}
 
 		} catch (IOException e) {
 			return false;
