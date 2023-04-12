@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { IArtigo } from "../../../../interfaces/IArtigo";
 import { IPaginacao } from "../../../../interfaces/IPaginacao";
 import { getArtigos } from "../../../../services/Articles.services";
+import http from "../../../../utils/http";
 import ControlPage from "../ControlPage";
 import TbodyArtigos from "./TbodyArtigos";
 
 const ArtigoSys = () => {
   const [line, setLine] = useState<IPaginacao<IArtigo>>();
   const [pageNumber, setPageNumber] = useState(0);
+  const [status, setStatus] = useState(0);
 
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);
@@ -16,7 +19,18 @@ const ArtigoSys = () => {
 
   useEffect(() => {
     getArtigos(setLine, pageNumber);
-  }, [pageNumber]);
+    setStatus(0); //reset
+  }, [pageNumber, status]);
+
+  const excluir = (lineExcluir: IArtigo) => {
+    http
+      .delete(`articles/${lineExcluir.id}`)
+      .then((resp) => {
+        toast.error("Removendo registro...");
+        setStatus(resp.status);
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <>
@@ -31,7 +45,7 @@ const ArtigoSys = () => {
           <span className="icon icon-categoria">
             <i></i>
           </span>
-          <h5>Postagens Recentes</h5>
+          <h5>Artigos publicados</h5>
         </div>
 
         <div className="widget-content nopadding">
@@ -48,12 +62,13 @@ const ArtigoSys = () => {
               </tr>
             </thead>
             <tbody>
-              {line?.content.map((event) => {
+              {line?.content.map((artigo) => {
                 return (
                   <TbodyArtigos
-                    key={event.id}
-                    line={event}
-                    autor={event.autor}
+                    key={artigo.id}
+                    line={artigo}
+                    autor={artigo.autor}
+                    excluir={() => excluir(artigo)}
                   />
                 );
               })}

@@ -1,20 +1,47 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { ICategoria } from "../../../../interfaces/ICategoria";
 import { IPaginacao } from "../../../../interfaces/IPaginacao";
 import { getCategoriasPage } from "../../../../services/Categoria.services";
+import http from "../../../../utils/http";
 import ControlPage from "../ControlPage";
 import TbodyCategoria from "./TbodyCategoria";
 const CategoriaSys = () => {
   const [line, setLine] = useState<IPaginacao<ICategoria>>();
   const [pageNumber, setPageNumber] = useState(0);
+  const [status, setStatus] = useState(0);
   function handlerPageNumber(page: number) {
     setPageNumber(page);
   }
 
   useEffect(() => {
-    getCategoriasPage(setLine, pageNumber);
-  }, [pageNumber]);
+    if (!(status === 404)) {
+      getCategoriasPage(setLine, pageNumber);
+    } else {
+      toast.warning(
+        "Registro não pode ser removido, pois possui referencia com outros registros...!"
+      );
+    }
+
+    setStatus(0);
+  }, [pageNumber, status]);
+
+  const excluir = (lineExcluir: ICategoria) => {
+    http
+      .delete(`categoria/${lineExcluir.id}`, {
+        validateStatus(status) {
+          return (status >= 200 && status < 300) || status === 404;
+        },
+      })
+      .then((resp) => {
+        setStatus(resp.status);
+        if (resp.status === 204) {
+          toast.success("Registro removido com sucesso...!");
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
@@ -43,7 +70,13 @@ const CategoriaSys = () => {
             </thead>
             <tbody>
               {line?.content.map((cat) => {
-                return <TbodyCategoria key={cat.id} line={cat} />;
+                return (
+                  <TbodyCategoria
+                    excluir={() => excluir(cat)}
+                    key={cat.id}
+                    line={cat}
+                  />
+                );
               })}
             </tbody>
           </table>

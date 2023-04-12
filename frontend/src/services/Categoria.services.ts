@@ -38,7 +38,7 @@ export const getCategoriasId = async (setDados: React.Dispatch<React.SetStateAct
         });
 }
 
-export const postCategoria = async (setDados: React.Dispatch<React.SetStateAction<ICategoria | undefined>>,
+export const postCategoria = async (setDados: React.Dispatch<React.SetStateAction<ICategoria>>,
     responseBody: ICategoria) => {
     await http
         .post<ICategoria>(`/categoria`, responseBody)

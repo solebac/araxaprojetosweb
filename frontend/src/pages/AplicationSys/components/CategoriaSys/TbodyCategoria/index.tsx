@@ -3,8 +3,9 @@ import { ICategoria } from "../../../../../interfaces/ICategoria";
 
 type Props = {
   line: ICategoria;
+  excluir: (lineExcluir: ICategoria) => void;
 };
-const TbodyCategoria = ({ line }: Props) => {
+const TbodyCategoria = ({ line, excluir }: Props) => {
   return (
     <tr>
       <td>{line.id}</td>
@@ -28,19 +29,14 @@ const TbodyCategoria = ({ line }: Props) => {
           <i></i>
         </Link>
 
-        <a
-          href="/#"
-          onClick={(e) => {
-            e.preventDefault();
-          }}
-          role="button"
-          data-toggle="modal"
+        <button
+          onClick={() => excluir(line)}
           style={{ marginRight: "1%" }}
           className="btn btn-danger btn-custons btn-custons--danger tip-top"
           data-original-title="Excluir Cliente"
         >
           <i className="icon-remove icon-white"></i>
-        </a>
+        </button>
       </td>
     </tr>
   );

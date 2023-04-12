@@ -84,6 +84,7 @@ const FormPosts = () => {
 
     // let target   = event.target  as HTMLTextAreaElement;
     const dto: string = JSON.stringify(responseBody);
+    //console.log("Dto.: ", dto);
     const encodeUri = encodeURIComponent(dto);
 
     let formData = new FormData();

@@ -5,9 +5,10 @@ import { formatDate } from "../../../../../utils/convertDate";
 type Props = {
   line: IArtigo;
   autor: Object;
+  excluir: (lineExcluir: IArtigo) => void;
 };
 
-const TbodyArtigos = ({ line, autor }: Props) => {
+const TbodyArtigos = ({ line, autor, excluir }: Props) => {
   return (
     <>
       <tr>
@@ -35,19 +36,14 @@ const TbodyArtigos = ({ line, autor }: Props) => {
             <i></i>
           </Link>
 
-          <Link
-            to="/#"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-            role="button"
-            data-toggle="modal"
+          <button
+            onClick={() => excluir(line)}
             style={{ marginRight: "1%" }}
             className="btn btn-danger btn-custons btn-custons--danger tip-top"
             data-original-title="Excluir Cliente"
           >
             <i className="icon-remove icon-white"></i>
-          </Link>
+          </button>
         </td>
       </tr>
     </>

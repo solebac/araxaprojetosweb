@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IValues } from "../../../../../../interfaces/forms";
 import { ICategoria } from "../../../../../../interfaces/ICategoria";
+import { ResetCategoria } from "../../../../../../interfaces/reset";
 import { postCategoria } from "../../../../../../services/Categoria.services";
 import ButtonGroups from "../../components/ButtonGroups";
 
 const FormCategoria = () => {
-  const [categorias, setCategorias] = useState<ICategoria>();
+  const [categorias, setCategorias] = useState<ICategoria>(ResetCategoria);
   const nav = useNavigate();
 
   useEffect(() => {
-    console.log(categorias);
-    if (categorias?.id !== 0) {
+    if (categorias.id !== 0) {
       nav(-1);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps

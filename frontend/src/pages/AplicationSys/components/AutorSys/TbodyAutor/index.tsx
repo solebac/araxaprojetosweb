@@ -3,9 +3,10 @@ import { IAutor } from "../../../../../interfaces/IAutor";
 
 type Props = {
   line: IAutor;
+  excluir: (lineExcluir: IAutor) => void;
 };
 
-const TbodyAutor = ({ line }: Props) => {
+const TbodyAutor = ({ line, excluir }: Props) => {
   return (
     <>
       <tr>
@@ -31,19 +32,14 @@ const TbodyAutor = ({ line }: Props) => {
             <i></i>
           </Link>
 
-          <a
-            href="/#"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-            role="button"
-            data-toggle="modal"
+          <button
+            onClick={() => excluir(line)}
             style={{ marginRight: "1%" }}
             className="btn btn-danger btn-custons btn-custons--danger tip-top"
             data-original-title="Excluir Cliente"
           >
             <i className="icon-remove icon-white"></i>
-          </a>
+          </button>
         </td>
       </tr>
     </>
