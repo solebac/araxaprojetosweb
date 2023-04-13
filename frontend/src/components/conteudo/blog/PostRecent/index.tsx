@@ -79,15 +79,15 @@ const PostRecent = ({ post }: Props) => {
 
           <div className="subscribe-form">
             <div className="section-title sidebar-title-b">
-              <h6>Subscribe</h6>
+              <h6>Inscrever-se</h6>
             </div>
             <p className="blog-artigo">
-              Consectetur adipiscing elit, sed do eiusmod ut labore.
+              Novidades e Lançamentos
             </p>
             <form action="#">
               <input type="text" placeholder="Email" />
               <button type="submit" className="site-btn">
-                Inscreva-se
+                Enviar
               </button>
             </form>
           </div>

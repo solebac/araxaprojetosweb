@@ -45,7 +45,7 @@ const Portifolio = () => {
               </div>
             </div>
 
-            <div className="col-md-6 texto-servico">
+            <div id="servicos" className="col-md-6 texto-servico">
               <p className="titulo-portifolio">O que Araxá Projetos Web tem?</p>
               <p className="subtitulo-portifolio">Sites Instituionais</p>
               <p className="text-portifolio texto-servico--modifield">
