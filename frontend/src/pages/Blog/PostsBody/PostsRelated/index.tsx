@@ -8,7 +8,6 @@ type Props = {
 const PostsRelated = ({ recents }: Props) => {
   let postsRecents = [...recents];
   postsRecents = postsRecents.sort(() => 0.5 - Math.random()).slice(0, 3);
-  console.log(postsRecents);
   return (
     <>
       <div className="bc-widget">

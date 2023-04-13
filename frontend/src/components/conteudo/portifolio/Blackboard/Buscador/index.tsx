@@ -1,6 +1,6 @@
 import React from "react";
 import { CgSearch } from "react-icons/cg";
-import "./styles.css";
+import "./buscador.css";
 
 type Props = {
   busca: string;
@@ -12,6 +12,7 @@ const Buscador = (props: Props) => {
     <>
       <div className="buscador">
         <input
+          className="buscador--input"
           placeholder="Buscar"
           value={busca}
           onChange={(event) => setBusca(event.target.value)}

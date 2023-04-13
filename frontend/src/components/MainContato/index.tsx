@@ -1,4 +1,3 @@
-import React from "react";
 import FormContato from "../conteudo/contato/FormContato";
 import "../../assets/css/contato.css";
 import Mapa from "../conteudo/contato/Mapa";

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BotaoEnviar from "../BotaoEnviar";
 import { BASE_URL_NEXT } from "../../../../utils/requests";
+import { toast } from "react-toastify";
 
 const FormContato = () => {
   const [nome, setNome] = useState("");
@@ -56,6 +57,7 @@ const FormContato = () => {
         receber,
       }),
     });
+    toast.success("Enviando...");
     const content = await rawResponse.json();
     const rest = content.response;
     //console.log(rest);
@@ -66,6 +68,8 @@ const FormContato = () => {
       if (testTmp === "250") {
         setRetorno(testTmp);
       }
+    } else {
+      toast.warning("Algo deu errado, tente novamente...!");
     }
   };
   const handleRadioChange = (event: any) => {

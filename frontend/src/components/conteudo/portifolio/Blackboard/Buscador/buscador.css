@@ -16,14 +16,15 @@
     width: 100%;
   }
 }*/
-input {
+.buscador--input {
   background-color: #e4e4e4;
+  color: #2a2a35;
   border: none;
   font-size: 1.5rem;
   font-weight: bold;
   outline: none;
   width: 100%;
 }
-input::placeholder {
-  color: #4c4d5e;
+input.buscador--input:placeholder-shown {
+  color: #2a2a35 !important;
 }

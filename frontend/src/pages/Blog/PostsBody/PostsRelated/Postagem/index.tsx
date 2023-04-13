@@ -15,6 +15,7 @@ const Postagem = ({ posts }: Props) => {
             <Link
               to={`/hacker/attack/posts/${posts?.url}`}
               className="attack__cabecalho-link"
+              style={{ border: "2px solid #e1e1e1" }}
             >
               <img
                 src={
@@ -28,7 +29,12 @@ const Postagem = ({ posts }: Props) => {
             </Link>
           </div>
           <div className="ri-text" style={{ textAlign: "center" }}>
-            <h6>{posts.titulo}</h6>
+            <h6
+              className="blog-artigo--limit-line blog-artigo--two-line"
+              style={{ textAlign: "center" }}
+            >
+              {posts.titulo}
+            </h6>
             <span>{new Date(posts.data_publicacao).toLocaleDateString()}</span>
           </div>
         </div>

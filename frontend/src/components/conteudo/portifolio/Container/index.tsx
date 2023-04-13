@@ -6,7 +6,7 @@ interface AuxProps {
 
 const Container = ({ children }: AuxProps) => (
   <section className="principal-portifolio">
-    <section className="container-fluid mtx">
+    <section className="container-fluid--portifolio mtx">
       <aside className="row row-mod">{ children }</aside>
     </section>
   </section>

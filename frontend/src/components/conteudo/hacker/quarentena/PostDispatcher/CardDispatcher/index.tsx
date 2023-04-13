@@ -2,7 +2,9 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import imgSemFoto from "../../../../../../assets/img/blog/semFotoCard.png";
 import { IArtigo } from "../../../../../../interfaces/IArtigo";
+import { requestsFile } from "../../../../../../utils/files";
 import { BASE_URL } from "../../../../../../utils/requests";
+import "./style.css";
 
 type Props = {
   post: IArtigo;
@@ -23,7 +25,7 @@ const CardDispatcher = ({ post }: Props) => {
                 ? `${BASE_URL}/articles/paint/quarentena/${post?.imgDestaque}`
                 : imgSemFoto
             }
-            alt=""
+            alt={post?.titulo}
             className="card-img-top card-img-top--cofre"
           />
 
@@ -32,12 +34,28 @@ const CardDispatcher = ({ post }: Props) => {
             <p className="card-text card-text--limitd">
               {post.conteudoIntroducao.replaceAll("@", "")}
             </p>
-            <Link
-              to={`/hacker/attack/posts/${post?.url}`}
-              className="btn btn-outline-dark btn-sm"
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
             >
-              Leia o Resumo
-            </Link>
+              <Link
+                style={{ display: "flex" }}
+                to={`/hacker/attack/posts/${post?.url}`}
+                className="btn btn-outline-dark btn-sm"
+              >
+                Leia o Resumo
+              </Link>
+              <button
+                style={{ display: "flex" }}
+                className="btn btn-outline-dark btn-sm dangers"
+                onClick={() => requestsFile(post?.imgCard)}
+              >
+                <span className="dangers__titulo">Download</span>
+              </button>
+            </div>
           </div>
         </div>
       </article>

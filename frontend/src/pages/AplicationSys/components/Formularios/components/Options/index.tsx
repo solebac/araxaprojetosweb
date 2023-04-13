@@ -5,8 +5,6 @@ type Props = {
 const Options = ({ option, slog = "" }: Props) => {
   let test = option?.indexOf("TECNOLOGIA") === 1 ? true : false;
   if (option?.indexOf(slog) === 1) {
-    console.log("slog-01.: ", slog);
-    console.log("Option.: ", option);
     test = true;
   }
   return (

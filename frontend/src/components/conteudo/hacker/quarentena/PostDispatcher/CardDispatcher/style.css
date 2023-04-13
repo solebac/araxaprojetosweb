@@ -1,0 +1,11 @@
+button.dangers:hover {
+  background-color: brown !important;
+  color: aliceblue !important;
+  font-weight: 700;
+}
+button.dangers:hover span.dangers__titulo {
+  display: none;
+}
+button.dangers:hover::before {
+  content: "Deseja fazer o download? >Perigoso<";
+}

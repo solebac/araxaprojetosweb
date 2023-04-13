@@ -71,7 +71,6 @@ const AppRoutes = () => {
         <Route path="/aplicationsys/posts/visualizar">
           <Route path=":articlesId" element={<FormPostagensSys tipo={2} />} />
         </Route>
-
         <Route
           path="/aplicationsys/categoria"
           element={<ListCategoriasSys />}

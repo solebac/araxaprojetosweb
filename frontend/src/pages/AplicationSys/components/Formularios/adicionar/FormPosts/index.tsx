@@ -9,8 +9,6 @@ import { BASE_PEOPLE } from "../../../../../../utils/requests";
 import ButtonGroups from "../../components/ButtonGroups";
 import Options from "../../components/Options";
 import { IAutor } from "../../../../../../interfaces/IAutor";
-import { ISecao } from "../../../../../../interfaces/ISecao";
-import { ResetSecao } from "../../../../../../interfaces/reset";
 import { AutorDTO, TResetAutor } from "../../../../../../types/AutorDTO";
 import {
   CategoriaDTO,
@@ -18,6 +16,7 @@ import {
 } from "../../../../../../types/CategoriaDTO";
 import { IArtigoDto } from "../../../../../../interfaces/IArtigoDto";
 import { toast } from "react-toastify";
+import { SecaoDTO, TResetSecao } from "../../../../../../types/SecaoDTO";
 
 const FormPosts = () => {
   const [id, setId] = useState(0);
@@ -27,7 +26,8 @@ const FormPosts = () => {
   //const [destaque, setDestaque] = useState<File | null>(null);
   const [card, setCard] = useState("");
   //const [card, setCard] = useState<File | null>(null);
-  const [secao, setSecao] = useState<ISecao>(ResetSecao);
+  const [sections, setSections] = useState<[SecaoDTO]>([TResetSecao]);
+  const [selectSecao, setSelectSecao] = useState<SecaoDTO>(TResetSecao);
   const [autor, setAutor] = useState<AutorDTO>(TResetAutor);
   const [categorias, setCategorias] = useState<[CategoriaDTO]>([
     TResetCategoria,
@@ -76,9 +76,19 @@ const FormPosts = () => {
     responseBody.autor = autor;
     responseBody.comment = [];
     responseBody.tag = [];
-    responseBody.secao = {
+    /*Old responseBody.secao = {
       id: null,
       nome: null,
+    };*/
+    responseBody.secao = {
+      id:
+        selectCategoria.id === 3 || selectCategoria.id === 4
+          ? selectSecao.id
+          : null,
+      nome:
+        selectCategoria.id === 3 || selectCategoria.id === 4
+          ? selectSecao.nome
+          : null,
     };
     responseBody.categorias = selectCategoria;
 
@@ -104,10 +114,23 @@ const FormPosts = () => {
   };
 
   useEffect(() => {
-    http.get(`/categoria`).then((res) => {
-      const data = res.data;
-      setCategorias(data);
-    });
+    const callData = async () => {
+      await http.get(`/categoria`).then((res) => {
+        const data = res.data;
+        setCategorias(data);
+      });
+      if (selectCategoria.id !== 0) {
+        await http
+          .get(`section/categoria/single/${selectCategoria.id}`)
+          .then((res) => {
+            const data = res.data;
+            setSections(data);
+          });
+      } else {
+        setSections([TResetSecao]);
+      }
+    };
+    callData().catch(console.error);
     const people: IAutor = storeParseAutor(localStorage.getItem(BASE_PEOPLE));
     setAutor(people);
 
@@ -115,7 +138,7 @@ const FormPosts = () => {
       nav(-1);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, selectCategoria]);
 
   return (
     <>
@@ -140,6 +163,7 @@ const FormPosts = () => {
                 </label>
               </div>
             </div>
+
             <div className="col-sm-9">
               <div className="form-group">
                 <select
@@ -159,6 +183,42 @@ const FormPosts = () => {
                     return (
                       <option key={cat.id} value={cat.id}>
                         {cat.nome}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-sm-3">
+              <div className="form-group">
+                <label className="appsys__label" htmlFor="artigoSecao">
+                  Seção:
+                </label>
+              </div>
+            </div>
+
+            <div className="col-sm-9">
+              <div className="form-group">
+                <select
+                  id="artigoSecao"
+                  name="artigoSecao"
+                  className="form-control appsys appsys--readOnly"
+                  onChange={(e) => {
+                    var data = sections.find((obj) => {
+                      return obj.id === Number.parseInt(e.target.value, 10);
+                    });
+                    setSelectSecao(data as SecaoDTO);
+                  }}
+                  style={{ padding: "2px 10px", textTransform: "uppercase" }}
+                >
+                  <option value="">SELECIONE...</option>
+                  {sections.map((secao) => {
+                    return (
+                      <option key={secao.id} value={secao.id}>
+                        {secao.nome}
                       </option>
                     );
                   })}

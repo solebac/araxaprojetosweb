@@ -16,11 +16,10 @@ import {
   TResetCategoria,
 } from "../../../../../../types/CategoriaDTO";
 import { AutorDTO, TResetAutor } from "../../../../../../types/AutorDTO";
-import { ISecao } from "../../../../../../interfaces/ISecao";
-import { ResetSecao } from "../../../../../../interfaces/reset";
 import { IArtigoDto } from "../../../../../../interfaces/IArtigoDto";
 import { TResetArtigoDto } from "../../../../../../types/ArtigoDTO";
 import { toast } from "react-toastify";
+import { SecaoDTO, TResetSecao } from "../../../../../../types/SecaoDTO";
 
 type Props = {
   articlesId: number;
@@ -40,7 +39,8 @@ const FormPosts = ({ articlesId }: Props) => {
   const [selectCategoria, setSelectCategoria] =
     useState<CategoriaDTO>(TResetCategoria);
   const [autor, setAutor] = useState<AutorDTO>(TResetAutor);
-  const [secao, setSecao] = useState<ISecao>(ResetSecao);
+  const [sections, setSections] = useState<[SecaoDTO]>([TResetSecao]);
+  const [selectSecao, setSelectSecao] = useState<SecaoDTO>(TResetSecao);
   const [status, setStatus] = useState("");
   const [slog, setSlog] = useState("");
 
@@ -92,7 +92,17 @@ const FormPosts = ({ articlesId }: Props) => {
     responseBody.autor = autor;
     responseBody.comment = [];
     responseBody.tag = [];
-    responseBody.secao = secao;
+    //responseBody.secao = secao;
+    responseBody.secao = {
+      id:
+        selectCategoria.id === 3 || selectCategoria.id === 4
+          ? selectSecao.id
+          : null,
+      nome:
+        selectCategoria.id === 3 || selectCategoria.id === 4
+          ? selectSecao.nome
+          : null,
+    };
     responseBody.categorias = selectCategoria;
     // let target   = event.target  as HTMLTextAreaElement;
     const dto = JSON.stringify(responseBody);
@@ -128,12 +138,29 @@ const FormPosts = ({ articlesId }: Props) => {
         setCategorias(data);
       });
 
-      await getArticlesId(
-        setArticles,
-        setSelectCategoria,
-        setSecao,
-        articlesId
-      );
+      if (selectCategoria.id !== 0) {
+        await http
+          .get(`section/categoria/single/${selectCategoria.id}`)
+          .then((res) => {
+            const data = res.data;
+            setSections(data);
+          });
+      } else {
+        setSections([TResetSecao]);
+      }
+
+      if (
+        articles.id === null ||
+        articles.id === undefined ||
+        articles.id === 0
+      ) {
+        await getArticlesId(
+          setArticles,
+          setSelectCategoria,
+          setSelectSecao,
+          articlesId
+        );
+      }
     };
     callData().catch(console.error);
 
@@ -145,7 +172,14 @@ const FormPosts = ({ articlesId }: Props) => {
     }
 
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [articles?.imgDestaque, articles?.imgCard, articles?.id, id, slog]);
+  }, [
+    articles?.imgDestaque,
+    articles?.imgCard,
+    articles?.id,
+    id,
+    slog,
+    selectCategoria.id,
+  ]);
   return (
     <>
       <div className="widget-box">
@@ -165,7 +199,7 @@ const FormPosts = ({ articlesId }: Props) => {
             <div className="col-sm-3">
               <div className="form-group">
                 <label className="appsys__label" htmlFor="postId">
-                  Codigo:
+                  Código:
                 </label>
               </div>
             </div>
@@ -234,6 +268,43 @@ const FormPosts = ({ articlesId }: Props) => {
           <div className="row">
             <div className="col-sm-3">
               <div className="form-group">
+                <label className="appsys__label" htmlFor="artigoSecao">
+                  Seção:
+                </label>
+              </div>
+            </div>
+
+            <div className="col-sm-9">
+              <div className="form-group">
+                <select
+                  id="artigoSecao"
+                  name="artigoSecao"
+                  className="form-control appsys appsys--readOnly"
+                  value={selectSecao.id}
+                  onChange={(e) => {
+                    var data = sections.find((obj) => {
+                      return obj.id === Number.parseInt(e.target.value, 10);
+                    });
+                    setSelectSecao(data as SecaoDTO);
+                  }}
+                  style={{ padding: "2px 10px", textTransform: "uppercase" }}
+                >
+                  <option value="">SELECIONE...</option>
+                  {sections?.map((e) => {
+                    return (
+                      <option key={e.id} value={e.id}>
+                        {e.nome}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-sm-3">
+              <div className="form-group">
                 <label className="appsys__label" htmlFor="artigoStatus">
                   Status:
                 </label>
@@ -273,6 +344,7 @@ const FormPosts = ({ articlesId }: Props) => {
                 <select
                   id="slog"
                   name="slog"
+                  value={articles?.slog}
                   className="form-control appsys appsys--readOnly"
                   onChange={(e) => {
                     setSlog(e.target.value);

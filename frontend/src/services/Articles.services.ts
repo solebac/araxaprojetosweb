@@ -5,6 +5,7 @@ import { ICategoria } from "../interfaces/ICategoria";
 import { IPaginacao } from "../interfaces/IPaginacao";
 import { ISecao } from "../interfaces/ISecao";
 import { CategoriaDTO } from "../types/CategoriaDTO";
+import { SecaoDTO } from "../types/SecaoDTO";
 /*import { Secao } from "../types/secao";*/
 import http from "../utils/http";
 import { BASE_URL } from "../utils/requests";
@@ -38,7 +39,7 @@ export const postArticlesOfAutor = async (setPage: any, responseBody: any, page:
 
 export const getArticlesId = async (setDados: React.Dispatch<React.SetStateAction<IArtigoDto>>,
     setCategory: React.Dispatch<React.SetStateAction<ICategoria>>,
-    setSecao: React.Dispatch<React.SetStateAction<ISecao>>, id: number) => {
+    setSelectSecao: React.Dispatch<React.SetStateAction<SecaoDTO>>, id: number) => {
     await http
         .get<IArtigoDto>(`articles/${id}`)
         .then(res => {
@@ -51,14 +52,14 @@ export const getArticlesId = async (setDados: React.Dispatch<React.SetStateActio
             }
             setCategory(objCategoria);
 
-            const idSecao = Number(Object.values(data.secao)[0]) === 0 ? null : Number(Object.values(data.secao)[0]);
+            const idSecao = Number(Object.values(data.secao)[0]) === 0 ? 0 : Number(Object.values(data.secao)[0]);
             const nomeSecao = (!(Object.values(data.secao)[1] === null)) ? Object.values(data.secao)[1].toString() : null;
 
-            const objSecao: ISecao = {
+            const objSecao: SecaoDTO = {
                 id: idSecao,
-                nome: nomeSecao
+                nome: nomeSecao,
             }
-            setSecao(objSecao);
+            setSelectSecao(objSecao);
         }).catch(error => {
             // do something with error
             console.log(error)

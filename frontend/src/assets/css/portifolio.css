@@ -1,3 +1,7 @@
+.container-fluid--portifolio {
+  padding-right: 15px;
+  padding-left: 15px;
+}
 .menu-portifolio--ativo {
   display: none;
 }
