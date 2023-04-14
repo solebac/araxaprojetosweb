@@ -35,8 +35,8 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
 	List<IArtigoRecentsProjecao> findLimitPosts(Long intervalo);*/
 	@Query(value = "SELECT tab.id,tab.contador, concat(tab.introducao, tab.paragrafo_one) as conteudo, tab.data_publicacao,tab.status,tab.titulo, "
 			+ "tab.url, tab.autor_id, tab.img_card, tab.slog FROM tb_artigo tab "
-			+ "where tab.categoria_id=2 order by 1 desc limit :intervalo", nativeQuery = true)
-	List<IArtigoRecentsProjecao> findLimitPosts(Long intervalo);
+			+ "where tab.categoria_id=:cat_id order by 1 desc limit :intervalo", nativeQuery = true)
+	List<IArtigoRecentsProjecao> findLimitPosts(Long intervalo, Long cat_id);
 
 	@Query(value = "select tab.id,tab.contador,concat(tab.introducao, tab.paragrafo_one) as conteudo, tab.data_publicacao,tab.status,tab.titulo,"
 			+ " tab.url, tab1.nome  AS nomeAutor, tab1.id AS autor_id "

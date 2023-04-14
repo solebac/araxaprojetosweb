@@ -40,7 +40,7 @@ const Blog = () => {
   useEffect(() => {
     getArticlesPagabled(setPage, setDestaque, pageNumber, categorias);
 
-    getPosts(setPost, 5);
+    getPosts(setPost, 5, categorias.id);
   }, [pageNumber]);
   const handlerPageNumber = (newPager: number) => {
     setPageNumber(newPager);

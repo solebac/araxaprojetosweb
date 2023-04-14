@@ -34,7 +34,7 @@ const PostDispatcher = () => {
     if (page && page?.totalPages > 1) {
       setVisible(true);
     }
-    getPosts(setRecents, 3);
+    getPosts(setRecents, 3, categorias.id);
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, page?.totalPages]);
 

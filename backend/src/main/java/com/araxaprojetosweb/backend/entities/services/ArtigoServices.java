@@ -49,8 +49,8 @@ public class ArtigoServices {
 	private SecaoRepository secaoRepository;
 
 	@Transactional(readOnly = true)
-	public List<IArtigoRecentsProjecao> findLimitPosts(Long intervalo) {
-		List<IArtigoRecentsProjecao> recents = artRepository.findLimitPosts(intervalo);
+	public List<IArtigoRecentsProjecao> findLimitPosts(Long intervalo, Long cat_id) {
+		List<IArtigoRecentsProjecao> recents = artRepository.findLimitPosts(intervalo, cat_id);
 		return recents;
 	}
 
@@ -167,13 +167,17 @@ public class ArtigoServices {
 		Autor autor;
 		Artigo artigo;
 		Categoria cat;
+		Secao secao;
 		try {
 			autor = autRepository.findById(dto.getAutor().getId()).get();
 			artigo = artRepository.getReferenceById(id);
 			cat = categoriaRepository.findById(dto.getCategorias().getId()).get();
+			secao = secaoRepository.findById(dto.getSecao().getId()).get();
+
 			preencheArtigo(artigo, dto);
 			artigo.setCategoria(cat);
 			artigo.setAutor(autor);
+			artigo.setSecao(secao);
 			artigo = artRepository.saveAndFlush(artigo);
 			return new ArtigoDto(artigo);
 		} catch (EntityNotFoundException e) {

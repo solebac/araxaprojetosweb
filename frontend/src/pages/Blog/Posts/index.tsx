@@ -35,7 +35,7 @@ function Posts() {
 
   useEffect(() => {
     getPostSlog(setArtigo, setInfor, url);
-    getPostsUrl(setRecents, setSlogUrl, 5, url);
+    getPostsUrl(setRecents, setSlogUrl, 5, url, 2);
   }, [url]);
   return (
     <>

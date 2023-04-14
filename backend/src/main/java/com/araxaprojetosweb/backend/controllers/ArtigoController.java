@@ -1,6 +1,8 @@
 package com.araxaprojetosweb.backend.controllers;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -8,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +17,10 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -56,7 +59,7 @@ public class ArtigoController {
 
 	@Autowired
 	private ArtigoServices services;
-	
+
 	@Autowired
 	private DecoderAssembler assembler;
 
@@ -79,12 +82,10 @@ public class ArtigoController {
 		Page<ArtigoDto> result = services.findByCategoria(categorias, pageable);
 		return ResponseEntity.ok().body(result);
 	}
-	
+
 	@PostMapping(path = "/autorCategoriasArtigos")
-	public ResponseEntity<Page<ArtigoDto>> findByCategoriaAndAutor(
-			@RequestBody MultiDataArticles data,
-			Pageable pageable){
-		System.out.println(data.getCategoria().getDescricao());
+	public ResponseEntity<Page<ArtigoDto>> findByCategoriaAndAutor(@RequestBody MultiDataArticles data,
+			Pageable pageable) {
 		Page<ArtigoDto> result = services.findByCategoriaAndAutor(data.getCategoria(), data.getAutor(), pageable);
 		return ResponseEntity.ok().body(result);
 	}
@@ -102,19 +103,20 @@ public class ArtigoController {
 		return ResponseEntity.ok().body(postautor);
 	}
 
-	@GetMapping(path = "/recents/{intervalo}")
-	public ResponseEntity<List<IArtigoRecentsProjecao>> findLimitPosts(@PathVariable Long intervalo) {
-		List<IArtigoRecentsProjecao> result = services.findLimitPosts(intervalo);
+	@GetMapping(path = "/recents/{intervalo}/{categoria_id}")
+	public ResponseEntity<List<IArtigoRecentsProjecao>> findLimitPosts(@PathVariable Long intervalo, @PathVariable Long categoria_id) {
+		List<IArtigoRecentsProjecao> result = services.findLimitPosts(intervalo, categoria_id);
 		return ResponseEntity.ok().body(result);
 	}
-	
+
 	@GetMapping(path = "/posts/{url}")
-	public ResponseEntity<ArtigoDto> findPostSlug(@PathVariable String url){
+	public ResponseEntity<ArtigoDto> findPostSlug(@PathVariable String url) {
 		ArtigoDto obj = services.findByUrl(url);
 		return ResponseEntity.ok().body(obj);
 	}
+
 	@GetMapping(path = "/posts/news")
-	public ResponseEntity<List<IArtigosNews>> findByNews(){
+	public ResponseEntity<List<IArtigosNews>> findByNews() {
 		List<IArtigosNews> obj = services.findByNews();
 		return ResponseEntity.ok().body(obj);
 	}
@@ -161,7 +163,6 @@ public class ArtigoController {
 
 		boolean photoDestaque = saveFile(destaque);
 		boolean photoCard = saveFile(card);
-		System.out.println(Arrays.asList(dto));
 		if (!photoCard) {
 			dto.setImgCard("semFotoCard.png");
 		}
@@ -183,9 +184,7 @@ public class ArtigoController {
 			Files.createDirectories(Paths.get(UPLOAD_FOLDER));
 			Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
 			if (!Files.exists(path)) {
-				Files.write(path, bytes,
-				         StandardOpenOption.CREATE,
-				         StandardOpenOption.TRUNCATE_EXISTING);	
+				Files.write(path, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 			}
 
 		} catch (IOException e) {
@@ -206,7 +205,7 @@ public class ArtigoController {
 		}
 
 	}
-	
+
 	@GetMapping(path = "/paint/quarentena/{strPath}")
 	public ResponseEntity<InputStreamResource> getImageDynamicTypeQuarentena(@PathVariable String strPath,
 			@RequestParam Optional<Boolean> jpg) {
@@ -217,7 +216,25 @@ public class ArtigoController {
 		} catch (IOException e) {
 			return null;
 		}
+	}
 
+	@GetMapping(path = "/download/{strPath}")
+	public ResponseEntity<Resource> download(@PathVariable String strPath) throws IOException {
+
+		Path SERVER_LOCATION = Paths.get("Files-Uploads//cadeia//");
+
+		File file = new File(SERVER_LOCATION + File.separator + strPath + ".zip");
+
+		HttpHeaders header = new HttpHeaders();
+		header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + strPath + ".zip");
+		header.add("Cache-Control", "no-cache, no-store, must-revalidate");
+		header.add("Pragma", "no-cache");
+		header.add("Expires", "0");
+
+		InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+		return ResponseEntity.ok().headers(header).contentLength(file.length())
+				.contentType(MediaType.APPLICATION_OCTET_STREAM).body(resource);
 	}
 
 	@PutMapping(value = "/{id}") // Rest Inavito
@@ -231,7 +248,7 @@ public class ArtigoController {
 	public ResponseEntity<?> formUpdateMultPart(@PathVariable Long id, @RequestParam("dto") String strDto,
 			@RequestParam("destaque") MultipartFile destaque, @RequestParam("card") MultipartFile card)
 			throws JsonMappingException, JsonProcessingException {
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 		ArtigoDto dto = mapper.readValue(assembler.toDecoder(strDto), ArtigoDto.class);
 		boolean photoDestaque = saveFile(destaque);

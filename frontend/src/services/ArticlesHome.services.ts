@@ -38,10 +38,10 @@ export const getArticlesPagabledLight = async (setPage: React.Dispatch<React.Set
         });
 }
 
-export const getPosts = async (setDados: React.Dispatch<React.SetStateAction<IArtigoRecents[]>>, count: number) => {
+export const getPosts = async (setDados: React.Dispatch<React.SetStateAction<IArtigoRecents[]>>, count: number, categoria_id: number) => {
     await http
         //.get<ArtigoRecents[]>(`articles/recents/5`)
-        .get<IArtigoRecents[]>(`articles/recents/${count}`)
+        .get<IArtigoRecents[]>(`articles/recents/${count}/${categoria_id}`)
         .then(res => { setDados(res.data) }).catch(error => {
             console.log(error)
         });
@@ -51,11 +51,11 @@ export const getPostsUrl = async (
     setDados: React.Dispatch<React.SetStateAction<IArtigoRecents[]>>,
     setUrl: Dispatch<SetStateAction<string[]>>,
     count: number,
-    url: string | undefined
+    url: string | undefined, categoria_id: number
 ) => {
     await http
         //.get<ArtigoRecents[]>(`articles/recents/5`)
-        .get<IArtigoRecents[]>(`articles/recents/${count}`)
+        .get<IArtigoRecents[]>(`articles/recents/${count}/${categoria_id}`)
         .then(res => {
             setDados(res.data);
             for (let i = 0; i < res.data.length; i++) {
