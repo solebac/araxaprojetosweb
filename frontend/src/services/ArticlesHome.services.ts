@@ -11,7 +11,7 @@ export const getArticlesPagabled = async (setPage: React.Dispatch<React.SetState
     page: number, responseBody: ICategoria) => {
 
     await http
-        .post<IPaginacao<IArtigo>>(`/articles/subcategorias?size=3&page=${page}&sort=id,desc`, responseBody)
+        .post<IPaginacao<IArtigo>>(`/articles/subcategorias?size=4&page=${page}&sort=id,desc`, responseBody)
         .then(res => {
             const data = res.data;
             setPage(data);

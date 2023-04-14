@@ -8,9 +8,15 @@ import { IArtigoRecents } from "../../../../interfaces/IArtigoRecents";
 
 type Props = {
   post: IArtigoRecents[];
+  id?: number;
 };
 
-const PostRecent = ({ post }: Props) => {
+const PostRecent = ({ post, id = 0 }: Props) => {
+  const newPosts = post
+    .filter((item) => {
+      return item.id !== id;
+    })
+    .sort(() => 0.5 - Math.random());
   return (
     <>
       <div className="col-lg-4">
@@ -69,7 +75,7 @@ const PostRecent = ({ post }: Props) => {
             <div className="recent-post">
               {/** BEGIN DIV POST-PUBLICAÇÃO-RECENTE */}
               {/** MAXIMO DE POSTAGENS 5 POST'S */}
-              {post?.map((item) => {
+              {newPosts?.map((item: IArtigoRecents) => {
                 return <RecentPostCard key={item.id} post={item} />;
               })}
 
@@ -81,9 +87,7 @@ const PostRecent = ({ post }: Props) => {
             <div className="section-title sidebar-title-b">
               <h6>Inscrever-se</h6>
             </div>
-            <p className="blog-artigo">
-              Novidades e Lançamentos
-            </p>
+            <p className="blog-artigo">Novidades e Lançamentos</p>
             <form action="#">
               <input type="text" placeholder="Email" />
               <button type="submit" className="site-btn">

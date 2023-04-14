@@ -54,7 +54,7 @@ const Blog = () => {
           page={page}
           onChange={handlerPageNumber}
         />
-        <PostRecent post={post} />
+        <PostRecent post={post} id={destaque?.id} />
       </Container>
       <VLibras />
       <ScrollToTop />

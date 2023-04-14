@@ -6,9 +6,10 @@ import "./style.css";
 
 type Props = {
   recents: IArtigoRecents;
+  id?: number;
 };
 
-const CardRecents = ({ recents }: Props) => {
+const CardRecents = ({ recents, id = 0 }: Props) => {
   return (
     <>
       <article className="card mb-4 mt-4">
@@ -29,7 +30,7 @@ const CardRecents = ({ recents }: Props) => {
             {recents.conteudo}
           </p>
           <Link
-            to={`/articles/posts/${recents?.url}`}
+            to={`/blog/posts/${recents?.url}`}
             className="btn btn-outline-dark btn-sm"
           >
             leia mais

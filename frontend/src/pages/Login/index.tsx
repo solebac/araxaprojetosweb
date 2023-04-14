@@ -59,11 +59,7 @@ const Login = () => {
     <Fragment>
       <section
         style={{
-          margin: "0",
-          color: "#edf3ff",
-          background:
-            "url(https://hdqwalls.com/download/material-design-4k-2048x1152.jpg) no-repeat fixed center",
-          backgroundSize: "cover",
+          backgroundColor:'cornsilk'
         }}
       >
         {/*<Link to="/blog">
