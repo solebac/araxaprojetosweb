@@ -1,63 +1,13 @@
-import { useEffect, useState } from "react";
-import { IArtigo } from "../../../../interfaces/IArtigo";
-import { IAutor } from "../../../../interfaces/IAutor";
+import Pagination from "../../../../components/Pagination";
 import { ICategoria } from "../../../../interfaces/ICategoria";
-import { IPaginacao } from "../../../../interfaces/IPaginacao";
-import { ResetAutor, ResetCategoria } from "../../../../interfaces/reset";
-import { postArticlesOfAutor } from "../../../../services/Articles.services";
-import { storeParseAutor } from "../../../../services/Autentication.services";
-import { getCategoriasId } from "../../../../services/Categoria.services";
-import http from "../../../../utils/http";
-import { BASE_PEOPLE } from "../../../../utils/requests";
-import ControlPage from "../ControlPage";
+import useSysContextRenderPageMain from "../../../../state/aplication/hooks/useSysContextRenderPageMain";
+import { IRenderSysPageMain } from "../../../../state/aplication/interfaces/IRenderSysPageMain";
 import SelectOption from "./SelectOption";
 import TbodyListPost from "./TbodyListPosts";
-interface MultiDataArticles {
-  autor: IAutor;
-  categoria: ICategoria;
-}
+
 const ListaPostsSys = () => {
-  const [line, setLine] = useState<IPaginacao<IArtigo>>();
-  const [categorias, setCategorias] = useState<ICategoria[]>([]);
-  const [selectCategoria, setSelectCategoria] =
-    useState<ICategoria>(ResetCategoria);
-  const [autor, setAutor] = useState<IAutor>(ResetAutor);
-  const [pageNumber, setPageNumber] = useState(0);
-  const handlerPageNumber = (newPager: number) => {
-    setPageNumber(newPager);
-  };
-  const getPosts = async (num: number) => {
-    const responseBody = {} as MultiDataArticles;
-    responseBody.autor = autor;
-    responseBody.categoria = selectCategoria;
-    if (Number(autor.id) > 0 || Number(selectCategoria.id) > 0) {
-      await postArticlesOfAutor(setLine, responseBody, num);
-    }
-  };
-  const [next, setNext] = useState(0);
-  useEffect(() => {
-    if (next === 0) {
-      const fetchData = async () => {
-        await getCategoriasId(setSelectCategoria, 2);
-        await http.get(`/categoria`).then((res) => {
-          const data = res.data;
-          setCategorias(data);
-          setNext(1);
-        });
-      };
-      fetchData().catch(console.error);
-    } else if (next === 1) {
-      const fetchData = async () => {
-        const people = await storeParseAutor(localStorage.getItem(BASE_PEOPLE));
-        setAutor(people);
-        setNext(2);
-      };
-      fetchData().catch(console.error);
-    } else {
-      getPosts(pageNumber);
-    }
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber, next, line?.totalPages]);
+  const { artigos, categorias, visible, setSelectCategoria } =
+    useSysContextRenderPageMain<IRenderSysPageMain>(1);
   return (
     <>
       <div className="row">
@@ -74,7 +24,7 @@ const ListaPostsSys = () => {
               id="artigoCategoria"
               name="artigoCategoria"
               className="form-control appsys appsys--readOnly"
-              value={selectCategoria.id}
+              //value={selectCategoria.id}
               onChange={(e) => {
                 var data = categorias.find((obj) => {
                   return obj.id === Number.parseInt(e.target.value, 10);
@@ -116,18 +66,18 @@ const ListaPostsSys = () => {
                 </tr>
               </thead>
               <tbody>
-                {line?.content.map((event) => {
+                {artigos?.content.map((artigo) => {
                   return (
                     <TbodyListPost
-                      key={event.id}
-                      line={event}
-                      autor={event.autor}
+                      key={artigo.id}
+                      line={artigo}
+                      autor={artigo.autor}
                     />
                   );
                 })}
               </tbody>
             </table>
-            <ControlPage page={line} onChange={handlerPageNumber} />
+            {visible ? <Pagination etapaAtual={0} /> : ""}
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { IAutor } from '../interfaces/IAutor';
+import { ICategoria } from '../interfaces/ICategoria';
 import { fromBase64 } from '../utils/base64';
 import http from '../utils/http';
 import { BASE_PEOPLE } from '../utils/requests';
@@ -62,4 +63,12 @@ export const getBasic = () => {
 }
 export const getVerify = () => {
     return window.localStorage.getItem('verify')
+}
+export const getResetCategory = () => {
+    const categoria: ICategoria = {
+        id: 1,
+        nome: "Portifolio",
+        descricao: "Documentos Uteis",
+    };
+    return categoria;
 }

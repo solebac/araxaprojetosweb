@@ -1,41 +1,27 @@
-import { useEffect, useState } from "react";
-import { IArtigo } from "../../../../interfaces/IArtigo";
-import { IPaginacao } from "../../../../interfaces/IPaginacao";
-import { ResetPageable } from "../../../../interfaces/reset";
+import React from "react";
+import { IRenderBlogDispache } from "../../../../interfaces/IRenderBlogDispache";
+import useContextRenderBlogPostDispache from "../../../../state/hooks/useContextRenderBlogPostDispache";
 import Pagination from "../../../Pagination";
 import DispacheCard from "./DispacheCard";
 import RecentCard from "./RecentCard";
 
-type Props = {
-  destaque: IArtigo | undefined;
-  page?: IPaginacao<IArtigo>;
-  onChange: Function;
-};
+const PostDispache: React.FC = () => {
+  const { page, destaque, visible, isDestaque } =
+    useContextRenderBlogPostDispache<IRenderBlogDispache>();
 
-const PostDispache = ({ destaque, page = ResetPageable, onChange }: Props) => {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    if (page.totalPages > 1) {
-      setVisible(true);
-    }
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page.totalPages]);
-  const recentCard = page?.content.filter((item) => {
-    return item.id !== destaque?.id;
-  });
   return (
     <>
       <div className="col-lg-8">
         <div className="blog-item-list">
-          <DispacheCard post={destaque} />
+          {!isDestaque && <DispacheCard post={destaque} />}
           {/** BEGIN DIV POST-PUBLICAÇÃO */}
-          {recentCard.map((item) => {
+          {page?.map((item) => {
             return <RecentCard key={item.id} post={item} />;
           })}
           {/** END DIV POST-PUBLICAÇÃO */}
         </div>
 
-        {visible ? <Pagination page={page} onChange={onChange} /> : ""}
+        {visible ? <Pagination etapaAtual={0} /> : ""}
       </div>
     </>
   );

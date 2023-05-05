@@ -1,36 +1,10 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { IArtigo } from "../../../../interfaces/IArtigo";
-import { IPaginacao } from "../../../../interfaces/IPaginacao";
-import { getArtigos } from "../../../../services/Articles.services";
-import http from "../../../../utils/http";
-import ControlPage from "../ControlPage";
+import Pagination from "../../../../components/Pagination";
+import useSysContextRenderPageArtigos from "../../../../state/aplication/hooks/useSysContextRenderPageArtigos";
 import TbodyArtigos from "./TbodyArtigos";
 
 const ArtigoSys = () => {
-  const [line, setLine] = useState<IPaginacao<IArtigo>>();
-  const [pageNumber, setPageNumber] = useState(0);
-  const [status, setStatus] = useState(0);
-
-  const handlerPageNumber = (newPager: number) => {
-    setPageNumber(newPager);
-  };
-
-  useEffect(() => {
-    getArtigos(setLine, pageNumber);
-    setStatus(0); //reset
-  }, [pageNumber, status]);
-
-  const excluir = (lineExcluir: IArtigo) => {
-    http
-      .delete(`articles/${lineExcluir.id}`)
-      .then((resp) => {
-        toast.error("Removendo registro...");
-        setStatus(resp.status);
-      })
-      .catch((error) => console.error(error));
-  };
+  const { artigos, visible, excluir } = useSysContextRenderPageArtigos();
 
   return (
     <>
@@ -62,7 +36,7 @@ const ArtigoSys = () => {
               </tr>
             </thead>
             <tbody>
-              {line?.content.map((artigo) => {
+              {artigos?.content.map((artigo) => {
                 return (
                   <TbodyArtigos
                     key={artigo.id}
@@ -74,7 +48,7 @@ const ArtigoSys = () => {
               })}
             </tbody>
           </table>
-          <ControlPage page={line} onChange={handlerPageNumber} />
+          {visible ? <Pagination etapaAtual={0} /> : ""}
         </div>
       </div>
     </>

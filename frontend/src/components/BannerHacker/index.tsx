@@ -1,4 +1,3 @@
-import React from "react";
 import "../../assets/css/hacker.css";
 import { ReactComponent as ImgCapa } from "../../assets/img/navs/banner-01.svg";
 import { ReactComponent as ImgIcoHome } from "../../assets/img/navs/home_mini.svg";
@@ -7,15 +6,15 @@ import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
 
 const BannerHacker = (props: any) => {
-  /*console.log(pagina.labels.pagina);*/
-
-  console.log(props.uri);
   return (
     <header>
       <Navbar />
       <section className="principal-page">
         <div className="principal-page__logo">
-          <ImgCapa className="img-responsive principal-page__logo--resize" aria-label="Mundo Hacker" />
+          <ImgCapa
+            className="img-responsive principal-page__logo--resize"
+            aria-label="Mundo Hacker"
+          />
         </div>
         <div className="container principal-page__text">
           <div className="row">

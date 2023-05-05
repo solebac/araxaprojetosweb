@@ -18,7 +18,7 @@ const Postagens = ({ count, news }: Props) => {
         </Link>
         <p className="small pull-left">
           <span className="glyphicon glyphicon-time"></span>{" "}
-          {news.data_publicacao}
+          {new Date(news.data_publicacao).toLocaleDateString()}
         </p>
       </dd>
     </>

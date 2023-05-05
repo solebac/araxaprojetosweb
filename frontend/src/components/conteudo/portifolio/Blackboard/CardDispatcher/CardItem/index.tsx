@@ -16,12 +16,12 @@ const CardItem = ({ post }: Props) => {
 
   useEffect(() => {
     if (post && Number(post.id) > 0) {
-      console.log("Post.:", post);
+      //console.log("Post.:", post);
       const styles = color.filter(
         (e) => e.ident === post?.slog.slice(0, 1).toLowerCase()
       )[0];
       setTema(styles.cor);
-      console.log("Letra.:", post.slog.slice(0, 1).toLowerCase());
+      //console.log("Letra.:", post.slog.slice(0, 1).toLowerCase());
     }
   }, []);
 

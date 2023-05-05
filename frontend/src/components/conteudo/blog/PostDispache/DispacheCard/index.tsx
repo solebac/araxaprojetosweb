@@ -7,7 +7,7 @@ import { ResetArtigo } from "../../../../../interfaces/reset";
 import { BASE_URL } from "../../../../../utils/requests";
 
 type Props = {
-  post: IArtigo | undefined;
+  post: IArtigo;
 };
 
 const DispacheCard = ({ post = ResetArtigo }: Props) => {

@@ -3,7 +3,6 @@ import { IArtigo } from "../interfaces/IArtigo";
 import { IArtigoDto } from "../interfaces/IArtigoDto";
 import { ICategoria } from "../interfaces/ICategoria";
 import { IPaginacao } from "../interfaces/IPaginacao";
-import { ISecao } from "../interfaces/ISecao";
 import { CategoriaDTO } from "../types/CategoriaDTO";
 import { SecaoDTO } from "../types/SecaoDTO";
 /*import { Secao } from "../types/secao";*/

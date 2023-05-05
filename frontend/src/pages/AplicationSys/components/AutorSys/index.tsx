@@ -1,45 +1,10 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { IAutor } from "../../../../interfaces/IAutor";
-import { IPaginacao } from "../../../../interfaces/IPaginacao";
-import { getAutoresPage } from "../../../../services/Autor.services";
-import http from "../../../../utils/http";
-import ControlPage from "../ControlPage";
+import Pagination from "../../../../components/Pagination";
+import useSysContextRenderPageAutores from "../../../../state/aplication/hooks/useSysContextRenderPageAutores";
 import TbodyAutor from "./TbodyAutor";
 
 const AutorSys = () => {
-  const [line, setLine] = useState<IPaginacao<IAutor>>();
-  const [pageNumber, setPageNumber] = useState(0);
-  const handlerPageNumber = (newPager: number) => {
-    setPageNumber(newPager);
-  };
-  const [status, setStatus] = useState(0);
-  useEffect(() => {
-    if (!(status === 404)) {
-      getAutoresPage(setLine, pageNumber);
-    } else {
-      toast.warning(
-        "Registro não pode ser removido, pois possui referencia com outros registros...!"
-      );
-    }
-    setStatus(0);
-  }, [pageNumber, status]);
-  const excluir = (lineExcluir: IAutor) => {
-    http
-      .delete(`autor/${lineExcluir.id}`, {
-        validateStatus(status) {
-          return (status >= 200 && status < 300) || status === 404;
-        },
-      })
-      .then((resp) => {
-        setStatus(resp.status);
-        if (resp.status === 204) {
-          toast.success("Registro removido com sucesso...!");
-        }
-      })
-      .catch((error) => console.error(error));
-  };
+  const { autores, visible, excluir } = useSysContextRenderPageAutores();
   return (
     <>
       <Link
@@ -67,7 +32,7 @@ const AutorSys = () => {
               </tr>
             </thead>
             <tbody>
-              {line?.content.map((autor) => {
+              {autores?.content.map((autor) => {
                 return (
                   <TbodyAutor
                     key={autor.id}
@@ -78,8 +43,7 @@ const AutorSys = () => {
               })}
             </tbody>
           </table>
-          {/**Ponto  components ControlPage */}
-          <ControlPage page={line} onChange={handlerPageNumber} />
+          {visible ? <Pagination etapaAtual={2} /> : ""}
         </div>
       </div>
     </>

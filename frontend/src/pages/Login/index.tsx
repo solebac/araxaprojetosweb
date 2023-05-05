@@ -2,9 +2,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useSetRecoilState } from "recoil";
 import Swal from "sweetalert2";
 //import imgLogo1 from "../../../../assets/img/logo/logo-02.png";
 import imgLogo1 from "../../assets/img/logo/logo-02.png";
+import { IAutor } from "../../interfaces/IAutor";
+import { ICategoria } from "../../interfaces/ICategoria";
 
 import {
   login,
@@ -12,10 +15,15 @@ import {
   storeBasic,
   storeToken,
   getToken,
+  getResetCategory,
 } from "../../services/Autentication.services";
+import { sysSetAutor, sysSetCategoria } from "../../state/aplication/atom";
 import "./style.css";
 
 const Login = () => {
+  const setAutor = useSetRecoilState<IAutor>(sysSetAutor);
+  const setSelectCategoria = useSetRecoilState<ICategoria>(sysSetCategoria);
+
   const nav = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", senha: "" });
 
@@ -40,6 +48,8 @@ const Login = () => {
       storeToken(user.token);
       storeBasic(user.basic, credentials);
       storeAutor(user.autor);
+      setAutor(user.autor); //Test
+      setSelectCategoria(getResetCategory());
       toast.info("Conectando...");
       //var Objects = storeParseAutor(localStorage.getItem(BASE_PEOPLE));
       nav("/aplicationsys"); //teste to back [home]
@@ -59,7 +69,7 @@ const Login = () => {
     <Fragment>
       <section
         style={{
-          backgroundColor:'cornsilk'
+          backgroundColor: "cornsilk",
         }}
       >
         {/*<Link to="/blog">

@@ -1,46 +1,14 @@
-import { useEffect, useState } from "react";
 import BannerMidde from "./BannerMidde";
 import CardRecents from "./CardRecents";
 import CardSection from "./CardSection";
-import {
-  getArticlesPagabledLight,
-  getPosts,
-  getSecao,
-} from "../../../../../services/ArticlesHome.services";
 import Dispatche from "./Dispatcher";
-import { ISecaoCategoria } from "../../../../../interfaces/ISecao";
-import { IArtigo } from "../../../../../interfaces/IArtigo";
-import { ICategoria } from "../../../../../interfaces/ICategoria";
-import { IPaginacao } from "../../../../../interfaces/IPaginacao";
-import { IArtigoRecents } from "../../../../../interfaces/IArtigoRecents";
 import Pagination from "../../../../Pagination";
-
-const categorias: ICategoria = {
-  id: 3,
-  nome: "Hacker",
-  descricao: "Comentarios Hacker Ethical",
-};
+import useContextRenderHacker from "../../../../../state/hooks/useContextRenderHacker";
+import { IRenderHacker } from "../../../../../interfaces/IRenderHacker";
 
 const PostDispatcher = () => {
-  const [pageNumber, setPageNumber] = useState(0);
-  const [secao, setSecao] = useState<ISecaoCategoria[]>([]);
-  const [page, setPage] = useState<IPaginacao<IArtigo>>();
-  const [visible, setVisible] = useState(false);
-  const [recents, setRecents] = useState<IArtigoRecents[]>([]);
-
-  useEffect(() => {
-    getSecao(3, setSecao);
-    getArticlesPagabledLight(setPage, pageNumber, categorias);
-    if (page && page?.totalPages > 1) {
-      setVisible(true);
-    }
-    getPosts(setRecents, 3, categorias.id);
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber, page?.totalPages]);
-
-  const handlerPageNumber = (newPager: number) => {
-    setPageNumber(newPager);
-  };
+  const { page, recents, secao, visible } =
+    useContextRenderHacker<IRenderHacker>(3);
 
   return (
     <>
@@ -55,7 +23,7 @@ const PostDispatcher = () => {
             })}
             {/*<!--Modelo Painel End-->*/}
 
-            {visible && <Pagination page={page} onChange={handlerPageNumber} />}
+            {visible && <Pagination etapaAtual={0} />}
           </div>
 
           {/*<!--Seção de Posts Recents-->*/}

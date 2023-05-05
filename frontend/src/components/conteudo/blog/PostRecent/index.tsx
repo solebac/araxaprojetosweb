@@ -5,18 +5,10 @@ import { ReactComponent as ImgFacebook } from "../../../../assets/img/redes/face
 import RecentPostCard from "./RecentPostCard";
 import { Link } from "react-router-dom";
 import { IArtigoRecents } from "../../../../interfaces/IArtigoRecents";
+import useContextRenderBlogPostRecents from "../../../../state/hooks/useContextRenderBlogPostRecents";
 
-type Props = {
-  post: IArtigoRecents[];
-  id?: number;
-};
-
-const PostRecent = ({ post, id = 0 }: Props) => {
-  const newPosts = post
-    .filter((item) => {
-      return item.id !== id;
-    })
-    .sort(() => 0.5 - Math.random());
+const PostRecent = () => {
+  const newPosts: IArtigoRecents[] = useContextRenderBlogPostRecents(2);
   return (
     <>
       <div className="col-lg-4">

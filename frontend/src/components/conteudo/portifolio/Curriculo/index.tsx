@@ -29,26 +29,30 @@ const Curriculo = () => {
                     <div className="about__cabecalho--modifield portifolio__border-unset" >
                       <p className="about__titulo"></p>
                       <p className="about__text">
-                        Bacharel em Sistemas de Informação pelo UNIARAXÁ – Centro Universitário do Planalto de Araxá, com mais de 15 anos de experiência profissional em Linux, analise e desenvolvimento de software.
+                        Bacharel em Sistemas de Informação pelo UNIARAXÁ – Centro Universitário do Planalto de Araxá, 20 anos de experiência profissional em Linux, analise e desenvolvimento de software.
                       </p>
                       <p className="about__text">
-                        Analista chefe do desenvolvimento do ERP Conector e ConectorPDV.
+                        Desenvolvimento de soluções em automação como ERP Conector e ConectorPDV.
+                      </p>
+					  <p className="about__text">
+                        Desenvolvimento do projeto web: <pre>https://araxaprojetosweb.com.br</pre>
                       </p>
                       <p className="about__text">
-                        Embora tenha me especializado em administração de sistemas Linux, sou um profissional com perfil generalista e estou constantemente estudando as diversas outras áreas envolvidas no processo de desenvolvimento de software, tais como: back-end com Java/Java EE.
+                        Embora tenha me especializado em administração de sistemas Linux, sou um profissional com perfil generalista e estou constantemente estudando as diversas outras áreas envolvidas no processo de desenvolvimento de software, tais como: back-end e frontend na liguagem Java.
                       </p>
                       <p className="about__text">
                         Hoje possuo as competências necessárias para atuar como:
                       </p>
                        <ul className="about_infor">
-                         <li className="about_infor-link">Administrador de Redes Linux</li>
-                         <li className="about_infor-link">Desenvolvedor Back-end</li>
-                         <li className="about_infor-link">Analista de sistemas de software</li>
-                         <li className="about_infor-link">Instrutor em Treinamentos</li>
-                         <li className="about_infor-link">Líder Técnico</li>
+                         <li className="about_infor-link">• Administrador de Redes Linux</li>
+                         <li className="about_infor-link">• Desenvolvedor Back-end Java | Spring Boot</li>
+                         <li className="about_infor-link">• Desenvolvedor Frontend React | NextJs | TypeScript</li>
+                         <li className="about_infor-link">• Metodológia de projeto: Design Pattern GoF</li>
+                         <li className="about_infor-link">• Líder Técnico</li>
+						 <li className="about_infor-link">• Certificado Google Project Management (PT) Specialization</li>
                        </ul>
                        <p className="about__text">
-                          Atualmente pratico desenvolvimento customizado de sites e aplicativos web, além de sempre me atualizar quanto às tecnologias: Java, Java EE, PHP e Back-End. 
+                          Atualmente atuo em desenvolvimento customizado de REST API, sites e aplicativos web, além de sempre me atualizar quanto às tecnologias: Java, Spring Boot, React, Nodes e TypeScript.
                       </p>
                      </div>
                    </div>
@@ -137,6 +141,61 @@ const Curriculo = () => {
                 <div id="collapseFive" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                   <div className="panel-body">
                     
+					<div className="about__cabecalho--modifield">
+                      <p className="about__titulo">Execução do projeto: Como executar o projeto</p>
+                      <p className="about__subtitulo">Coursera Learner - GOOGLE</p>
+                      <p className="about__legend">Emitido em Abr de 2023 · Sem data de expiração</p>
+                      <a
+                        className="btn btn-about__custom "
+                        href="https://www.coursera.org/account/accomplishments/certificate/5UR37XX6VF75"
+                        target="_blank" rel="noopener noreferrer" > Credencial</a
+                      >
+                     </div>
+					
+					<div className="about__cabecalho--modifield">
+                      <p className="about__titulo">Planejamento de projetos: Como reunir tudo</p>
+                      <p className="about__subtitulo">Coursera Learner - GOOGLE</p>
+                      <p className="about__legend">Emitido em Mar de 2023 · Sem data de expiração</p>
+                      <a
+                        className="btn btn-about__custom "
+                        href="https://www.coursera.org/account/accomplishments/certificate/JWZYYCS5RJEU"
+                        target="_blank" rel="noopener noreferrer" > Credencial</a
+                      >
+                     </div>
+					
+					<div className="about__cabecalho--modifield">
+                      <p className="about__titulo">Início do projeto: Como começar um projeto bemsucedido</p>
+                      <p className="about__subtitulo">Coursera Learner - GOOGLE</p>
+                      <p className="about__legend">Emitido em jan de 2023 · Sem data de expiração</p>
+                      <a
+                        className="btn btn-about__custom "
+                        href="https://www.coursera.org/account/accomplishments/certificate/KRGXPTJHCPL6"
+                        target="_blank" rel="noopener noreferrer" > Credencial</a
+                      >
+                     </div>
+					
+					<div className="about__cabecalho--modifield">
+                      <p className="about__titulo">Fundamentos do gerenciamento de projetos</p>
+                      <p className="about__subtitulo">Coursera Learner - GOOGLE</p>
+                      <p className="about__legend">Emitido em dec de 2022 · Sem data de expiração</p>
+                      <a
+                        className="btn btn-about__custom "
+                        href="https://www.coursera.org/account/accomplishments/certificate/SQ3E8WYHALSJ"
+                        target="_blank" rel="noopener noreferrer" > Credencial</a
+                      >
+                     </div>
+					
+					<div className="about__cabecalho--modifield">
+                      <p className="about__titulo">JAVA - DESIGN PATTERNS</p>
+                      <p className="about__subtitulo">HCODE</p>
+                      <p className="about__legend">Emitido em abr de 2023 · Sem data de expiração</p>
+                      <a
+                        className="btn btn-about__custom "
+                        href="https://hcode.com.br/certificates/20234DPJAVA9399OOTQBZQADEPBMZR5N"
+                        target="_blank" rel="noopener noreferrer" > Credencial</a
+                      >
+                     </div>
+					
                     <div className="about__cabecalho--modifield">
                       <p className="about__titulo">Formação React JS</p>
                       <p className="about__subtitulo">Alura</p>
@@ -541,7 +600,9 @@ const Curriculo = () => {
                               value="yes"
                               defaultChecked
                             />
-                            <div className="clab clab--linux">Linux</div>
+                            <div className="clab clab--linux">
+							<a href="https://www.linkedin.com/skill-assessments/Linux/report/" target="_blank" rel="noopener noreferrer"> Linux</a>
+							</div>
                           </label>
                         </li>
                         <li className="pz">
@@ -553,7 +614,9 @@ const Curriculo = () => {
                               className="pro-chx"
                               value="yes"
                             />
-                            <div className="clab clab--java">Java</div>
+                            <div className="clab clab--java">
+							<a href="https://www.linkedin.com/skill-assessments/Java/report/" target="_blank" rel="noopener noreferrer"> Java</a>
+							</div>
                           </label>
                         </li>
                         <li className="pz">
@@ -589,7 +652,49 @@ const Curriculo = () => {
                               className="pro-chx"
                               value="yes"
                             />
-                            <div className="clab clab--win">.NET Core</div>
+                            <div className="clab clab--win">
+							
+							<a href="https://www.linkedin.com/skill-assessments/React.js/report/" target="_blank" rel="noopener noreferrer"> REACT</a>
+							</div>
+                          </label>
+                        </li>
+						<li className="pz">
+                          <label className="radio-inline">
+                            <input
+                              type="checkbox"
+                              id="pro-chx-residential"
+                              name="gas_availability"
+                              className="pro-chx"
+                              value="yes"
+                              defaultChecked
+                            />
+                            <div className="clab clab--linux">TYPESCRIPT</div>
+                          </label>
+                        </li>
+						<li className="pz">
+                          <label className="radio-inline">
+                            <input
+                              type="checkbox"
+                              id="pro-chx-residential"
+                              name="gas_availability"
+                              className="pro-chx"
+                              value="yes"
+                              defaultChecked
+                            />
+                            <div className="clab clab--linux">NextJs</div>
+                          </label>
+                        </li>
+						<li className="pz">
+                          <label className="radio-inline">
+                            <input
+                              type="checkbox"
+                              id="pro-chx-residential"
+                              name="gas_availability"
+                              className="pro-chx"
+                              value="yes"
+                              defaultChecked
+                            />
+                            <div className="clab clab--linux">JAVASCRIPT</div>
                           </label>
                         </li>
                         <li className="pz">

@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo2 from "../../../assets/img/logo/logo-02.png";
-import semImagem from "../../../assets/img/blog/reading/yoda02.png";
+//import semImagem from "../../../assets/img/blog/reading/yoda02.png";
 import photos from "../../../data/photo.json";
 import Footers from "../../../components/Footers";
 import "./styles.css";

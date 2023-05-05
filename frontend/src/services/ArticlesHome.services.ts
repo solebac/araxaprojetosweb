@@ -6,7 +6,8 @@ import { IPaginacao } from '../interfaces/IPaginacao';
 import http from '../utils/http';
 
 //Seção Blog com pages and destaques
-export const getArticlesPagabled = async (setPage: React.Dispatch<React.SetStateAction<IPaginacao<IArtigo> | undefined>>,
+export const getArticlesPagabled = async (
+    setPage: React.Dispatch<React.SetStateAction<IPaginacao<IArtigo> | undefined>>,
     setDestaque: React.Dispatch<React.SetStateAction<IArtigo | undefined>>,
     page: number, responseBody: ICategoria) => {
 
