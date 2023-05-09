@@ -6,7 +6,8 @@ import { ICategoria } from "../../../interfaces/ICategoria";
 import { IPaginacao } from "../../../interfaces/IPaginacao";
 import http from "../../../utils/http";
 import { filtroPaginationState } from "../../atom";
-import { sysGetCategorias, sysListaCategorias, sysSetAutor, sysSetCategoria } from "../atom";
+import { sysListaCategorias, sysSetAutor, sysSetCategoria } from "../atom";
+
 
 export const sysGetCategoriasAsync = selector({
     key: '_sysGetCategoriasAsync',
@@ -45,8 +46,14 @@ export const sysAutorOfPostAsyncFamily = selectorFamily({
         responseBody.autor = autor;
         responseBody.categoria = selectCategoria;
         //throw new Error('Test!');
-        const promises = await http.post<IPaginacao<IArtigo>>(`/articles/autorCategoriasArtigos?size=3&page=${pag.paginas}&sort=id,desc`, responseBody)
-        const resposta: IPaginacao<IArtigo> = promises.data;
+        const resposta: IPaginacao<IArtigo> = await http.post<IPaginacao<IArtigo>>(`/articles/autorCategoriasArtigos?size=3&page=${pag.paginas}&sort=id,desc`, responseBody).then(res => {
+            const data = res.data as IPaginacao<IArtigo>;
+            return data;
+        })
+            .catch(error => {
+                document.location.href = '/login';
+                throw new Error(error);
+            });
         return resposta;
     }
 })

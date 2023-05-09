@@ -70,6 +70,7 @@ const Login = () => {
       <section
         style={{
           backgroundColor: "cornsilk",
+		  height: "100vh",
         }}
       >
         {/*<Link to="/blog">

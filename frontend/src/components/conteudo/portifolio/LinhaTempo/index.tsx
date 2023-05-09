@@ -125,7 +125,7 @@ const LinhaTempo = () => {
             className="portifolio-menu__lateral--link portifolio-menu__lateral--separator"
             onClick={(e) => {
               e.preventDefault();
-              navigate("/aplicationsys");
+              navigate("/login");
               //setOpen(true);
             }}
           >

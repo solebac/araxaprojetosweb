@@ -4,9 +4,7 @@ import { IAutor } from "../../interfaces/IAutor";
 import { ICategoria } from "../../interfaces/ICategoria";
 import { IPaginacao } from "../../interfaces/IPaginacao";
 import { storeParseAutor } from "../../services/Autentication.services";
-import { CategoriaDTO } from "../../types/CategoriaDTO";
 import { BASE_PEOPLE } from "../../utils/requests";
-import { setPaginacaoArtigo } from "../atom";
 import { sysAutorAsyncALL, sysAutorAsyncFamily, sysAutorOfPostAsyncALL, sysAutorOfPostAsyncFamily, sysCategoriasAsyncALL, sysGetCategoriasAsync, sysSelectCategoriaAsyncFamily } from "./seletores";
 
 //Com parametro
